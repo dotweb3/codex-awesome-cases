@@ -1,0 +1,52 @@
+[
+  {
+    "src": "assets/2026-06-21/switchboard-site.png",
+    "file": "switchboard-site.png",
+    "bytes": 261525,
+    "width": 1440,
+    "height": 980,
+    "avg": 209.56,
+    "stdev": 77.2,
+    "ok": true
+  },
+  {
+    "src": "assets/2026-06-21/sqim-push.png",
+    "file": "sqim-push.png",
+    "bytes": 99773,
+    "width": 1440,
+    "height": 980,
+    "avg": 231.69,
+    "stdev": 56.71,
+    "ok": true
+  },
+  {
+    "src": "assets/2026-06-21/aicommander-site.png",
+    "file": "aicommander-site.png",
+    "bytes": 178203,
+    "width": 1440,
+    "height": 980,
+    "avg": 86.37,
+    "stdev": 100.75,
+    "ok": true
+  },
+  {
+    "src": "assets/2026-06-21/sigmashake-site.png",
+    "file": "sigmashake-site.png",
+    "bytes": 513737,
+    "width": 1440,
+    "height": 980,
+    "avg": 201.12,
+    "stdev": 46.78,
+    "ok": true
+  },
+  {
+    "src": "assets/2026-06-21/namecom-github.png",
+    "file": "namecom-github.png",
+    "bytes": 179146,
+    "width": 1440,
+    "height": 980,
+    "avg": 247.66,
+    "stdev": 30.86,
+    "ok": true
+  }
+]

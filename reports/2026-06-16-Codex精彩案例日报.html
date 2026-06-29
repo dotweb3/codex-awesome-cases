@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-06-16 Codex 精彩案例日报</title>
+  <style>
+    :root {
+      --bg: #f6f4ef;
+      --paper: #fffdf9;
+      --ink: #202124;
+      --muted: #656b73;
+      --line: #ddd8cf;
+      --blue: #2563eb;
+      --green: #0f766e;
+      --red: #b42318;
+      --gold: #a16207;
+      --shadow: 0 18px 44px rgba(45, 42, 36, .08);
+    }
+    * { box-sizing: border-box; }
+    html, body { overflow-x: hidden; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; line-height: 1.65; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .page { max-width: 1100px; margin: 0 auto; padding: 28px 20px 56px; }
+    header { border-bottom: 2px solid var(--ink); padding: 24px 0 22px; display: grid; gap: 16px; }
+    .eyebrow { color: var(--green); font-size: 13px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(32px, 5vw, 56px); line-height: 1.08; letter-spacing: 0; }
+    .subtitle { max-width: 820px; color: var(--muted); font-size: 17px; overflow-wrap: anywhere; }
+    .stats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+    .stat { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; min-width: 132px; }
+    .stat b { display:block; font-size: 20px; }
+    .stat span { color: var(--muted); font-size: 12px; }
+    section.band { padding: 28px 0; border-bottom: 1px solid var(--line); }
+    h2 { margin: 0 0 14px; font-size: 24px; letter-spacing: 0; }
+    .brief-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .brief { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 14px; }
+    .brief b { display:block; margin-bottom: 6px; }
+    .brief p { margin: 0; color: var(--muted); font-size: 14px; }
+    .note { background: #eef6f4; border-left: 4px solid var(--green); padding: 14px 16px; border-radius: 0 8px 8px 0; color: #21423f; }
+    .case-card { display: grid; grid-template-columns: minmax(0, 43%) minmax(0, 57%); gap: 22px; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); padding: 18px; margin: 18px 0 24px; }
+    .case-media { margin: 0; }
+    .case-media img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: top center; border: 1px solid var(--line); border-radius: 6px; background: #eee; }
+    .case-media figcaption { margin-top: 8px; color: var(--muted); font-size: 12px; line-height: 1.45; }
+    .case-kicker { display:flex; flex-wrap:wrap; gap: 6px; align-items:center; color: var(--muted); font-size: 13px; font-weight: 700; }
+    .tag { display: inline-flex; align-items: center; border: 1px solid #cbd5e1; background: #f8fafc; border-radius: 999px; padding: 2px 8px; color: #334155; font-size: 12px; font-weight: 700; }
+    .case-copy h3 { margin: 8px 0 8px; font-size: 24px; line-height: 1.25; letter-spacing: 0; }
+    .meta-row { display: flex; gap: 10px; justify-content: space-between; align-items: center; color: var(--muted); font-size: 13px; }
+    .meta-row strong { color: var(--red); white-space: nowrap; font-size: 18px; }
+    .scorebar { height: 8px; background: #ebe7df; border-radius: 999px; overflow: hidden; margin: 8px 0 12px; }
+    .scorebar span { display:block; height: 100%; background: linear-gradient(90deg, var(--green), var(--gold)); }
+    .source-box { border: 1px dashed #c9c2b8; border-radius: 8px; padding: 10px 12px; background: #fbfaf7; font-size: 13px; }
+    .source-box ul { margin: 6px 0 0; padding-left: 18px; }
+    .mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+    .mini-grid section { border-top: 1px solid var(--line); padding-top: 8px; }
+    .mini-grid .wide { grid-column: 1 / -1; }
+    h4 { margin: 0 0 4px; font-size: 14px; }
+    p { margin: 0; }
+    .mini-grid p, .list-clean span, .table-note { color: var(--muted); font-size: 14px; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    table { width: 100%; border-collapse: collapse; min-width: 980px; }
+    th, td { border-bottom: 1px solid var(--line); padding: 10px 11px; text-align: left; vertical-align: top; font-size: 13px; }
+    th { background: #efebe3; color: #3d3a35; position: sticky; top: 0; }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .total { font-weight: 800; color: var(--red); }
+    .status { display:inline-block; border-radius: 999px; border: 1px solid #d6d0c7; padding: 2px 8px; background: #fbfaf7; white-space: nowrap; }
+    .list-clean { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+    .list-clean li { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+    .list-clean b { display:block; margin-bottom: 2px; }
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .sources { columns: 2; column-gap: 32px; margin: 0; padding-left: 18px; }
+    .sources li { break-inside: avoid; margin-bottom: 7px; }
+    footer { padding-top: 24px; color: var(--muted); font-size: 13px; }
+    .print-note { border-top: 2px solid var(--ink); padding-top: 16px; }
+    @media (max-width: 860px) {
+      .brief-grid, .case-card, .split { grid-template-columns: 1fr; }
+      .stats { display: grid; grid-template-columns: 1fr 1fr; }
+      .stat { min-width: 0; }
+      .case-media img { aspect-ratio: 16 / 10; }
+      .mini-grid { grid-template-columns: 1fr; }
+      .mini-grid .wide { grid-column: auto; }
+      .sources { columns: 1; }
+      h1 { font-size: 34px; }
+    }
+    @media print {
+      body { background: white; }
+      .page { max-width: none; padding: 14mm; }
+      .case-card { box-shadow: none; break-inside: avoid; }
+      a { color: #111; text-decoration: underline; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div class="eyebrow">每日 Codex 社区图文 HTML 汇报</div>
+      <h1>Codex 精彩案例日报</h1>
+      <p class="subtitle">报告日期：2026-06-16（Asia/Kuching）。本期继续执行“宁缺毋滥”：先扫 HN、reddit、X，再用项目页、GitHub、作者博客和文档补证据；没有稳定图片和明确 Codex 参与的内容只进观察区。</p>
+      <div class="stats">
+        <div class="stat"><b>5</b><span>主案例</span></div>
+        <div class="stat"><b>18</b><span>候选总数</span></div>
+        <div class="stat"><b>3</b><span>主案例来自 HN/reddit</span></div>
+        <div class="stat"><b>100%</b><span>主图本地化</span></div>
+      </div>
+    </header>
+
+    <section class="band">
+      <h2>今日趋势摘要</h2>
+      <div class="brief-grid">
+        <div class="brief"><b>远程 Codex 成为手机工作流</b><p>NovaScale、Codex mobile、Tailscale 线索都指向同一件事：离开桌面后继续管理本地 agent thread。</p></div>
+        <div class="brief"><b>Harness 取代“单 prompt 奇迹”</b><p>Devloop、Mastra、Promptfoo 都在把 Codex 放进可重复、可评审、可测量的循环。</p></div>
+        <div class="brief"><b>事后审计开始成刚需</b><p>Backplanes 把文件、命令、外部访问和安全发现拉到 session 级别，补齐长时程代理的黑箱问题。</p></div>
+        <div class="brief"><b>设计上下文是前端胜负手</b><p>Open Design/Windframe 一类工具不只包装 UI，而是给 Codex 投喂稳定设计系统与 preview loop。</p></div>
+      </div>
+    </section>
+
+    <section class="band">
+      <h2>来源与筛选说明</h2>
+      <p class="note">本次优先检索 Hacker News Algolia、reddit 页面/索引、X 搜索索引，然后补充 GitHub、项目页、作者博客、Promptfoo/Open Design/GalaxNet 文档。X 直接页面在当前环境多受登录和动态加载限制，因此本期未把不可直接核验的 X 帖作为主证据。已排除 memory 中 6 月 13-15 收录过的 Headless CRM、Circus Chief、AgentGraphed、Lark Bridge、Nudge、SecureConf、Codex Usage Tracker、Codex Profile、ai-profiles 等案例。</p>
+    </section>
+
+    <section class="band">
+      <h2>主案例卡片</h2>
+      
+    <article class="case-card" id="case-1">
+      <div class="case-media">
+        <img src="assets/2026-06-16/novascale-remote-codex-release.png" alt="NovaScale 1.5.0 release notes showing Remote Codex features" loading="lazy">
+        <figcaption>图片来源：GalaxNet NovaScale 1.5.0 release notes；获取方式：页面截图；原始链接：https://galaxnet.dev/nova/releases/1.5.0/</figcaption>
+      </div>
+      <div class="case-copy">
+        <div class="case-kicker">案例 1 · <span class="tag">reddit</span><span class="tag">Tailscale</span><span class="tag">iOS</span><span class="tag">app-server</span></div>
+        <h3>NovaScale：把 Codex app-server 接进 iOS + Tailscale 运维工作流</h3>
+        <div class="meta-row"><span>社区讨论：2026-06-16；功能发布：2026-06-13；技术笔记：2026-06-15（非当天新增，今日新增讨论）</span><strong>91 分</strong></div>
+        <div class="scorebar" aria-label="score 91 out of 100"><span style="width:91%"></span></div>
+        <div class="source-box"><b>证据链接</b><ul><li><a href="https://www.reddit.com/r/codex/comments/1u6d3j4/i_added_remote_codex_support_to_my_ios_app_using/" target="_blank" rel="noopener noreferrer">reddit r/codex 讨论</a></li><li><a href="https://www.reddit.com/r/Tailscale/comments/1u6d2uy/i_added_remote_codex_support_to_my_ios_app_using/" target="_blank" rel="noopener noreferrer">reddit r/Tailscale 交叉发布</a></li><li><a href="https://galaxnet.dev/nova/articles/remote-codex-in-novascale/" target="_blank" rel="noopener noreferrer">技术笔记</a></li><li><a href="https://galaxnet.dev/nova/releases/1.5.0/" target="_blank" rel="noopener noreferrer">1.5.0 release notes</a></li><li><a href="https://github.com/GalaxNet-Ltd/nova-codex-bootstrap" target="_blank" rel="noopener noreferrer">bootstrap wrapper</a></li></ul></div>
+        <div class="mini-grid">
+          <section><h4>为什么值得看</h4><p>这不是“远程桌面套壳”，而是把 Codex 的 app-server/WebSocket 协议包进一个已有的 iOS 运维工具：Tailscale 负责私有网络，NovaScale 负责移动端主机、线程、通知和审批入口。</p></section>
+          <section><h4>Codex 具体做了什么</h4><p>Codex 在 Mac/Linux 主机上运行，NovaScale 通过官方 app-server 建立线程、续写 turn、接收流式事件、处理 approval、上传小图片或文件。</p></section>
+          <section><h4>最有脑洞/最实用的点</h4><p>把“手机上看告警、SSH 进服务器、顺手让 Codex 修脚本”压进一个移动工作流，适合 homelab、SRE 和需要离桌响应的独立开发者。</p></section>
+          <section><h4>可借鉴做法</h4><p>可借鉴的是边界设计：app-server 不裸露到公网，先走 Tailnet，再加 WebSocket auth；同时承认它与桌面/CLI 进程不是同一个运行时。</p></section>
+          <section class="wide"><h4>不确定点</h4><p>功能仍标为 experimental；Codex app-server 的 WebSocket 传输可能变化，iOS 后台长期任务和跨客户端同 runtime 仍是待解问题。</p></section>
+        </div>
+      </div>
+    </article>
+    <article class="case-card" id="case-2">
+      <div class="case-media">
+        <img src="assets/2026-06-16/devloop-show-hn.png" alt="Devloop website showing spec-driven code review loop" loading="lazy">
+        <figcaption>图片来源：devloop.sh；获取方式：页面截图；原始链接：https://devloop.sh/</figcaption>
+      </div>
+      <div class="case-copy">
+        <div class="case-kicker">案例 2 · <span class="tag">HN</span><span class="tag">Show HN</span><span class="tag">CLI</span><span class="tag">harness</span></div>
+        <h3>Devloop：让 Codex 写代码、Claude Code 做对抗评审的本地循环</h3>
+        <div class="meta-row"><span>HN 发布时间：2026-06-16 02:22 UTC（Asia/Kuching 当日）；HN 热度：2 points / 0 comments，发布很新</span><strong>88 分</strong></div>
+        <div class="scorebar" aria-label="score 88 out of 100"><span style="width:88%"></span></div>
+        <div class="source-box"><b>证据链接</b><ul><li><a href="https://news.ycombinator.com/item?id=48549774" target="_blank" rel="noopener noreferrer">Hacker News</a></li><li><a href="https://devloop.sh/" target="_blank" rel="noopener noreferrer">项目页</a></li><li><a href="https://satyaborg.com/blog/devloop" target="_blank" rel="noopener noreferrer">作者博客</a></li><li><a href="https://github.com/satyaborg/devloop" target="_blank" rel="noopener noreferrer">GitHub</a></li></ul></div>
+        <div class="mini-grid">
+          <section><h4>为什么值得看</h4><p>它把最近社区热议的“harness engineering”落到一条可执行路径：先写验收标准，再让不同模型家族分别担任 implementer 和 reviewer，减少同模型自我评审的盲点。</p></section>
+          <section><h4>Codex 具体做了什么</h4><p>默认由 Codex 在隔离 git worktree 中实现 spec；Claude Code 依据 `/devloop-review` 技能评审，失败后把修复指令回灌给 Codex，循环到 ACCEPT、停滞或达到 pass 上限。</p></section>
+          <section><h4>最有脑洞/最实用的点</h4><p>重点不是多代理炫技，而是用明确 spec、质量门、verify hook 和有限循环把“代理写、代理审”变成可审计的 PR 生产线。</p></section>
+          <section><h4>可借鉴做法</h4><p>把人的判断前移到 spec 和最后签收；中间重复的“看 diff、指出 blocker、再让代理改”可脚本化。</p></section>
+          <section class="wide"><h4>不确定点</h4><p>HN 评论量还低，属于新发项目；真实大型代码库上的通过率、误报/漏报和 token 成本仍要继续观察。</p></section>
+        </div>
+      </div>
+    </article>
+    <article class="case-card" id="case-3">
+      <div class="case-media">
+        <img src="assets/2026-06-16/backplanes-spotlight.png" alt="Backplanes Spotlight landing page with sample session report" loading="lazy">
+        <figcaption>图片来源：Backplanes Spotlight；获取方式：页面截图；原始链接：https://www.backplanes.com/</figcaption>
+      </div>
+      <div class="case-copy">
+        <div class="case-kicker">案例 3 · <span class="tag">HN</span><span class="tag">observability</span><span class="tag">security</span><span class="tag">cost</span></div>
+        <h3>Backplanes Spotlight：给 Codex/Claude Code 会话做事后审计报告</h3>
+        <div class="meta-row"><span>HN 发布时间：2026-06-15 18:24 UTC（Asia/Kuching 2026-06-16）；HN 热度：8 points / 1 comment</span><strong>84 分</strong></div>
+        <div class="scorebar" aria-label="score 84 out of 100"><span style="width:84%"></span></div>
+        <div class="source-box"><b>证据链接</b><ul><li><a href="https://news.ycombinator.com/item?id=48545168" target="_blank" rel="noopener noreferrer">Hacker News</a></li><li><a href="https://www.backplanes.com/" target="_blank" rel="noopener noreferrer">产品页</a></li></ul></div>
+        <div class="mini-grid">
+          <section><h4>为什么值得看</h4><p>很多团队已经让 Codex 长时间改代码，但很少有人系统回答“它到底碰了什么文件、跑了什么命令、访问了哪些外部服务、哪里需要人复查”。Spotlight 正在补这层可观测性。</p></section>
+          <section><h4>Codex 具体做了什么</h4><p>工具读取 Claude Code 和 Codex session，生成 session report、外部访问记录、成本/工程/安全视角，并在会话结束后做本地脱敏再汇报。</p></section>
+          <section><h4>最有脑洞/最实用的点</h4><p>示例报告把 `/etc/passwd` 访问、外部 API、推理路径和最佳实践检查放在同一屏，非常适合 code owner 快速判断是否需要复查。</p></section>
+          <section><h4>可借鉴做法</h4><p>把 agent output 当作“操作日志 + 安全事件”来审，而不是只看最终 diff；长时程代理需要 session-level telemetry。</p></section>
+          <section class="wide"><h4>不确定点</h4><p>当前公开信息多来自产品页和 Show HN，尚缺少第三方实测；团队版归因、隐私和企业审计边界需要进一步验证。</p></section>
+        </div>
+      </div>
+    </article>
+    <article class="case-card" id="case-4">
+      <div class="case-media">
+        <img src="assets/2026-06-16/promptfoo-codex-sdk.png" alt="Promptfoo OpenAI Codex SDK provider documentation" loading="lazy">
+        <figcaption>图片来源：Promptfoo 文档；获取方式：页面截图；原始链接：https://www.promptfoo.dev/docs/providers/openai-codex-sdk/</figcaption>
+      </div>
+      <div class="case-copy">
+        <div class="case-kicker">案例 4 · <span class="tag">docs</span><span class="tag">evals</span><span class="tag">SDK</span><span class="tag">CI</span></div>
+        <h3>Promptfoo Codex SDK Provider：把 Codex 放进可重复的 agent eval</h3>
+        <div class="meta-row"><span>文档页面检索到 2026-06-16 更新；非社区首发，但属于当天新增/更新的 Codex 生态能力</span><strong>82 分</strong></div>
+        <div class="scorebar" aria-label="score 82 out of 100"><span style="width:82%"></span></div>
+        <div class="source-box"><b>证据链接</b><ul><li><a href="https://www.promptfoo.dev/docs/providers/openai-codex-sdk/" target="_blank" rel="noopener noreferrer">Codex SDK provider 文档</a></li><li><a href="https://www.promptfoo.dev/docs/guides/evaluate-coding-agents/" target="_blank" rel="noopener noreferrer">Coding agent eval guide</a></li><li><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer">Promptfoo GitHub</a></li></ul></div>
+        <div class="mini-grid">
+          <section><h4>为什么值得看</h4><p>这是“用 Codex 写代码”之外更稀缺的一步：把 Codex 当成可测量的 agent runtime，在固定工作目录、沙箱、审批策略和网络权限下跑评测。</p></section>
+          <section><h4>Codex 具体做了什么</h4><p>Promptfoo 通过 `openai:codex-sdk` 调 Codex SDK，记录最终输出、token usage、thread/session ID、技能使用启发式信号以及 shell/MCP/search/file trace。</p></section>
+          <section><h4>最有脑洞/最实用的点</h4><p>同一任务可比较文本模型、Codex SDK、Codex app-server、Claude Agent SDK 和 OpenCode SDK，能证明“文件访问/命令执行/运行态”到底贡献了什么。</p></section>
+          <section><h4>可借鉴做法</h4><p>把 coding agent 纳入 CI 前先建 eval：固定 fixture repo、限制网络和写权限、保存 trace，再用 agent-rubric 或结构化断言评估。</p></section>
+          <section class="wide"><h4>不确定点</h4><p>这不是单个用户成品案例，而是评测基础设施；Codex app-server provider 仍被文档标为实验协议。</p></section>
+        </div>
+      </div>
+    </article>
+    <article class="case-card" id="case-5">
+      <div class="case-media">
+        <img src="assets/2026-06-16/open-design-codex.png" alt="Open Design Codex for design page" loading="lazy">
+        <figcaption>图片来源：Open Design Codex for design 页面；获取方式：页面截图；原始链接：https://open-design.ai/agents/codex-design/</figcaption>
+      </div>
+      <div class="case-copy">
+        <div class="case-kicker">案例 5 · <span class="tag">reddit</span><span class="tag">design</span><span class="tag">GitHub</span><span class="tag">local-first</span></div>
+        <h3>Open Design：把 Codex 接进本地优先的设计系统与截图到 UI 流程</h3>
+        <div class="meta-row"><span>Codex 专页检索到 2026-06-16；相关 reddit 讨论近一周到三周内持续出现（非当天首发）</span><strong>79 分</strong></div>
+        <div class="scorebar" aria-label="score 79 out of 100"><span style="width:79%"></span></div>
+        <div class="source-box"><b>证据链接</b><ul><li><a href="https://open-design.ai/agents/codex-design/" target="_blank" rel="noopener noreferrer">Codex for design 页面</a></li><li><a href="https://github.com/nexu-io/open-design" target="_blank" rel="noopener noreferrer">Open Design GitHub</a></li><li><a href="https://open-design.ai/official/" target="_blank" rel="noopener noreferrer">Open Design 官方源页面</a></li><li><a href="https://www.reddit.com/r/codex/comments/1tiecwb/wes_open_design_now_works_inside_codex_giving_ai/" target="_blank" rel="noopener noreferrer">reddit r/codex 讨论线索</a></li></ul></div>
+        <div class="mini-grid">
+          <section><h4>为什么值得看</h4><p>前端设计是 Codex 社区的高频痛点。Open Design 的切入点不是再做一个聊天窗口，而是给 Codex 准备本地文件、DESIGN.md、设计系统、技能和可预览 artifact。</p></section>
+          <section><h4>Codex 具体做了什么</h4><p>Codex 作为一等 adapter 被 Open Design 调用，读取设计系统和技能上下文，生成 landing page、dashboard、prototype、deck 等本地 artifact。</p></section>
+          <section><h4>最有脑洞/最实用的点</h4><p>把“截图到 UI”拆成可复用设计系统和 preview loop，比单纯要求 Codex “做得好看一点”更可复制。</p></section>
+          <section><h4>可借鉴做法</h4><p>沉淀品牌/组件/排版规则到 `DESIGN.md` 和 skills，让 Codex 每次都从同一套视觉上下文起步。</p></section>
+          <section class="wide"><h4>不确定点</h4><p>项目页面与生态指标很强，但真实 Codex 用户的公开前后对比样例仍偏少；主图为项目页面截图，不代表单个产出成品。</p></section>
+        </div>
+      </div>
+    </article>
+    </section>
+
+    <section class="band">
+      <h2>候选评分表</h2>
+      <p class="table-note">评分构成：时效性 25、脑洞/惊喜度 20、Codex 参与度 20、可视化证据 15、社区讨论热度 10、可借鉴性 10。低于 70 分不进主榜；分数达到但证据弱或重复，也只进入候选/观察。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>候选</th><th>来源</th><th>时间</th><th>时效</th><th>脑洞</th><th>Codex</th><th>图证</th><th>热度</th><th>借鉴</th><th>总分</th><th>状态</th><th>备注</th></tr></thead>
+          <tbody>
+      <tr>
+        <td>NovaScale Remote Codex</td><td>reddit/GalaxNet/App Store</td><td>2026-06-16 讨论，2026-06-13 发布</td>
+        <td class="num">25</td><td class="num">18</td><td class="num">20</td><td class="num">14</td><td class="num">7</td><td class="num">7</td>
+        <td class="num total">91</td><td><span class="status">入选</span></td><td>iOS 运维工具直接接 Codex app-server，证据链完整。</td>
+      </tr>
+      <tr>
+        <td>Devloop</td><td>HN/作者博客/GitHub</td><td>2026-06-16</td>
+        <td class="num">25</td><td class="num">18</td><td class="num">20</td><td class="num">13</td><td class="num">4</td><td class="num">8</td>
+        <td class="num total">88</td><td><span class="status">入选</span></td><td>Codex 实现、Claude 评审的可执行 harness。</td>
+      </tr>
+      <tr>
+        <td>Backplanes Spotlight</td><td>HN/产品页</td><td>2026-06-16 本地日期</td>
+        <td class="num">24</td><td class="num">15</td><td class="num">16</td><td class="num">14</td><td class="num">5</td><td class="num">10</td>
+        <td class="num total">84</td><td><span class="status">入选</span></td><td>Codex session 审计和安全/成本报告。</td>
+      </tr>
+      <tr>
+        <td>Promptfoo Codex SDK Provider</td><td>Promptfoo docs/GitHub</td><td>2026-06-16 文档更新</td>
+        <td class="num">24</td><td class="num">14</td><td class="num">19</td><td class="num">12</td><td class="num">3</td><td class="num">10</td>
+        <td class="num total">82</td><td><span class="status">入选</span></td><td>让 Codex agent runtime 可评测、可追踪。</td>
+      </tr>
+      <tr>
+        <td>Open Design Codex workflow</td><td>Open Design/reddit/GitHub</td><td>2026-06-16 专页</td>
+        <td class="num">23</td><td class="num">15</td><td class="num">17</td><td class="num">12</td><td class="num">4</td><td class="num">8</td>
+        <td class="num total">79</td><td><span class="status">入选</span></td><td>本地优先设计系统 + Codex adapter。</td>
+      </tr>
+      <tr>
+        <td>Mastra SDK subagents</td><td>Mastra blog</td><td>2026-06-15</td>
+        <td class="num">24</td><td class="num">14</td><td class="num">17</td><td class="num">8</td><td class="num">2</td><td class="num">9</td>
+        <td class="num total">74</td><td><span class="status">候选</span></td><td>可从 Mastra 跑 Codex/Claude/Cursor 子代理，社区讨论证据弱。</td>
+      </tr>
+      <tr>
+        <td>AnyClaw / Android native Codex route</td><td>reddit/GitHub/ClawTrackr</td><td>近 5 天/6-13 更新</td>
+        <td class="num">21</td><td class="num">19</td><td class="num">18</td><td class="num">13</td><td class="num">4</td><td class="num">6</td>
+        <td class="num total">81</td><td><span class="status">观察</span></td><td>Android 原生运行 Codex 很新鲜，但 reddit 帖与 GitHub 实现不完全同源。</td>
+      </tr>
+      <tr>
+        <td>whoburnedmore</td><td>HN/GitHub</td><td>2026-06-16</td>
+        <td class="num">25</td><td class="num">13</td><td class="num">10</td><td class="num">12</td><td class="num">3</td><td class="num">8</td>
+        <td class="num total">71</td><td><span class="status">候选</span></td><td>本地 token burn 报告有趣，但开源 CLI 当前更偏 Claude logs。</td>
+      </tr>
+      <tr>
+        <td>codex.el Emacs integration</td><td>GitHub/search</td><td>2026-06-16 检索到</td>
+        <td class="num">23</td><td class="num">10</td><td class="num">16</td><td class="num">8</td><td class="num">1</td><td class="num">8</td>
+        <td class="num total">66</td><td><span class="status">候选</span></td><td>让 Emacs 直接跑 Codex app-server/terminal backend，缺少社区讨论。</td>
+      </tr>
+      <tr>
+        <td>HashMeterAi</td><td>HN/GitHub</td><td>2026-06-15</td>
+        <td class="num">24</td><td class="num">9</td><td class="num">9</td><td class="num">10</td><td class="num">3</td><td class="num">7</td>
+        <td class="num total">62</td><td><span class="status">未入选</span></td><td>token meter 类工具，Codex 参与度和证明弱于 Promptfoo/Backplanes。</td>
+      </tr>
+      <tr>
+        <td>Termem</td><td>HN/产品页</td><td>2026-06-15</td>
+        <td class="num">24</td><td class="num">12</td><td class="num">10</td><td class="num">8</td><td class="num">2</td><td class="num">8</td>
+        <td class="num total">64</td><td><span class="status">未入选</span></td><td>跨 agent memory/session 管理方向值得看，但 Codex 细节不足。</td>
+      </tr>
+      <tr>
+        <td>Pantheon skills</td><td>HN/GitHub</td><td>2026-06-15</td>
+        <td class="num">24</td><td class="num">17</td><td class="num">12</td><td class="num">8</td><td class="num">2</td><td class="num">7</td>
+        <td class="num total">70</td><td><span class="status">候选</span></td><td>AI 写代码、AI 攻击的安全 benchmark 方向好，Codex 证据需补。</td>
+      </tr>
+      <tr>
+        <td>OpenAI Developers plugin in Codex</td><td>X/OpenAI</td><td>2026-06-16</td>
+        <td class="num">25</td><td class="num">10</td><td class="num">15</td><td class="num">8</td><td class="num">4</td><td class="num">6</td>
+        <td class="num total">68</td><td><span class="status">观察</span></td><td>官方 X 帖可见索引，但 X 直连受限，且不是用户完成案例。</td>
+      </tr>
+      <tr>
+        <td>Codex for OSS access program</td><td>HN/OpenAI</td><td>2026-06-11</td>
+        <td class="num">17</td><td class="num">12</td><td class="num">13</td><td class="num">5</td><td class="num">10</td><td class="num">8</td>
+        <td class="num total">65</td><td><span class="status">未入选</span></td><td>社区热度高，但属于计划/入口，不是完成案例。</td>
+      </tr>
+      <tr>
+        <td>Oh My OpenAgent / omo-codex</td><td>GitHub/docs</td><td>近期持续更新</td>
+        <td class="num">15</td><td class="num">14</td><td class="num">15</td><td class="num">8</td><td class="num">4</td><td class="num">6</td>
+        <td class="num total">62</td><td><span class="status">观察</span></td><td>生态体量很大，但今天没有清晰新案例，且需安全审查。</td>
+      </tr>
+      <tr>
+        <td>Windframe MCP for Codex design taste</td><td>reddit/产品页</td><td>约 3 周前</td>
+        <td class="num">10</td><td class="num">16</td><td class="num">16</td><td class="num">10</td><td class="num">5</td><td class="num">7</td>
+        <td class="num total">64</td><td><span class="status">观察</span></td><td>设计上下文 MCP 方向好，超出 14 天且视频无法稳定核验。</td>
+      </tr>
+      <tr>
+        <td>OpenAI Community credit-consumption bug thread</td><td>OpenAI forum</td><td>2026-06-16</td>
+        <td class="num">25</td><td class="num">4</td><td class="num">8</td><td class="num">2</td><td class="num">3</td><td class="num">6</td>
+        <td class="num total">48</td><td><span class="status">未入选</span></td><td>重要但属于问题反馈，不是精彩案例。</td>
+      </tr>
+      <tr>
+        <td>Xiaomi MiMo Code discussion</td><td>HN/news</td><td>2026-06-16</td>
+        <td class="num">24</td><td class="num">13</td><td class="num">2</td><td class="num">8</td><td class="num">5</td><td class="num">5</td>
+        <td class="num total">57</td><td><span class="status">未入选</span></td><td>AI coding harness 新闻，不是 Codex 使用案例。</td>
+      </tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <h2>无图/待核实观察区</h2>
+        <ul class="list-clean"><li><b>Android 原生 Codex CLI + voice/sensors</b><span>reddit 帖子新鲜，公开视频在网页端无法加载；AnyClaw 是相近可验证实现但非同一作者，暂不作为主榜单一案例。</span></li><li><b>whoburnedmore / HashMeterAi / Termem</b><span>都在解决 agent 成本、会话和记忆问题，但今天主榜优先选择有 Codex 明确运行边界和本地图证的项目。</span></li><li><b>X 上的 Codex 插件和小技巧</b><span>搜索索引能看到 OpenAI Developers plugin、Codex SDK 等内容；直接打开 X 页面常受登录/动态加载限制，本次不把 X 作为主证据。</span></li><li><b>OpenAI 官方大叙事</b><span>Codex for OSS、Ona 收购、Sites 等仍有趋势价值，但日报避免把官方发布替代社区案例。</span></li></ul>
+      </div>
+      <div>
+        <h2>今日灵感清单</h2>
+        <ul><li>如果你在做移动端运维工具，可以把 Codex app-server 当成“远端工作线程 API”，但必须把网络和认证边界设计清楚。</li><li>写代码代理不要只靠自我检查：让一个 agent 写，另一个 agent 依据 spec 和质量门评审，能显著降低盲点。</li><li>给长时程 Codex 任务留 session report：文件、命令、外部域名、风险发现和成本，都比“最终回答”更有复盘价值。</li><li>前端/设计任务别只给截图，沉淀 DESIGN.md、design tokens、组件参考和 preview loop，让 Codex 有稳定视觉上下文。</li><li>把 Codex 纳入 eval 前，先固定 working directory、sandbox、approval policy 和网络权限，否则结果不可复现。</li></ul>
+      </div>
+    </section>
+
+    <section class="band">
+      <h2>来源列表</h2>
+      <ol class="sources"><li><a href="https://news.ycombinator.com/item?id=48549774" target="_blank" rel="noopener noreferrer">HN: Show HN Devloop</a></li><li><a href="https://devloop.sh/" target="_blank" rel="noopener noreferrer">Devloop 项目页</a></li><li><a href="https://satyaborg.com/blog/devloop" target="_blank" rel="noopener noreferrer">Devloop 作者博客</a></li><li><a href="https://github.com/satyaborg/devloop" target="_blank" rel="noopener noreferrer">Devloop GitHub</a></li><li><a href="https://news.ycombinator.com/item?id=48545168" target="_blank" rel="noopener noreferrer">HN: Backplanes Spotlight</a></li><li><a href="https://www.backplanes.com/" target="_blank" rel="noopener noreferrer">Backplanes Spotlight</a></li><li><a href="https://www.reddit.com/r/codex/comments/1u6d3j4/i_added_remote_codex_support_to_my_ios_app_using/" target="_blank" rel="noopener noreferrer">reddit r/codex: NovaScale Remote Codex</a></li><li><a href="https://www.reddit.com/r/Tailscale/comments/1u6d2uy/i_added_remote_codex_support_to_my_ios_app_using/" target="_blank" rel="noopener noreferrer">reddit r/Tailscale: NovaScale Remote Codex</a></li><li><a href="https://galaxnet.dev/nova/releases/1.5.0/" target="_blank" rel="noopener noreferrer">NovaScale 1.5.0 release notes</a></li><li><a href="https://galaxnet.dev/nova/articles/remote-codex-in-novascale/" target="_blank" rel="noopener noreferrer">Remote Codex in NovaScale</a></li><li><a href="https://github.com/GalaxNet-Ltd/nova-codex-bootstrap" target="_blank" rel="noopener noreferrer">NovaScale bootstrap wrapper</a></li><li><a href="https://www.promptfoo.dev/docs/providers/openai-codex-sdk/" target="_blank" rel="noopener noreferrer">Promptfoo Codex SDK provider</a></li><li><a href="https://www.promptfoo.dev/docs/guides/evaluate-coding-agents/" target="_blank" rel="noopener noreferrer">Promptfoo coding-agent eval guide</a></li><li><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer">Promptfoo GitHub</a></li><li><a href="https://open-design.ai/agents/codex-design/" target="_blank" rel="noopener noreferrer">Open Design Codex page</a></li><li><a href="https://github.com/nexu-io/open-design" target="_blank" rel="noopener noreferrer">Open Design GitHub</a></li><li><a href="https://open-design.ai/official/" target="_blank" rel="noopener noreferrer">Open Design official source page</a></li><li><a href="https://www.reddit.com/r/codex/comments/1tiecwb/wes_open_design_now_works_inside_codex_giving_ai/" target="_blank" rel="noopener noreferrer">reddit r/codex: Open Design in Codex</a></li><li><a href="https://www.reddit.com/r/codex/comments/1u2lzje/codex_cli_running_natively_on_android_with/" target="_blank" rel="noopener noreferrer">reddit r/codex: Android native Codex CLI</a></li><li><a href="https://github.com/OpenClawAndroid/openclaw-android-assistant" target="_blank" rel="noopener noreferrer">AnyClaw GitHub</a></li><li><a href="https://mastra.ai/blog/introducing-sdk-subagents" target="_blank" rel="noopener noreferrer">Mastra Codex subagents</a></li></ol>
+    </section>
+
+    <section class="band">
+      <h2>图片自检清单</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>文件</th><th>尺寸</th><th>图片来源</th><th>获取方式</th><th>结果</th></tr></thead>
+          <tbody><tr><td>novascale-remote-codex-release.png</td><td>1440 x 1200</td><td>GalaxNet release notes</td><td>页面截图</td><td>通过</td></tr><tr><td>devloop-show-hn.png</td><td>1440 x 1200</td><td>devloop.sh</td><td>页面截图</td><td>通过</td></tr><tr><td>backplanes-spotlight.png</td><td>1440 x 1200</td><td>Backplanes</td><td>页面截图</td><td>通过</td></tr><tr><td>promptfoo-codex-sdk.png</td><td>1440 x 1400</td><td>Promptfoo docs</td><td>页面截图</td><td>通过</td></tr><tr><td>open-design-codex.png</td><td>1440 x 1200</td><td>Open Design</td><td>页面截图</td><td>通过</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      <div class="print-note">
+        <p><b>检索时间：</b>2026-06-16 13:09 +08</p>
+        <p><b>主要搜索平台：</b>Hacker News Algolia / Hacker News、reddit、X 搜索索引、GitHub、项目官网、作者博客、Promptfoo 文档、Open Design 文档、GalaxNet 文档。</p>
+        <p><b>访问限制：</b>reddit 页面可读但部分视频附件在网页端不可稳定播放；X 直连页面常出现登录/空白限制，仅使用可访问索引结果作线索；App Store 网页会因地区跳转，NovaScale 改用开发者 release notes 与技术笔记核验。</p>
+        <p><b>未确认边界：</b>本报告只基于公开网页和可访问索引，不声明未公开的用户数、收入、真实生产效果；Open Design 主图为项目页面截图，Android 原生 Codex 因证据不同源留在观察区。</p>
+        <p><b>图片自检结果：</b>5 张主图均已保存到本地，相对路径引用；文件存在、非空、尺寸合理，并经人工目检不是黑屏、白屏或错误页。</p>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>

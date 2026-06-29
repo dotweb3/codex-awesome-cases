@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-06-21 Codex 精彩案例日报</title>
+  <style>
+    :root {
+      --paper: #fbfaf5;
+      --panel: #ffffff;
+      --ink: #1d2528;
+      --muted: #65706e;
+      --line: #ded7c8;
+      --green: #2f6b5f;
+      --blue: #285fd6;
+      --amber: #e4a82f;
+      --rose: #b6554f;
+      --violet: #6b5bd2;
+      --soft: #f0eadb;
+      --shadow: 0 16px 36px rgba(39, 43, 39, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { background: var(--paper); color: var(--ink); }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.62;
+      letter-spacing: 0;
+    }
+    a { color: var(--blue); text-decoration-thickness: 1px; text-underline-offset: 3px; overflow-wrap: anywhere; }
+    .page { max-width: 1100px; margin: 0 auto; padding: 28px 20px 64px; }
+    .hero {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #fffdfa 0%, #f8f2e6 100%);
+      border-radius: 8px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+    .eyebrow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      font-size: 13px;
+      color: var(--green);
+      font-weight: 700;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); display: inline-block; }
+    h1, h2, h3 { line-height: 1.15; margin: 0; letter-spacing: 0; }
+    h1 { font-size: clamp(34px, 7vw, 72px); max-width: 820px; margin-top: 18px; }
+    .dek { max-width: 760px; font-size: 18px; color: #3e4847; margin: 18px 0 0; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 26px;
+    }
+    .metric {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.72);
+      border-radius: 8px;
+      padding: 14px;
+      min-height: 94px;
+    }
+    .metric b { display: block; font-size: 24px; line-height: 1.1; }
+    .metric span { display: block; margin-top: 8px; color: var(--muted); font-size: 13px; }
+    .section { margin-top: 28px; }
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: end;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--ink);
+    }
+    .section-title h2 { font-size: 26px; }
+    .section-title p { margin: 0; color: var(--muted); font-size: 14px; max-width: 520px; }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 16px;
+    }
+    .note, .table-wrap, .source-box {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 8px;
+      padding: 18px;
+    }
+    .note p { margin: 0 0 10px; }
+    .note p:last-child { margin-bottom: 0; }
+    .trend-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+    .trend-list li {
+      border-left: 4px solid var(--green);
+      padding: 8px 0 8px 12px;
+      color: #3d4747;
+      background: #fbfaf7;
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 12px;
+      font-weight: 700;
+      background: #fff;
+      color: #34403f;
+      white-space: nowrap;
+    }
+    .chip.hn { border-color: #f0c073; color: #7a4e00; }
+    .chip.reddit { border-color: #ec9b86; color: #9b3f28; }
+    .chip.x { border-color: #aeb8c6; color: #263447; }
+    .chip.git { border-color: #9cc3ef; color: #185c9d; }
+    .chip.product { border-color: #94c9b8; color: var(--green); }
+    .case {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.98fr);
+      gap: 20px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 12px 28px rgba(36, 38, 35, 0.05);
+    }
+    .case > div, .case figure, .info-block, .note, .watch, .metric { min-width: 0; }
+    .case h3 { font-size: 24px; margin: 12px 0 10px; }
+    .case-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+    .score-badge {
+      display: inline-grid;
+      place-items: center;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 800;
+      flex: 0 0 auto;
+    }
+    .score-row { display: flex; gap: 12px; align-items: center; margin: 12px 0; }
+    .bar { flex: 1; height: 10px; background: var(--soft); border-radius: 999px; overflow: hidden; }
+    .bar span { display: block; height: 100%; background: linear-gradient(90deg, var(--green), var(--amber), var(--rose)); }
+    figure { margin: 0; }
+    .image-frame {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f5f1e8;
+    }
+    .image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    figcaption { font-size: 12px; color: var(--muted); margin-top: 9px; overflow-wrap: anywhere; }
+    .info-blocks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
+    .info-block {
+      border: 1px solid var(--line);
+      background: #fffdfa;
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .info-block b { display: block; font-size: 13px; color: var(--green); margin-bottom: 5px; }
+    .info-block p { margin: 0; font-size: 14px; color: #364140; }
+    .evidence { margin: 12px 0 0; padding-left: 18px; color: #394543; }
+    .evidence li { margin: 5px 0; }
+    table { border-collapse: collapse; width: 100%; font-size: 14px; }
+    th, td { text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); padding: 10px 9px; overflow-wrap: break-word; }
+    th { background: #f2ecde; font-size: 12px; text-transform: uppercase; color: #52605e; }
+    tr:last-child td { border-bottom: 0; }
+    .table-wrap { overflow-x: auto; padding: 0; }
+    .table-wrap table { min-width: 900px; }
+    .status-main { color: var(--green); font-weight: 800; }
+    .status-watch { color: #7a5b07; font-weight: 800; }
+    .status-skip { color: var(--rose); font-weight: 800; }
+    .watch-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .watch {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdfa;
+      padding: 14px;
+    }
+    .watch b { display: block; margin-bottom: 5px; }
+    .watch p { margin: 0; color: #4c5756; font-size: 14px; }
+    .idea-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .idea-list li {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 8px;
+      padding: 14px;
+      min-height: 128px;
+    }
+    .idea-list b { display: block; margin-bottom: 6px; color: var(--green); }
+    .source-list { columns: 2; column-gap: 28px; margin: 0; padding-left: 18px; }
+    .source-list li { break-inside: avoid; margin: 0 0 8px; }
+    .foot {
+      margin-top: 28px;
+      border-top: 2px solid var(--ink);
+      padding-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 860px) {
+      .page { padding: 18px 12px 42px; }
+      .hero { padding: 20px; }
+      .meta-grid, .summary-grid, .case, .watch-grid, .idea-list { grid-template-columns: 1fr; }
+      .case { padding: 15px; }
+      .info-blocks { grid-template-columns: 1fr; }
+      .table-wrap { max-width: 100%; overflow-x: auto; }
+      .source-list { columns: 1; }
+      .section-title { display: block; }
+      .section-title p { margin-top: 8px; }
+    }
+    @media print {
+      body { background: #fff; }
+      .page { max-width: none; padding: 0; }
+      .hero, .case, .note, .table-wrap, .source-box, .watch, .idea-list li { box-shadow: none; }
+      a { color: #000; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="eyebrow"><span class="dot"></span> Codex 社区图文日报 · 2026-06-21 · Asia/Kuching</div>
+      <h1>过去 7 天，Codex 社区出现的 5 个可借鉴案例</h1>
+      <p class="dek">今天严格意义上的当日高质量案例不够多，因此按规则扩展到最近 7 天。主榜只保留有社区发现来源、项目证明和可落地主图的案例，避免把日报写成普通 GitHub 项目清单。</p>
+      <div class="meta-grid">
+        <div class="metric"><b>18</b><span>候选案例，来自 HN、reddit、X 搜索片段、GitHub 与产品页</span></div>
+        <div class="metric"><b>5</b><span>主案例，全部达到 70 分以上</span></div>
+        <div class="metric"><b>4 / 5</b><span>主案例为非当天新增，卡片已标注具体日期</span></div>
+        <div class="metric"><b>5 / 5</b><span>HTML 引用图片均已落地本地并通过自检</span></div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="section-title">
+          <h2>今日趋势摘要</h2>
+          <p>本期新鲜度集中在“Codex 周边工作流”和“代理可观测性”，不是单纯炫技 app。</p>
+        </div>
+        <div class="summary-grid">
+          <div class="note">
+            <p><strong>社区情绪：</strong>reddit 的 Codex 讨论被额度、模型路由和跨设备工作流占据；HN 新项目更偏向“让 Codex/Claude Code 这类代理能被管理、审计、复用”。</p>
+            <p><strong>本期主线：</strong>用 Codex 做事已经从“生成代码”转向“把代理变成工程系统的一部分”：远程部署、会话记忆、成本核算、会话审计、模型路由。</p>
+            <p><strong>筛选边界：</strong>X 上有若干“built with Codex”片段，但直接打开 x.com 页面多为空页或登录受限；没有二级证据和可用图片的不进主榜。</p>
+          </div>
+          <div class="note">
+            <ul class="trend-list">
+              <li>Codex Mobile 正在催生“手机触发、桌面/云端执行”的新小工具。</li>
+              <li>代理成本、额度和模型路由成为真实痛点，reddit 反馈比官网说明更快。</li>
+              <li>“事后看见代理到底做了什么”正在成为团队级刚需。</li>
+              <li>本期最可复用模式：把本地日志、会话、用量和结果沉淀为可搜索资产。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h2>来源与筛选说明</h2>
+          <p>内部评分：时效性 25、脑洞/惊喜度 20、Codex 参与度 20、可视化证据 15、社区热度 10、可借鉴性 10。</p>
+        </div>
+        <div class="note">
+          <p>优先检索 Hacker News、reddit 和 X；HN 使用 Algolia/站内条目，reddit 通过站内页面和 web 搜索限定结果核对，X 通过 web 搜索索引片段检索但直接页面访问受限。之后再用 GitHub、产品页、README 图片和作者页补充证据。</p>
+          <p>主榜每个案例至少有两个证据点。GitHub/产品页只作为项目证明或图片来源；发现来源必须来自 HN、reddit 或 X 之一。已在 memory 主榜收录过的 Backplanes、Summer、Gora、glueRun-go、Lark Bridge 不重复收录。</p>
+        </div>
+      </section>
+
+      <section class="section" id="cases">
+        <div class="section-title">
+          <h2>主案例卡片</h2>
+          <p>排序综合新鲜度、Codex 相关性、图片证据和可借鉴性。</p>
+        </div>
+
+        <article class="case">
+          <div>
+            <div class="chips">
+              <span class="chip reddit">reddit 发现</span>
+              <span class="chip product">产品页证明</span>
+              <span class="chip">当天新增</span>
+            </div>
+            <h3>Switchboard：给 Codex 请求做难度分级，低难任务走便宜模型</h3>
+            <div class="case-meta">发布时间：2026-06-21（reddit 页面检索时显示 6h ago） · 入选评分 87/100</div>
+            <div class="score-row"><span class="score-badge">87</span><div class="bar"><span style="width:87%"></span></div></div>
+            <ul class="evidence">
+              <li><a href="https://www.reddit.com/r/codex/comments/1u0zrso/a_tool_to_make_codex_limits_last_longer/">r/codex 讨论帖</a>：作者解释将请求按 1-5 级映射到不同模型，评论区立即追问隐私和会话 token 风险。</li>
+              <li><a href="https://www.switchboard.fyi/">Switchboard 产品页</a>：展示安装命令、Claude Code/Codex 兼容说明和 live feed 示例。</li>
+            </ul>
+            <div class="info-blocks">
+              <div class="info-block"><b>为什么值得看</b><p>它抓住了 Codex 重度用户最现实的痛点：不是每个请求都需要 xhigh。把“任务难度分类”放在代理前面，是额度焦虑下很自然的产品化方向。</p></div>
+              <div class="info-block"><b>Codex 具体做了什么</b><p>用户仍然照常使用 Codex，Switchboard 在后台判断请求难度并选择对应模型，目标是把简单编辑、提交信息、格式化任务从高成本模型上移开。</p></div>
+              <div class="info-block"><b>脑洞/实用点</b><p>不是替代 Codex，而是在 Codex 前面增加“路由层”。这个思路也可迁移到代码审查、测试生成、文档任务。</p></div>
+              <div class="info-block"><b>不确定点</b><p>评论区对远程分类 API 和隐私有质疑；若处理私有代码，最好等待本地分类器或明确数据策略。</p></div>
+            </div>
+          </div>
+          <figure>
+            <div class="image-frame"><img src="assets/2026-06-21/switchboard-site.png" alt="Switchboard 产品页截图，显示 Codex 和 Claude Code 请求路由示例"></div>
+            <figcaption>图片来源：Switchboard 产品页。获取方式：页面截图。原始链接：https://www.switchboard.fyi/</figcaption>
+          </figure>
+        </article>
+
+        <article class="case">
+          <div>
+            <div class="chips">
+              <span class="chip hn">HN 发现</span>
+              <span class="chip product">产品页证明</span>
+              <span class="chip">非当天新增 · 最近 7 天</span>
+            </div>
+            <h3>Sqim：从 Codex Mobile 把 iOS build 推到真机/云模拟器</h3>
+            <div class="case-meta">发布时间：2026-06-19 03:41 UTC · HN 2 points / 0 comments · 入选评分 83/100</div>
+            <div class="score-row"><span class="score-badge">83</span><div class="bar"><span style="width:83%"></span></div></div>
+            <ul class="evidence">
+              <li><a href="https://news.ycombinator.com/item?id=48594537">Show HN: Sqim - install your iOS builds from Codex mobile without VPN</a>。</li>
+              <li><a href="https://www.sqim.dev/">Sqim 产品页</a>：页面明确写有 works with Codex、brew 安装命令，以及让 agent 推送 app 到手机的流程。</li>
+            </ul>
+            <div class="info-blocks">
+              <div class="info-block"><b>为什么值得看</b><p>它把 Codex Mobile 的“远程指挥”落到 iOS 真机安装这个具体障碍上，绕开 VPN/Tailscale 一类额外网络配置。</p></div>
+              <div class="info-block"><b>Codex 具体做了什么</b><p>开发者把 Sqim CLI/skill 交给 Codex 或其他 coding agent，agent 负责安装工具、构建、上传并生成可安装页面。</p></div>
+              <div class="info-block"><b>脑洞/实用点</b><p>把移动端验收变成 agent 可执行命令，而不是让人手动传包、配证书、找设备。</p></div>
+              <div class="info-block"><b>不确定点</b><p>HN 讨论量很低，仍需观察实际 iOS 签名、隐私和企业分发边界。</p></div>
+            </div>
+          </div>
+          <figure>
+            <div class="image-frame"><img src="assets/2026-06-21/sqim-push.png" alt="Sqim 页面截图，显示 push apps to phone 设置步骤"></div>
+            <figcaption>图片来源：Sqim 产品页。获取方式：页面截图。原始链接：https://www.sqim.dev/</figcaption>
+          </figure>
+        </article>
+
+        <article class="case">
+          <div>
+            <div class="chips">
+              <span class="chip hn">HN 发现</span>
+              <span class="chip product">产品页证明</span>
+              <span class="chip">非当天新增 · 最近 7 天</span>
+            </div>
+            <h3>AI Commander：让 Codex 通过 MCP 安全地操作远程机器</h3>
+            <div class="case-meta">发布时间：2026-06-18 19:24 UTC · HN 3 points / 0 comments · 入选评分 78/100</div>
+            <div class="score-row"><span class="score-badge">78</span><div class="bar"><span style="width:78%"></span></div></div>
+            <ul class="evidence">
+              <li><a href="https://news.ycombinator.com/item?id=48590260">Show HN: AI Commander - TeamViewer for AI Agents, No VPN or SSH</a>。</li>
+              <li><a href="https://aicommander.dev/">AI Commander 产品页</a>：写明让 Claude、ChatGPT、Codex 或任意 AI assistant 在用户拥有的机器上运行 shell 命令，并提供 Codex MCP 安装命令。</li>
+            </ul>
+            <div class="info-blocks">
+              <div class="info-block"><b>为什么值得看</b><p>它把“远程登录服务器跑命令”变成 agent 可调用能力，目标是不暴露 SSH、不开放端口，也不要求用户盯屏。</p></div>
+              <div class="info-block"><b>Codex 具体做了什么</b><p>Codex 通过 MCP 连接 AI Commander，把用户自然语言请求转成远程机器上的命令执行和结果读取。</p></div>
+              <div class="info-block"><b>脑洞/实用点</b><p>适合日志排查、测试运行、重启服务和无屏设备管理；本质是给 Codex 配一个短时远程手臂。</p></div>
+              <div class="info-block"><b>不确定点</b><p>任何远程命令工具都要验证密钥生命周期、命令审计和最小权限；HN 讨论量低，生产使用需谨慎。</p></div>
+            </div>
+          </div>
+          <figure>
+            <div class="image-frame"><img src="assets/2026-06-21/aicommander-site.png" alt="AI Commander 产品页截图，显示让 Codex 等 AI 运行远程命令的说明"></div>
+            <figcaption>图片来源：AI Commander 产品页。获取方式：页面截图。原始链接：https://aicommander.dev/</figcaption>
+          </figure>
+        </article>
+
+        <article class="case">
+          <div>
+            <div class="chips">
+              <span class="chip hn">HN 发现</span>
+              <span class="chip git">GitHub 证明</span>
+              <span class="chip">非当天新增 · 最近 7 天</span>
+            </div>
+            <h3>SigmaShake：给 Codex 工具调用加确定性 guardrails</h3>
+            <div class="case-meta">发布时间：2026-06-16 17:12 UTC · HN 1 point / 0 comments · 入选评分 76/100</div>
+            <div class="score-row"><span class="score-badge">76</span><div class="bar"><span style="width:76%"></span></div></div>
+            <ul class="evidence">
+              <li><a href="https://news.ycombinator.com/item?id=48558502">Show HN: A policy gate that runs before your AI coding agent's tool calls</a>。</li>
+              <li><a href="https://sigmashake.com/">SigmaShake 产品页</a>：页面列出 Codex MCP Server Integration，并展示拦截危险命令、审计和规则 dashboard。</li>
+            </ul>
+            <div class="info-blocks">
+              <div class="info-block"><b>为什么值得看</b><p>Codex 能运行命令后，团队需要的不是更多提示词，而是在工具调用前设置可审计的硬边界。</p></div>
+              <div class="info-block"><b>Codex 具体做了什么</b><p>Codex 作为被治理的 MCP client，执行 shell、编辑文件或访问网络前先经过规则引擎，危险操作可被 deny、ask 或 redirect。</p></div>
+              <div class="info-block"><b>脑洞/实用点</b><p>把安全策略从“提醒 agent 小心”换成可测试的 rule bundle，适合企业把 Codex 纳入统一 agent policy。</p></div>
+              <div class="info-block"><b>不确定点</b><p>产品页 demo 色彩很强，但真实规则覆盖、误拦截率和绕过面需要独立验证。</p></div>
+            </div>
+          </div>
+          <figure>
+            <div class="image-frame"><img src="assets/2026-06-21/sigmashake-site.png" alt="SigmaShake 产品页截图，显示 Codex 等 AI agent guardrails dashboard"></div>
+            <figcaption>图片来源：SigmaShake 产品页。获取方式：页面截图。原始链接：https://sigmashake.com/</figcaption>
+          </figure>
+        </article>
+
+        <article class="case">
+          <div>
+            <div class="chips">
+              <span class="chip hn">HN 发现</span>
+              <span class="chip git">GitHub 证明</span>
+              <span class="chip">非当天新增 · 最近 7 天</span>
+            </div>
+            <h3>Namecom CLI Skill：让 Codex 用确定性 CLI 管 DNS</h3>
+            <div class="case-meta">发布时间：2026-06-20 15:51 UTC · HN 4 points / 0 comments · 入选评分 74/100</div>
+            <div class="score-row"><span class="score-badge">74</span><div class="bar"><span style="width:74%"></span></div></div>
+            <ul class="evidence">
+              <li><a href="https://news.ycombinator.com/item?id=48610151">Show HN: Namecom-CLI - CLI and agent skill so Claude Code/Codex can do your DNS</a>。</li>
+              <li><a href="https://github.com/hypersocialinc/namecom-cli">Namecom CLI GitHub 仓库</a>：README 写明包含 Claude/Codex skill，可用 `namecom skill install --agent codex` 安装。</li>
+            </ul>
+            <div class="info-blocks">
+              <div class="info-block"><b>为什么值得看</b><p>DNS 是典型的“小改动、高风险”领域。用 agent 处理时，确定性 JSON/CLI 和幂等 record set 比聊天式网页操作更可靠。</p></div>
+              <div class="info-block"><b>Codex 具体做了什么</b><p>Codex 通过安装好的 skill 学会调用 namecom CLI，发现命令表面、验证参数、创建或更新 DNS 记录。</p></div>
+              <div class="info-block"><b>脑洞/实用点</b><p>把外部 SaaS 操作收敛成 agent-friendly CLI，再配 SKILL.md，是让 Codex 安全接管工具的好模板。</p></div>
+              <div class="info-block"><b>不确定点</b><p>场景较窄，且 DNS 误操作影响大；需要在 sandbox 域名或 dry-run 策略下试用。</p></div>
+            </div>
+          </div>
+          <figure>
+            <div class="image-frame"><img src="assets/2026-06-21/namecom-github.png" alt="Namecom CLI GitHub README 页面截图，显示 Codex skill 安装命令"></div>
+            <figcaption>图片来源：Namecom CLI GitHub README。获取方式：页面截图。原始链接：https://github.com/hypersocialinc/namecom-cli</figcaption>
+          </figure>
+        </article>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h2>候选评分表</h2>
+          <p>70 分以下不进主榜；70 分以上但证据弱或与本期主线重复的进入观察。</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>候选</th>
+                <th>发现源</th>
+                <th>时间</th>
+                <th>分数</th>
+                <th>状态</th>
+                <th>主要原因</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Switchboard</td><td>reddit + 产品页</td><td>2026-06-21</td><td>87</td><td class="status-main">主榜</td><td>当天、痛点明确、讨论里有真实隐私质疑。</td></tr>
+              <tr><td>Sqim</td><td>HN + 产品页</td><td>2026-06-19</td><td>83</td><td class="status-main">主榜</td><td>Codex Mobile 到 iOS 安装链路具体。</td></tr>
+              <tr><td>AI Commander</td><td>HN + 产品页</td><td>2026-06-18</td><td>78</td><td class="status-main">主榜</td><td>Codex MCP 远程 shell，场景清楚且未在 memory 主榜收录。</td></tr>
+              <tr><td>SigmaShake</td><td>HN + 产品页</td><td>2026-06-16</td><td>76</td><td class="status-main">主榜</td><td>Codex 工具调用前置策略门，安全主题明确。</td></tr>
+              <tr><td>Namecom CLI Skill</td><td>HN + GitHub</td><td>2026-06-20</td><td>74</td><td class="status-main">主榜</td><td>让 Codex 通过确定性 CLI/skill 管 DNS，窄但可借鉴。</td></tr>
+              <tr><td>Backplanes Spotlight</td><td>HN + 产品页</td><td>2026-06-15</td><td>81</td><td class="status-skip">已收录</td><td>质量高，但 2026-06-16 memory 已主榜收录，本期不重复。</td></tr>
+              <tr><td>Summer</td><td>HN + GitHub</td><td>2026-06-19</td><td>79</td><td class="status-skip">已收录</td><td>质量高，但 2026-06-20 memory 已主榜收录，本期不重复。</td></tr>
+              <tr><td>Gora</td><td>HN + GitHub</td><td>2026-06-19</td><td>76</td><td class="status-skip">已收录</td><td>质量高，但 2026-06-20 memory 已主榜收录，本期不重复。</td></tr>
+              <tr><td>glueRun-go</td><td>HN + GitHub</td><td>2026-06-19</td><td>73</td><td class="status-skip">已收录</td><td>多代理编排扎实，但 2026-06-20 memory 已主榜收录。</td></tr>
+              <tr><td>Lark Bridge</td><td>HN + GitHub</td><td>2026-06-13</td><td>72</td><td class="status-skip">已收录</td><td>Telegram/iMessage 控制 Codex 有趣，但 2026-06-14 memory 已主榜收录。</td></tr>
+              <tr><td>30 分钟 Hackathon 角色</td><td>reddit</td><td>2026-06-21</td><td>68</td><td class="status-skip">未入选</td><td>创意强，但只有单一 reddit 文本，视频加载失败，缺项目页。</td></tr>
+              <tr><td>Codex 跨设备同步工具</td><td>reddit</td><td>2026-06-21</td><td>67</td><td class="status-skip">未入选</td><td>截图和思路不错，但作者暂未公开仓库。</td></tr>
+              <tr><td>Codeflowmap</td><td>HN + GitHub</td><td>2026-06-20</td><td>66</td><td class="status-skip">未入选</td><td>可视化强，但 Codex 参与不是明确证据，只是泛 LLM 验证工具。</td></tr>
+              <tr><td>Codex rate-limit issue</td><td>HN + GitHub issue</td><td>2026-06-20</td><td>63</td><td class="status-skip">未入选</td><td>讨论热，但不是完成案例。</td></tr>
+              <tr><td>Dimillian Codex Mobile guide</td><td>X 搜索片段</td><td>2026-06-14 左右</td><td>65</td><td class="status-skip">未入选</td><td>指导性强，但直链访问受限，且不是独立成品案例。</td></tr>
+              <tr><td>Agentic Engineering hack</td><td>X 搜索片段</td><td>2026-06 上旬</td><td>64</td><td class="status-skip">未入选</td><td>提到 --codex 路由，但缺二级证据。</td></tr>
+              <tr><td>Hyderabad Codex meetup</td><td>X 搜索片段</td><td>2026-06-15 左右</td><td>62</td><td class="status-skip">未入选</td><td>有社区活动和 showcase，但不是单个可复用案例。</td></tr>
+              <tr><td>Tax agents built with Codex</td><td>X 搜索片段</td><td>2026-06 中旬</td><td>61</td><td class="status-skip">未入选</td><td>业务含金量高，但只有单条片段，缺演示和图片。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h2>无图/待核实观察区</h2>
+          <p>这些可能值得追踪，但证据不足，不进入主榜。</p>
+        </div>
+        <div class="watch-grid">
+          <div class="watch"><b>reddit：30 分钟 Hackathon 角色</b><p>作者称用 Codex 不到一小时做出会跟随网页、能聊天、带 Pomodoro 和黑名单功能的小角色，并获得 OpenAI Codex credits。视频无法加载，缺成品链接。</p></div>
+          <div class="watch"><b>reddit：跨设备同步 Codex chats/config</b><p>有截图和实现说明，痛点真实；但作者表示“如果有兴趣再用熟悉语言重做”，目前没有可靠仓库。</p></div>
+          <div class="watch"><b>X：Codex Mobile 工程指南</b><p>搜索结果显示 Thomas Ricouard 发布 Codex Mobile 工程文章；直接打开 x.com article 为空/登录受限，未作为主证据。</p></div>
+          <div class="watch"><b>X：tax agents built with Codex</b><p>片段提到 OpenAI/Thrive 的税务 agents，但没有可核验演示、截图或技术说明，保留观察。</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h2>今日灵感清单</h2>
+          <p>从主榜抽象出的可复制做法。</p>
+        </div>
+        <ul class="idea-list">
+          <li><b>给 agent 加路由层</b>简单任务无需最高档模型。先分类，再执行，可以省额度，也能让团队显式表达任务级别。</li>
+          <li><b>把会话日志产品化</b>Codex 的本地 JSONL 不只是记录，可转成搜索、审计、成本和复盘资产。</li>
+          <li><b>让移动端只负责批准和触发</b>手机不适合长时间编码，但很适合启动 build、看报告、安装测试包。</li>
+          <li><b>主流程外接证据门</b>每次 agent 完成任务后留下命令、测试、外部访问和文件变化摘要，减少“只看 diff”的盲点。</li>
+          <li><b>优先做团队可见性</b>多人用 Codex 时，dashboard、归因和用量上限比单个 prompt 技巧更快产生组织价值。</li>
+          <li><b>观察隐私默认值</b>任何把 prompt、会话、代码发到第三方服务的工具，都要标清本地/远程边界。</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h2>来源列表</h2>
+          <p>主案例和重要观察候选的原始入口。</p>
+        </div>
+        <div class="source-box">
+          <ol class="source-list">
+            <li><a href="https://www.reddit.com/r/codex/comments/1u0zrso/a_tool_to_make_codex_limits_last_longer/">reddit - A tool to make codex limits last longer</a></li>
+            <li><a href="https://www.switchboard.fyi/">Switchboard 产品页</a></li>
+            <li><a href="https://news.ycombinator.com/item?id=48594537">HN - Sqim</a></li>
+            <li><a href="https://www.sqim.dev/">Sqim 产品页</a></li>
+            <li><a href="https://news.ycombinator.com/item?id=48545168">HN - Backplanes Spotlight</a></li>
+            <li><a href="https://www.backplanes.com/">Backplanes 产品页</a></li>
+            <li><a href="https://news.ycombinator.com/item?id=48601140">HN - Summer</a></li>
+            <li><a href="https://github.com/useautumn/summer">Summer GitHub</a></li>
+            <li><a href="https://news.ycombinator.com/item?id=48600144">HN - Gora</a></li>
+            <li><a href="https://github.com/mertdeveci5/gora">Gora GitHub</a></li>
+            <li><a href="https://news.ycombinator.com/item?id=48590260">HN - AI Commander</a></li>
+            <li><a href="https://aicommander.dev/">AI Commander 产品页</a></li>
+            <li><a href="https://news.ycombinator.com/item?id=48601338">HN - glueRun-go</a></li>
+            <li><a href="https://github.com/alex-reysa/glueRun-go">glueRun-go GitHub</a></li>
+            <li><a href="https://news.ycombinator.com/item?id=48516399">HN - Lark Bridge</a></li>
+            <li><a href="https://github.com/AhmadTheTech/lark">Lark Bridge GitHub</a></li>
+            <li><a href="https://news.ycombinator.com/item?id=48558502">HN - SigmaShake</a></li>
+            <li><a href="https://sigmashake.com/">SigmaShake 产品页</a></li>
+            <li><a href="https://news.ycombinator.com/item?id=48610151">HN - Namecom CLI</a></li>
+            <li><a href="https://github.com/hypersocialinc/namecom-cli">Namecom CLI GitHub</a></li>
+            <li><a href="https://www.reddit.com/r/SideProject/comments/1u1i4eq/i_spent_30_minutes_making_this_and_won_25k_usd/">reddit - 30 分钟 Hackathon 角色</a></li>
+            <li><a href="https://www.reddit.com/r/codex/comments/1tqczl5/made_a_tool_to_sync_codex_chats_and_configs/">reddit - 同步 Codex chats/config</a></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h2>图片自检清单</h2>
+          <p>HTML 只引用以下 5 张本地图片；全部存在、非空、尺寸合理，并通过亮度/方差检查。</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>图片</th>
+                <th>用途</th>
+                <th>尺寸</th>
+                <th>大小</th>
+                <th>亮度/方差</th>
+                <th>结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>switchboard-site.png</td><td>Switchboard 产品页截图</td><td>1440 x 980</td><td>261525 bytes</td><td>209.56 / 77.20</td><td class="status-main">通过</td></tr>
+              <tr><td>sqim-push.png</td><td>Sqim push apps to phone 页面截图</td><td>1440 x 980</td><td>99773 bytes</td><td>231.69 / 56.71</td><td class="status-main">通过</td></tr>
+              <tr><td>aicommander-site.png</td><td>AI Commander 产品页截图</td><td>1440 x 980</td><td>178203 bytes</td><td>86.37 / 100.75</td><td class="status-main">通过</td></tr>
+              <tr><td>sigmashake-site.png</td><td>SigmaShake 产品页截图</td><td>1440 x 980</td><td>513737 bytes</td><td>201.12 / 46.78</td><td class="status-main">通过</td></tr>
+              <tr><td>namecom-github.png</td><td>Namecom CLI GitHub README 页面截图</td><td>1440 x 980</td><td>179146 bytes</td><td>247.66 / 30.86</td><td class="status-main">通过</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note" style="margin-top:12px;">
+          <p>淘汰记录：一次 reddit 页面截图显示 “blocked by network security”，未被 HTML 引用。</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <p><strong>检索与复核时间：</strong>2026-06-21 10:43-10:52 Asia/Kuching（UTC+08）完成主检索；13:03 再次抽样复核 HN、reddit、X 搜索结果与图片清单。本报告按运行当日 2026-06-21 生成。</p>
+      <p><strong>主要搜索平台：</strong>Hacker News Algolia/站内条目、reddit 页面与限定搜索、X/web 搜索索引、GitHub、产品页、作者页片段。</p>
+      <p><strong>访问限制：</strong>reddit `.json` 端点返回前端页，改用可读页面和搜索片段；X 直链多为空页或登录受限，仅把可见片段作为候选线索，不作为主榜唯一证据；HN 可通过 Algolia 和条目链接核对时间、标题、分数、评论数。</p>
+      <p><strong>信息边界：</strong>没有实际安装这些工具，也没有验证私有代码、隐私策略或商业声明。报告只收录公开可见证据，不把营销页声明等同于生产可用性。</p>
+      <p><strong>图片自检结果：</strong>HTML 引用的 5 张图片全部通过存在性、文件大小、尺寸和非黑/白屏检查。</p>
+    </footer>
+  </div>
+</body>
+</html>

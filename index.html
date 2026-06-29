@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Codex 精彩案例日报</title>
+    <meta
+      name="description"
+      content="每日追踪 OpenAI Codex、Codex CLI、Codex app 与相关生态工具的社区精彩案例。"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f4ef;
+        --ink: #1d2430;
+        --muted: #687083;
+        --line: #d9d3c8;
+        --panel: #ffffff;
+        --accent: #0f766e;
+        --accent-soft: #dff5ef;
+        --warm: #b45309;
+        --shadow: 0 18px 42px rgba(29, 36, 48, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+          "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        line-height: 1.65;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .wrap {
+        width: min(1080px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        padding: 56px 0 34px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        max-width: 780px;
+        font-size: clamp(36px, 7vw, 72px);
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        max-width: 760px;
+        margin: 18px 0 0;
+        color: var(--muted);
+        font-size: 18px;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .stat {
+        min-height: 92px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.56);
+      }
+
+      .stat span {
+        display: block;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .stat strong {
+        display: block;
+        margin-top: 4px;
+        font-size: 26px;
+      }
+
+      main {
+        padding: 28px 0 56px;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin: 22px 0 16px;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 24px;
+      }
+
+      .hint {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .latest {
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+        gap: 18px;
+        align-items: stretch;
+        margin-bottom: 28px;
+      }
+
+      .feature,
+      .side-note,
+      .report-card {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        box-shadow: var(--shadow);
+      }
+
+      .feature {
+        padding: 24px;
+      }
+
+      .feature h2 {
+        font-size: 30px;
+      }
+
+      .feature p {
+        color: var(--muted);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 42px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 16px;
+        border: 1px solid var(--ink);
+        background: var(--ink);
+        color: #fff;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .button.secondary {
+        background: #fff;
+        color: var(--ink);
+      }
+
+      .side-note {
+        padding: 20px;
+      }
+
+      .side-note ul {
+        margin: 12px 0 0;
+        padding-left: 20px;
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .report-card {
+        display: grid;
+        gap: 12px;
+        padding: 18px;
+        text-decoration: none;
+        transition:
+          transform 160ms ease,
+          border-color 160ms ease;
+      }
+
+      .report-card:hover {
+        transform: translateY(-2px);
+        border-color: var(--accent);
+      }
+
+      .report-card time {
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .report-card strong {
+        font-size: 20px;
+      }
+
+      .report-card span {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tag {
+        padding: 4px 9px;
+        background: var(--accent-soft);
+        color: #115e59;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .tag.warm {
+        background: #fff3d8;
+        color: var(--warm);
+      }
+
+      footer {
+        padding: 28px 0;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      @media (max-width: 760px) {
+        header {
+          padding-top: 38px;
+        }
+
+        .stats,
+        .latest,
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section-head {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <p class="eyebrow">Codex Community Digest</p>
+        <h1>Codex 精彩案例日报</h1>
+        <p class="lead">
+          每天从 Hacker News、reddit、X、GitHub 和开发者博客里筛选真实、具体、带证据的 Codex 使用案例，整理成中文图文 HTML 小报。
+        </p>
+        <div class="stats" aria-label="站点统计">
+          <div class="stat">
+            <span>已归档日报</span>
+            <strong>8</strong>
+          </div>
+          <div class="stat">
+            <span>最近一期</span>
+            <strong>2026-06-22</strong>
+          </div>
+          <div class="stat">
+            <span>更新节奏</span>
+            <strong>每日</strong>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="latest" aria-labelledby="latest-title">
+        <article class="feature">
+          <p class="eyebrow">Latest Report</p>
+          <h2 id="latest-title">2026-06-22 Codex 精彩案例日报</h2>
+          <p>
+            最新归档聚焦 Codex 日志可视化、agent rollback、可穿戴 Web App 原型、教育工作流和 app-server runtime 等案例。
+          </p>
+          <div class="actions">
+            <a class="button" href="reports/2026-06-22-Codex精彩案例日报.html">阅读最新日报</a>
+            <a class="button secondary" href="reports/">打开 reports 目录</a>
+          </div>
+        </article>
+        <aside class="side-note">
+          <p class="eyebrow">筛选原则</p>
+          <ul>
+            <li>优先社区新鲜度和可验证证据。</li>
+            <li>主图保存到本地资产，减少坏图。</li>
+            <li>质量不够时宁缺毋滥，不硬凑 5 个。</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section aria-labelledby="archive-title">
+        <div class="section-head">
+          <h2 id="archive-title">日报归档</h2>
+          <p class="hint">后续每日更新会继续追加到这里。</p>
+        </div>
+        <div class="grid">
+          <a class="report-card" href="reports/2026-06-22-Codex精彩案例日报.html">
+            <time datetime="2026-06-22">2026-06-22</time>
+            <strong>Codex 精彩案例日报</strong>
+            <span>日志可视化、rollback、可穿戴 Web App、教育工作流、runtime 集成。</span>
+            <div class="tag-row"><span class="tag">HN</span><span class="tag">reddit</span><span class="tag">X</span></div>
+          </a>
+          <a class="report-card" href="reports/2026-06-21-Codex精彩案例日报.html">
+            <time datetime="2026-06-21">2026-06-21</time>
+            <strong>Codex 精彩案例日报</strong>
+            <span>社区工具、远程控制、成本监控和产品页案例。</span>
+            <div class="tag-row"><span class="tag">社区</span><span class="tag">工具链</span></div>
+          </a>
+          <a class="report-card" href="reports/2026-06-20-Codex精彩案例日报.html">
+            <time datetime="2026-06-20">2026-06-20</time>
+            <strong>Codex 精彩案例日报</strong>
+            <span>SkillsGuard、TaskbarQuota、glueRun、Summer、Gora。</span>
+            <div class="tag-row"><span class="tag">HN</span><span class="tag">reddit</span></div>
+          </a>
+          <a class="report-card" href="reports/2026-06-18-Codex精彩案例日报.html">
+            <time datetime="2026-06-18">2026-06-18</time>
+            <strong>Codex 精彩案例日报</strong>
+            <span>工作流、代理协作和开发者工具案例。</span>
+            <div class="tag-row"><span class="tag">workflow</span><span class="tag">agent</span></div>
+          </a>
+          <a class="report-card" href="reports/2026-06-17-Codex精彩案例日报.html">
+            <time datetime="2026-06-17">2026-06-17</time>
+            <strong>Codex 精彩案例日报</strong>
+            <span>Web 产品、可视化工具和安全相关候选。</span>
+            <div class="tag-row"><span class="tag">产品</span><span class="tag warm">安全</span></div>
+          </a>
+          <a class="report-card" href="reports/2026-06-16-Codex精彩案例日报.html">
+            <time datetime="2026-06-16">2026-06-16</time>
+            <strong>Codex 精彩案例日报</strong>
+            <span>Android、设计工具、prompt 测试和社区发布。</span>
+            <div class="tag-row"><span class="tag">mobile</span><span class="tag">design</span></div>
+          </a>
+          <a class="report-card" href="reports/2026-06-15-Codex精彩案例日报.html">
+            <time datetime="2026-06-15">2026-06-15</time>
+            <strong>Codex 精彩案例日报</strong>
+            <span>SecureConf、Nudge、usage tracker、profile 和 multi-agent 工具。</span>
+            <div class="tag-row"><span class="tag">reddit</span><span class="tag">GitHub</span></div>
+          </a>
+          <a class="report-card" href="reports/2026-06-14-Codex精彩案例日报.html">
+            <time datetime="2026-06-14">2026-06-14</time>
+            <strong>Codex 精彩案例日报</strong>
+            <span>Circus Chief、AgentGraphed、Slipstream、Lark 和官方视频案例。</span>
+            <div class="tag-row"><span class="tag">Show HN</span><span class="tag">视频</span></div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <p>
+          本站由 Codex 自动化任务生成并推送。报告内容基于公开来源整理，具体事实和不确定点以每期日报中的来源说明为准。
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

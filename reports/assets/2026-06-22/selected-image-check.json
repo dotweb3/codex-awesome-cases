@@ -1,0 +1,46 @@
+{
+  "reportDate": "2026-06-22",
+  "runTime": "2026-06-22 20:02:35 +08",
+  "imageChecks": [
+    {
+      "file": "lupen-hero.png",
+      "width": 2734,
+      "height": 2006,
+      "size": 730279,
+      "status": "通过",
+      "note": "存在、非空、尺寸合理；Pillow 亮度/方差与人工 contact sheet 未见黑屏/白屏/错误页"
+    },
+    {
+      "file": "agent-rollback-readme.png",
+      "width": 2036,
+      "height": 1854,
+      "size": 542140,
+      "status": "通过",
+      "note": "存在、非空、尺寸合理；Pillow 亮度/方差与人工 contact sheet 未见黑屏/白屏/错误页"
+    },
+    {
+      "file": "rayban-snake-demo.png",
+      "width": 700,
+      "height": 760,
+      "size": 17693,
+      "status": "通过",
+      "note": "存在、非空、尺寸合理；Pillow 亮度/方差与人工 contact sheet 未见黑屏/白屏/错误页"
+    },
+    {
+      "file": "tina-education-codex.png",
+      "width": 1365,
+      "height": 900,
+      "size": 166441,
+      "status": "通过",
+      "note": "存在、非空、尺寸合理；Pillow 亮度/方差与人工 contact sheet 未见黑屏/白屏/错误页"
+    },
+    {
+      "file": "hermes-codex-runtime.png",
+      "width": 1365,
+      "height": 900,
+      "size": 295387,
+      "status": "通过",
+      "note": "存在、非空、尺寸合理；Pillow 亮度/方差与人工 contact sheet 未见黑屏/白屏/错误页"
+    }
+  ]
+}

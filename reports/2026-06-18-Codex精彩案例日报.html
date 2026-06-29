@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-06-18 Codex 精彩案例日报</title>
+  <style>
+    :root {
+      --bg: #f5f4ef;
+      --paper: #fffdf8;
+      --ink: #1d2528;
+      --muted: #66706f;
+      --line: #ddd8cd;
+      --soft: #ece9df;
+      --green: #24473f;
+      --blue: #23547a;
+      --rust: #9a4b32;
+      --gold: #ad7a20;
+      --shadow: 0 14px 34px rgba(33, 39, 36, .08);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; line-height: 1.62; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 30px 18px 58px; }
+    .hero { border: 1px solid var(--line); background: linear-gradient(120deg, #fffdf8 0%, #fbf6ed 52%, #edf3ef 100%); border-radius: 8px; padding: 28px; box-shadow: var(--shadow); }
+    .eyebrow { font-size: 13px; font-weight: 800; color: var(--rust); }
+    h1 { font-size: clamp(32px, 5vw, 56px); line-height: 1.05; margin: 8px 0 10px; letter-spacing: 0; }
+    h2 { font-size: clamp(22px, 3vw, 30px); margin: 34px 0 14px; line-height: 1.18; letter-spacing: 0; }
+    h3 { font-size: clamp(20px, 2.4vw, 28px); margin: 0 0 8px; line-height: 1.2; letter-spacing: 0; }
+    h4 { margin: 0 0 6px; font-size: 14px; letter-spacing: 0; }
+    p { margin: 0; }
+    .lead { max-width: 860px; color: #35413e; font-size: 17px; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 20px; }
+    .stat { border: 1px solid var(--line); background: rgba(255,255,255,.68); border-radius: 8px; padding: 12px 14px; }
+    .stat b { display: block; font-size: 26px; line-height: 1.1; color: var(--green); }
+    .stat span, .note, figcaption, .foot { color: var(--muted); font-size: 13px; }
+    .block { border: 1px solid var(--line); background: var(--paper); border-radius: 8px; padding: 22px; margin-top: 24px; box-shadow: 0 10px 26px rgba(33, 39, 36, .05); }
+    .brief-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .brief { border-left: 4px solid var(--green); background: #f7f6f0; border-radius: 6px; padding: 13px 14px; }
+    .brief:nth-child(2) { border-left-color: var(--blue); }
+    .brief:nth-child(3) { border-left-color: var(--rust); }
+    .brief b { display:block; margin-bottom: 4px; }
+    .case-card { border: 1px solid var(--line); border-radius: 8px; background: #fffefb; margin-top: 18px; overflow: hidden; }
+    .case-head { display: flex; justify-content: space-between; gap: 18px; padding: 18px 18px 0; }
+    .case-kicker { font-size: 12px; font-weight: 800; color: var(--rust); margin-bottom: 5px; }
+    .tags { display:flex; flex-wrap: wrap; gap: 7px; margin: 10px 0 10px; }
+    .tag { display:inline-flex; align-items:center; border-radius: 999px; border:1px solid rgba(0,0,0,.08); padding: 4px 9px; font-size: 12px; font-weight: 800; background:#edf0ea; color:#33403c; }
+    .tag.hn { background:#ffedd5; color:#8a3413; }
+    .tag.reddit { background:#ffe4dc; color:#8f351d; }
+    .tag.x { background:#e9eef7; color:#26364f; }
+    .tag.github { background:#ece8e1; color:#303030; }
+    .tag.codex { background:#e2efe9; color:#1d5a45; }
+    .time-row { display:flex; gap:8px; flex-wrap:wrap; color: var(--muted); font-size: 13px; }
+    .time-row b { color: var(--ink); }
+    .score-pill { flex: 0 0 auto; min-width: 86px; height: 86px; display:grid; place-items:center; border-radius: 8px; background: var(--green); color: white; text-align:center; }
+    .score-pill span { display:block; font-size: 30px; line-height: 1; font-weight: 900; }
+    .score-pill small { display:block; font-size: 11px; opacity: .86; margin-top: 4px; }
+    .case-body { display:grid; grid-template-columns: minmax(0, 1.02fr) minmax(320px, .98fr); gap: 18px; align-items: start; padding: 16px 18px 18px; }
+    .visual { margin: 0; border: 1px solid var(--line); border-radius: 8px; overflow:hidden; background:#e9ece7; }
+    .visual-frame { aspect-ratio: 16 / 10; display:grid; place-items:center; overflow:hidden; background:#eef0ec; }
+    .visual-frame img { width:100%; height:100%; object-fit: cover; display:block; }
+    figcaption { border-top:1px solid var(--line); padding: 10px 12px; background:#fffdf8; }
+    .case-notes { display:grid; gap: 12px; }
+    .source-box { border:1px solid var(--line); background:#f7f5ef; border-radius:8px; padding: 12px 13px; }
+    .source-box b { display:block; margin-bottom:6px; }
+    .source-box ul { margin:0; padding-left: 18px; font-size: 14px; }
+    .info-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .info-grid section { border:1px solid var(--line); border-radius:8px; padding: 12px; background:#fffefa; }
+    .info-grid p { font-size: 14px; color:#34403d; }
+    .wide { grid-column: 1 / -1; }
+    .table-wrap { overflow-x: auto; border:1px solid var(--line); border-radius:8px; background:#fff; }
+    table { width:100%; border-collapse:collapse; min-width: 920px; }
+    th, td { padding: 10px 11px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; font-size:14px; }
+    th { background:#e9eee8; color:#3f4c48; font-size:12px; text-transform: uppercase; }
+    tr:last-child td { border-bottom: 0; }
+    .num { text-align:right; white-space: nowrap; }
+    .bar { display:inline-block; width: 82px; height: 8px; border-radius:999px; background:#eadfd4; margin-right:8px; overflow:hidden; vertical-align: middle; }
+    .bar i { display:block; height:100%; background: linear-gradient(90deg, var(--green), var(--gold)); border-radius:999px; }
+    .status-main { color:#1f6a45; font-weight:900; }
+    .status-watch { color:#a15c13; font-weight:900; }
+    .status-dupe { color:#4d6674; font-weight:900; }
+    .status-low { color:#6d6d6d; font-weight:800; }
+    .watch-grid { display:grid; grid-template-columns: repeat(2,1fr); gap:12px; }
+    .watch { border:1px solid var(--line); border-radius:8px; padding:13px; background:#fbfaf5; }
+    .watch b { display:block; margin-bottom:4px; }
+    .ideas { margin: 0; padding-left: 22px; }
+    .ideas li { margin-bottom: 8px; }
+    .sources { columns: 2; column-gap: 30px; padding-left: 20px; margin: 0; }
+    .sources li { break-inside: avoid; margin-bottom: 7px; }
+    .print-note { display:none; }
+    @media (max-width: 880px) {
+      .wrap { padding: 16px 10px 42px; }
+      .hero, .block { padding: 16px; }
+      .stats, .brief-grid, .case-body, .info-grid, .watch-grid { grid-template-columns: 1fr; }
+      .case-head { flex-direction: column; }
+      .score-pill { width:100%; height:auto; min-height:72px; }
+      .sources { columns: 1; }
+      table { min-width: 820px; }
+    }
+    @media print {
+      body { background:white; }
+      .wrap { max-width: none; padding: 0; }
+      .hero, .block, .case-card { box-shadow:none; break-inside: avoid; }
+      a { color: #1d2528; }
+      .print-note { display:block; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <div class="eyebrow">每日 Codex 社区图文 HTML 汇报</div>
+      <h1>Codex 精彩案例日报</h1>
+      <p class="lead">报告日期：2026-06-18（Asia/Kuching）。本期优先从 Hacker News、reddit、X 索引检索，再用 GitHub、作者页面和项目 README 交叉核验。筛选目标是新鲜、具体、可借鉴，而不是凑满普通仓库清单。</p>
+      <div class="stats">
+        <div class="stat"><b>5</b><span>主案例，均有本地主图</span></div>
+        <div class="stat"><b>17</b><span>候选池，含观察项</span></div>
+        <div class="stat"><b>5/5</b><span>主案例来自 HN/reddit 发现</span></div>
+        <div class="stat"><b>5/5</b><span>主图自检通过</span></div>
+      </div>
+    </header>
+
+    <section class="block">
+      <h2>今日趋势摘要</h2>
+      <div class="brief-grid">
+        <div class="brief"><b>插件化从“能写代码”转向“会操作专门对象”</b><p>LegalRabbit 把 DOCX 红线和批注做成 Codex 插件，说明高价值场景正在把复杂格式操作沉到工具边界，而不是让 agent 每次临场写脚本。</p></div>
+        <div class="brief"><b>上下文管理继续升温</b><p>Jumbo、Draft、handoff skill 都围绕“少重复解释、少丢上下文”展开，但入选标准仍要求能证明 Codex 工作流和二次证据。</p></div>
+        <div class="brief"><b>远程调度要保留本地可见性</b><p>Relaymux 的思路很克制：手机消息负责启动和回传，tmux 保留真实 agent 运行现场，适合长任务和故障恢复。</p></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>来源与筛选说明</h2>
+      <p class="note">本期检索顺序：HN Algolia/HN Show、reddit r/OpenaiCodex 与站内/索引搜索、X/Twitter 索引，再补 GitHub README、作者博客、官网和项目附件。已避开近日报告主榜覆盖的 Visual IP Illustrations、Nordstjernen、HTTP/2 Bomb、Buildable、USTP-Secure、NovaScale、Devloop、Backplanes、Promptfoo、Open Design、Nudge、SecureConf 等；Buildable 因 6 月 18 日又发新帖，仅放候选去重。reddit JSON 当前返回 403，改用 old.reddit/RSS/web 索引；X 直接页面基本不可读，仅把 X 作为发现线索，不把只靠 X 的项目放主榜。</p>
+    </section>
+
+    <section class="block">
+      <h2>主案例卡片</h2>
+      
+      <article class="case-card" id="case-1">
+        <header class="case-head">
+          <div>
+            <div class="case-kicker">主案例 1</div>
+            <h3>LegalRabbit DOCX：把法律文档红线、批注和生成做成 Cowork/Codex 插件</h3>
+            <div class="tags"><span class="tag hn">HN</span><span class="tag reddit">reddit</span><span class="tag github">GitHub</span><span class="tag codex">Codex 插件</span></div>
+            <div class="time-row"><b>发布时间</b><span>2026-06-18 HN；reddit 2026-06-17</span></div>
+          </div>
+          <div class="score-pill"><span>88</span><small>入选评分</small></div>
+        </header>
+        <div class="case-body">
+          <figure class="visual">
+            <div class="visual-frame"><img src="assets/2026-06-18/legalrabbit-demo-attachment.png" alt="LegalRabbit DOCX plugin demo screenshot inside Cowork task UI" loading="lazy"></div>
+            <figcaption>图片来源：LegalRabbit GitHub README demo 附件；获取方式：下载 GitHub user-attachments PNG；原始链接：https://github.com/user-attachments/assets/cc89cf6b-2d9d-4134-a399-523e72489ce4。</figcaption>
+          </figure>
+          <div class="case-notes">
+            <div class="source-box"><b>证据链接</b><ul><li><a href="https://news.ycombinator.com/item?id=48579116" target="_blank" rel="noopener noreferrer">HN Show：Cowork/Codex DOCX plugin</a></li><li><a href="https://old.reddit.com/r/OpenaiCodex/comments/1u7xvip/any_lawyers_use_codex_and_are_interested_in_a/" target="_blank" rel="noopener noreferrer">reddit r/OpenaiCodex：Any lawyers use Codex...</a></li><li><a href="https://github.com/LegalRabbit-AI/legalrabbit-docx-claude-plugin" target="_blank" rel="noopener noreferrer">GitHub：legalrabbit-docx-claude-plugin</a></li><li><a href="https://drive.google.com/file/d/1UNlUJYwkNX3NiANDkLLb3UoRSms2dXCU/view?usp=drive_link" target="_blank" rel="noopener noreferrer">README demo Google Drive</a></li></ul></div>
+            <div class="info-grid">
+              <section><h4>为什么值得看</h4><p>它不是又一个“让模型写 docx 的教程”，而是把 DOCX 读写、红线、批注回复和模板继承封装成可安装插件，并明确面向法律合同场景。HN 当天有 Show HN，reddit 前一天先试水找法律用户。</p></section>
+              <section><h4>Codex 具体做了什么</h4><p>README 明确提供 Codex 安装路径：添加 marketplace 后在 Plugins 页面安装 Legalrabbit Docx。作者称内部用于 LegalRabbit 法律服务，目标是让 Codex/Cowork 直接操作本地 DOCX，而不是每次让模型临时写脚本。</p></section>
+              <section><h4>脑洞/实用点</h4><p>最实用的一点是把“低 token 文档引擎”做成插件边界：模型只调用文档操作能力，不把整个文档结构和脚本细节塞进上下文。</p></section>
+              <section><h4>可借鉴做法</h4><p>如果团队反复让 Codex 处理同一类复杂文件格式，可以把格式操作沉到插件/skill，给模型暴露少量稳定动作：读取、修改、批注、验证。</p></section>
+              <section class="wide"><h4>不确定点</h4><p>未运行插件，也未核验 2-5x token 节省；demo 图来自公开 README，文档隐私与法律工作流仍需团队自行审计。</p></section>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="case-card" id="case-2">
+        <header class="case-head">
+          <div>
+            <div class="case-kicker">主案例 2</div>
+            <h3>ctx 开源 ADE：把 Codex/Claude/Cursor 会话、diff、容器和 merge queue 收进一个本地工作台</h3>
+            <div class="tags"><span class="tag hn">HN</span><span class="tag github">GitHub</span><span class="tag other">产品图</span><span class="tag other">ADE</span></div>
+            <div class="time-row"><b>发布时间</b><span>2026-06-17 HN（Asia/Kuching 前一日晚间，非当天新增）</span></div>
+          </div>
+          <div class="score-pill"><span>85</span><small>入选评分</small></div>
+        </header>
+        <div class="case-body">
+          <figure class="visual">
+            <div class="visual-frame"><img src="assets/2026-06-18/ctx-homepage-demo.gif" alt="ctx demo gif showing agentic development workbench" loading="lazy"></div>
+            <figcaption>图片来源：ctx GitHub README demo GIF；获取方式：下载 README 公开 GIF；原始链接：https://raw.githubusercontent.com/ctxrs/ctx/main/assets/videos/ctx-homepage-demo-20260406-900w-6s-10fps.gif。</figcaption>
+          </figure>
+          <div class="case-notes">
+            <div class="source-box"><b>证据链接</b><ul><li><a href="https://news.ycombinator.com/item?id=48571421" target="_blank" rel="noopener noreferrer">HN：ctx is now open source</a></li><li><a href="https://ctx.rs/blog/open-sourcing-ctx/" target="_blank" rel="noopener noreferrer">ctx 开源博客</a></li><li><a href="https://github.com/ctxrs/ctx" target="_blank" rel="noopener noreferrer">GitHub：ctxrs/ctx</a></li><li><a href="https://ctx.rs/" target="_blank" rel="noopener noreferrer">官网：ctx.rs</a></li></ul></div>
+            <div class="info-grid">
+              <section><h4>为什么值得看</h4><p>两个月前 ctx 曾因“是否开源”在 HN 被追问；这次出现的是“now open source”的新信号。它把多代理编码从散乱终端提升到任务、会话、转录、产物、diff、容器、远程机器和队列的统一审阅面。</p></section>
+              <section><h4>Codex 具体做了什么</h4><p>README 明确把 Codex 放在支持的一等 agent 之列，定位是围绕现有 agent harness 的本地优先工作台，而不是替代 Codex 本身。</p></section>
+              <section><h4>脑洞/实用点</h4><p>最值得看的是“agent 产物可追溯”：不只看 diff，还保留 prompt、transcript、命令、artifact 和 worktree 状态，方便事后审计。</p></section>
+              <section><h4>可借鉴做法</h4><p>做内部 agent 平台时，不要只保存最终 patch。把任务、隔离 worktree、运行日志、截图/产物和合并队列绑在一起，能显著降低并行代理的管理成本。</p></section>
+              <section class="wide"><h4>不确定点</h4><p>HN 新帖评论量不高；仓库刚开源，Linux/团队协作成熟度仍需持续观察。</p></section>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="case-card" id="case-3">
+        <header class="case-head">
+          <div>
+            <div class="case-kicker">主案例 3</div>
+            <h3>Jumbo Context：给 Codex/Claude/Gemini 做本地事件流记忆和目标化上下文包</h3>
+            <div class="tags"><span class="tag reddit">reddit</span><span class="tag github">GitHub</span><span class="tag other">CLI/TUI</span><span class="tag other">记忆</span></div>
+            <div class="time-row"><b>发布时间</b><span>reddit 2026-06-16；相关讨论 2026-06-18（非当天新增）</span></div>
+          </div>
+          <div class="score-pill"><span>83</span><small>入选评分</small></div>
+        </header>
+        <div class="case-body">
+          <figure class="visual">
+            <div class="visual-frame"><img src="assets/2026-06-18/jumbo-github-readme.png" alt="Jumbo Context GitHub README screenshot describing agent context workflow" loading="lazy"></div>
+            <figcaption>图片来源：Jumbo GitHub README；获取方式：Chromium 页面截图（README 正文区域）；原始链接：https://github.com/jumbocontext/jumbo.cli。</figcaption>
+          </figure>
+          <div class="case-notes">
+            <div class="source-box"><b>证据链接</b><ul><li><a href="https://old.reddit.com/r/OpenaiCodex/comments/1u7fszq/i_was_tired_of_repeating_myself_to_codex_and/" target="_blank" rel="noopener noreferrer">reddit r/OpenaiCodex：Jumbo CLI 开源帖</a></li><li><a href="https://old.reddit.com/r/OpenaiCodex/comments/1u8wdbb/how_are_you_automating_your_workflow_around_codex/" target="_blank" rel="noopener noreferrer">reddit r/OpenaiCodex：workflow automation 讨论</a></li><li><a href="https://github.com/jumbocontext/jumbo.cli" target="_blank" rel="noopener noreferrer">GitHub：jumbocontext/jumbo.cli</a></li><li><a href="https://github.com/jumbocontext/shared-jumbo-memories" target="_blank" rel="noopener noreferrer">共享 memories 库</a></li></ul></div>
+            <div class="info-grid">
+              <section><h4>为什么值得看</h4><p>作者把“每次向 Codex 重复解释项目背景”的痛点做成 CLI：目标、规范、决策、组件和 session 进入本地事件流，再按当前 goal 组装上下文包。它从 reddit 的具体吐槽出发，不是抽象卖概念。</p></section>
+              <section><h4>Codex 具体做了什么</h4><p>README 写明面向 Claude、Codex、Gemini、Copilot 等 agent；reddit 标题和正文明确说为 Codex 自动生成 spec、管理上下文、跨 session 保持连续性。</p></section>
+              <section><h4>脑洞/实用点</h4><p>最有借鉴价值的是事件溯源而不是静态 PROMPT.md：每次项目知识变化都可以重放、重建 SQLite 视图，并按 goal 拉取相关关系。</p></section>
+              <section><h4>可借鉴做法</h4><p>把“项目事实”“架构决策”“当前目标”拆成结构化本地存储，再由 agent 在任务开始时请求一个窄上下文包，比维护一个越来越长的 AGENTS.md 更可控。</p></section>
+              <section class="wide"><h4>不确定点</h4><p>reddit 热度有限；截图为 README 页面证明，不是运行中的 TUI 截图；README 兼容列表中 Codex hooks 支持仍需用户实测。</p></section>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="case-card" id="case-4">
+        <header class="case-head">
+          <div>
+            <div class="case-kicker">主案例 4</div>
+            <h3>peer：修补 Codex-in-Claude-Code 挂死问题，给跨模型委托加 watchdog、watch 和 doctor</h3>
+            <div class="tags"><span class="tag reddit">reddit</span><span class="tag github">GitHub</span><span class="tag other">Claude Code</span><span class="tag codex">Codex app-server</span></div>
+            <div class="time-row"><b>发布时间</b><span>2026-06-12 左右，近 7 天观察（非当天新增）</span></div>
+          </div>
+          <div class="score-pill"><span>80</span><small>入选评分</small></div>
+        </header>
+        <div class="case-body">
+          <figure class="visual">
+            <div class="visual-frame"><img src="assets/2026-06-18/peer-github-readme.png" alt="peer codex-plugin-cc GitHub README screenshot showing watch stats commands" loading="lazy"></div>
+            <figcaption>图片来源：Robbyfuu/codex-plugin-cc GitHub README；获取方式：Chromium 页面截图（README 正文区域）；原始链接：https://github.com/Robbyfuu/codex-plugin-cc。</figcaption>
+          </figure>
+          <div class="case-notes">
+            <div class="source-box"><b>证据链接</b><ul><li><a href="https://www.reddit.com/r/ClaudeCode/comments/1u2neo6/my_codexinclaudecode_turns_kept_hanging_forever/" target="_blank" rel="noopener noreferrer">reddit r/ClaudeCode：hanging forever 帖</a></li><li><a href="https://www.reddit.com/r/OpenaiCodex/comments/1u2w1ce/my_codexinclaudecode_turns_kept_hanging_forever/" target="_blank" rel="noopener noreferrer">reddit r/OpenaiCodex：交叉帖</a></li><li><a href="https://github.com/Robbyfuu/codex-plugin-cc" target="_blank" rel="noopener noreferrer">GitHub：Robbyfuu/codex-plugin-cc</a></li><li><a href="https://github.com/openai/codex-plugin-cc" target="_blank" rel="noopener noreferrer">上游：openai/codex-plugin-cc</a></li></ul></div>
+            <div class="info-grid">
+              <section><h4>为什么值得看</h4><p>这是一个非常具体的“真实工作流磨损点”：Claude Code 里触发 Codex 后，背景 turn 可能卡住。作者没有重写整套系统，而是在上游插件上补 idle watchdog、最大 turn 时长、请求超时、tmux watch、stats 和 doctor。</p></section>
+              <section><h4>Codex 具体做了什么</h4><p>它直接包在 OpenAI 的 codex-plugin-cc 和本机 Codex CLI/app-server 之上，让 Claude Code 可以把 review、rescue、adversarial-review 等任务交给 Codex。</p></section>
+              <section><h4>脑洞/实用点</h4><p>最实用的点是把长时程 agent 调用当成“需要运维”的进程：可观测、可取消、可健康检查，而不是只靠用户等结果。</p></section>
+              <section><h4>可借鉴做法</h4><p>任何跨 agent 桥接都应该有 per-turn timeout、可追踪 job id、结果恢复路径和一键 doctor。否则 demo 很顺，真实项目里会被挂起任务拖垮。</p></section>
+              <section class="wide"><h4>不确定点</h4><p>作者自己标注是 solo first release、未大规模 crowd-tested；本期没有运行 338 个测试或 app-server 端到端流程。</p></section>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="case-card" id="case-5">
+        <header class="case-head">
+          <div>
+            <div class="case-kicker">主案例 5</div>
+            <h3>Relaymux：用 Telegram/iMessage 远程调度本地 tmux 中的 Codex/Claude/Pi 任务</h3>
+            <div class="tags"><span class="tag hn">HN</span><span class="tag github">GitHub</span><span class="tag other">tmux</span><span class="tag other">移动端调度</span></div>
+            <div class="time-row"><b>发布时间</b><span>2026-06-18 Asia/Kuching（HN 2026-06-17T17:27Z）</span></div>
+          </div>
+          <div class="score-pill"><span>80</span><small>入选评分</small></div>
+        </header>
+        <div class="case-body">
+          <figure class="visual">
+            <div class="visual-frame"><img src="assets/2026-06-18/relaymux-github-readme.png" alt="Relaymux GitHub README screenshot showing Telegram tmux agent harness workflow" loading="lazy"></div>
+            <figcaption>图片来源：mupt-ai/relaymux GitHub README；获取方式：Chromium 页面截图（README 正文区域）；原始链接：https://github.com/mupt-ai/relaymux。</figcaption>
+          </figure>
+          <div class="case-notes">
+            <div class="source-box"><b>证据链接</b><ul><li><a href="https://news.ycombinator.com/item?id=48573655" target="_blank" rel="noopener noreferrer">HN Show：Relaymux</a></li><li><a href="https://github.com/mupt-ai/relaymux" target="_blank" rel="noopener noreferrer">GitHub：mupt-ai/relaymux</a></li><li><a href="https://news.ycombinator.com/show" target="_blank" rel="noopener noreferrer">HN show 列表线索</a></li></ul></div>
+            <div class="info-grid">
+              <section><h4>为什么值得看</h4><p>前几天日报里已经出现过手机/远程控制 Codex 的项目，但 Relaymux 的取舍更窄：Telegram 只做遥控器，真正的 agent 工作仍在本地 tmux 窗口里可 attach、可中断、可调试。</p></section>
+              <section><h4>Codex 具体做了什么</h4><p>README 要求本地 agent CLI，例如 pi、codex 或 claude；HN 作者说明它针对 native Codex/Claude Code apps 等元编排兴趣，长任务在 tmux tab/window 中跑完再回消息。</p></section>
+              <section><h4>脑洞/实用点</h4><p>它把“移动端启动任务”和“本地可见可恢复执行”拆开，避免远程 bot 变成黑盒。</p></section>
+              <section><h4>可借鉴做法</h4><p>如果要从手机触发 Codex，不一定需要完整移动 IDE。一个消息入口 + 本地 tmux session + job 状态回传，已经能覆盖大量巡检和长任务启动场景。</p></section>
+              <section class="wide"><h4>不确定点</h4><p>HN 评论少，iMessage/SMS 仍标 beta；截图为 README 页面证明，未实际连接 Telegram bot。</p></section>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="block">
+      <h2>候选评分表</h2>
+      <p class="note">内部评分：时效性 25、脑洞/惊喜度 20、Codex 参与度 20、可视化证据 15、社区讨论热度 10、可借鉴性 10。低于 70 分不进主榜；达到 70 但证据弱、图弱、Codex 不够中心或前日报告已收录，也只进入候选/观察。</p>
+      <div class="table-wrap" style="margin-top:14px"><table>
+        <thead><tr><th>候选</th><th>主要来源</th><th>时间</th><th>时效</th><th>脑洞</th><th>Codex</th><th>图证</th><th>热度</th><th>借鉴</th><th>总分</th><th>状态</th><th>备注</th></tr></thead>
+        <tbody><tr><td>LegalRabbit DOCX plugin</td><td>HN / reddit / GitHub</td><td>2026-06-18</td><td class="num">23</td><td class="num">16</td><td class="num">19</td><td class="num">14</td><td class="num">6</td><td class="num">10</td><td class="num total"><span class="bar"><i style="width:88%"></i></span>88</td><td><span class="status-main">入选</span></td><td>法律 DOCX 插件，有 HN 当天发现和 README demo。</td></tr><tr><td>ctx 开源 ADE</td><td>HN / GitHub / 官网</td><td>2026-06-17</td><td class="num">20</td><td class="num">17</td><td class="num">16</td><td class="num">15</td><td class="num">8</td><td class="num">9</td><td class="num total"><span class="bar"><i style="width:85%"></i></span>85</td><td><span class="status-main">入选</span></td><td>开源更新新鲜，产品图强，Codex 是一等 agent。</td></tr><tr><td>Jumbo Context CLI</td><td>reddit / GitHub</td><td>2026-06-16 + 06-18</td><td class="num">21</td><td class="num">16</td><td class="num">18</td><td class="num">11</td><td class="num">5</td><td class="num">12</td><td class="num total"><span class="bar"><i style="width:83%"></i></span>83</td><td><span class="status-main">入选</span></td><td>目标化上下文和本地事件流，reddit 痛点具体。</td></tr><tr><td>peer codex-plugin-cc fork</td><td>reddit / GitHub</td><td>近 7 天</td><td class="num">17</td><td class="num">16</td><td class="num">20</td><td class="num">11</td><td class="num">6</td><td class="num">10</td><td class="num total"><span class="bar"><i style="width:80%"></i></span>80</td><td><span class="status-main">入选</span></td><td>修真实挂死问题，Codex app-server 参与明确。</td></tr><tr><td>Relaymux tmux meta-harness</td><td>HN / GitHub</td><td>2026-06-18</td><td class="num">23</td><td class="num">15</td><td class="num">18</td><td class="num">9</td><td class="num">5</td><td class="num">10</td><td class="num total"><span class="bar"><i style="width:80%"></i></span>80</td><td><span class="status-main">入选</span></td><td>手机消息触发，本地 tmux 可见执行。</td></tr><tr><td>Draft agent context sync</td><td>HN / GitHub</td><td>2026-06-18</td><td class="num">24</td><td class="num">14</td><td class="num">14</td><td class="num">14</td><td class="num">1</td><td class="num">10</td><td class="num total"><span class="bar"><i style="width:77%"></i></span>77</td><td><span class="status-watch">候选</span></td><td>截图强，支持 Codex；HN 讨论为 0，Codex 不是唯一中心。</td></tr><tr><td>CCB v7 multi-agent CLI workspace</td><td>GitHub / release notes</td><td>2026-06-17</td><td class="num">19</td><td class="num">18</td><td class="num">17</td><td class="num">15</td><td class="num">1</td><td class="num">9</td><td class="num total"><span class="bar"><i style="width:79%"></i></span>79</td><td><span class="status-watch">候选</span></td><td>真实截图强，但缺 HN/reddit/X 当天发现。</td></tr><tr><td>Buildable app-builder brain</td><td>reddit / GitHub</td><td>2026-06-18 新帖</td><td class="num">23</td><td class="num">16</td><td class="num">17</td><td class="num">14</td><td class="num">5</td><td class="num">10</td><td class="num total"><span class="bar"><i style="width:85%"></i></span>85</td><td><span class="status-dupe">已收录</span></td><td>6 月 17 日已进主榜；本期仅记录新帖，不重复主榜。</td></tr><tr><td>handoff skill</td><td>GitHub</td><td>近 7 天</td><td class="num">18</td><td class="num">15</td><td class="num">15</td><td class="num">8</td><td class="num">1</td><td class="num">10</td><td class="num total"><span class="bar"><i style="width:67%"></i></span>67</td><td><span class="status-watch">候选</span></td><td>跨 Codex/Claude/Pi/Grok 的会话交接 skill，缺社区热度。</td></tr><tr><td>HandoffKit</td><td>HN / 作者博客</td><td>2026-06-17</td><td class="num">20</td><td class="num">15</td><td class="num">8</td><td class="num">5</td><td class="num">2</td><td class="num">9</td><td class="num total"><span class="bar"><i style="width:59%"></i></span>59</td><td><span class="status-watch">观察</span></td><td>agent 消息传递方向好，但 Codex 参与证据弱。</td></tr><tr><td>Leakproof secret-egress firewall</td><td>HN / GitHub</td><td>2026-06-17</td><td class="num">20</td><td class="num">15</td><td class="num">6</td><td class="num">8</td><td class="num">2</td><td class="num">8</td><td class="num total"><span class="bar"><i style="width:59%"></i></span>59</td><td><span class="status-watch">观察</span></td><td>安全方向有用，主打 Claude/Cursor/aider，Codex 不够中心。</td></tr><tr><td>GrapeRoot dependency graph context</td><td>reddit</td><td>2026-06-17</td><td class="num">24</td><td class="num">12</td><td class="num">12</td><td class="num">0</td><td class="num">2</td><td class="num">8</td><td class="num total"><span class="bar"><i style="width:58%"></i></span>58</td><td><span class="status-watch">观察</span></td><td>reddit 标题强，但缺 repo/图片/可复核指标。</td></tr><tr><td>Codex app gRPC workflow wrapper</td><td>reddit</td><td>2026-06-18</td><td class="num">25</td><td class="num">14</td><td class="num">13</td><td class="num">0</td><td class="num">2</td><td class="num">7</td><td class="num total"><span class="bar"><i style="width:61%"></i></span>61</td><td><span class="status-watch">观察</span></td><td>线索新，但未找到稳定代码或演示图。</td></tr><tr><td>Mint Dictate</td><td>X / reddit / GitHub</td><td>2026-06-18</td><td class="num">24</td><td class="num">13</td><td class="num">4</td><td class="num">8</td><td class="num">4</td><td class="num">8</td><td class="num total"><span class="bar"><i style="width:61%"></i></span>61</td><td><span class="status-low">未入选</span></td><td>新鲜项目，但可访问信息主要是 OpenAI 语音 API，不是 Codex 完成案例。</td></tr><tr><td>Android native Codex CLI / AnyClaw</td><td>reddit / GitHub</td><td>近 7 天</td><td class="num">18</td><td class="num">16</td><td class="num">17</td><td class="num">14</td><td class="num">4</td><td class="num">9</td><td class="num total"><span class="bar"><i style="width:78%"></i></span>78</td><td><span class="status-dupe">已收录</span></td><td>6 月 16 日已作为 Android/Codex 方向处理，避免重复。</td></tr><tr><td>Rocketgraph log snapshot for LLM debug</td><td>HN / GitHub</td><td>2026-06-17</td><td class="num">20</td><td class="num">15</td><td class="num">4</td><td class="num">9</td><td class="num">3</td><td class="num">9</td><td class="num total"><span class="bar"><i style="width:60%"></i></span>60</td><td><span class="status-low">未入选</span></td><td>LLM 调试工具有趣，但没有 Codex 明确参与。</td></tr><tr><td>Claude Code job-search plugin</td><td>HN / GitHub</td><td>2026-06-18</td><td class="num">24</td><td class="num">10</td><td class="num">2</td><td class="num">6</td><td class="num">0</td><td class="num">7</td><td class="num total"><span class="bar"><i style="width:49%"></i></span>49</td><td><span class="status-low">未入选</span></td><td>新帖但偏 Claude 插件，不符合本期 Codex 主题。</td></tr></tbody>
+      </table></div>
+    </section>
+
+    <section class="block">
+      <h2>无图/待核实观察区</h2>
+      <div class="watch-grid">
+        <div class="watch"><b>GrapeRoot dependency graph context</b><p>reddit 标题称 Codex 更快更便宜，但未找到稳定 repo、截图或可复核 benchmark，暂不入主榜。</p></div>
+        <div class="watch"><b>Codex app gRPC workflow wrapper</b><p>当天线索新，但只有讨论标题和概念描述，缺代码、视频或产品截图。</p></div>
+        <div class="watch"><b>Mint Dictate</b><p>reddit/GitHub/X 都新，但公开证据主要是 OpenAI speech-to-text API；Codex 参与不够明确。</p></div>
+        <div class="watch"><b>HandoffKit / handoff skill</b><p>会话交接方向值得跟踪，当前要么 Codex 不是中心，要么社区热度不足。</p></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>今日灵感清单</h2>
+      <ol class="ideas">
+        <li>把高频复杂文件格式做成插件动作，而不是反复让 Codex 写一次性脚本。</li>
+        <li>长任务桥接必须有 timeout、job id、watch、doctor 和 resume，不然跨 agent 协作很快不可运维。</li>
+        <li>本地优先的 agent 工作台应保存 prompt、transcript、artifact、diff 和 worktree 状态，方便追责和复盘。</li>
+        <li>手机触发 Codex 可以先从“消息入口 + tmux 可见执行 + 状态回传”做起，不必一开始就做完整移动 IDE。</li>
+        <li>上下文系统不要只做大总结；按目标抽取相关决策、组件、失败路径和验收条件更实用。</li>
+      </ol>
+    </section>
+
+    <section class="block">
+      <h2>来源列表</h2>
+      <ol class="sources"><li><a href="https://news.ycombinator.com/item?id=48579116" target="_blank" rel="noopener noreferrer">HN: Cowork/Codex DOCX plugin</a></li><li><a href="https://old.reddit.com/r/OpenaiCodex/comments/1u7xvip/any_lawyers_use_codex_and_are_interested_in_a/" target="_blank" rel="noopener noreferrer">reddit: LegalRabbit DOCX plugin</a></li><li><a href="https://github.com/LegalRabbit-AI/legalrabbit-docx-claude-plugin" target="_blank" rel="noopener noreferrer">GitHub: LegalRabbit DOCX plugin</a></li><li><a href="https://github.com/user-attachments/assets/cc89cf6b-2d9d-4134-a399-523e72489ce4" target="_blank" rel="noopener noreferrer">GitHub attachment: LegalRabbit demo image</a></li><li><a href="https://news.ycombinator.com/item?id=48571421" target="_blank" rel="noopener noreferrer">HN: ctx is now open source</a></li><li><a href="https://ctx.rs/blog/open-sourcing-ctx/" target="_blank" rel="noopener noreferrer">ctx open-sourcing blog</a></li><li><a href="https://github.com/ctxrs/ctx" target="_blank" rel="noopener noreferrer">GitHub: ctxrs/ctx</a></li><li><a href="https://ctx.rs/" target="_blank" rel="noopener noreferrer">ctx 官网</a></li><li><a href="https://old.reddit.com/r/OpenaiCodex/comments/1u7fszq/i_was_tired_of_repeating_myself_to_codex_and/" target="_blank" rel="noopener noreferrer">reddit: Jumbo CLI 开源帖</a></li><li><a href="https://old.reddit.com/r/OpenaiCodex/comments/1u8wdbb/how_are_you_automating_your_workflow_around_codex/" target="_blank" rel="noopener noreferrer">reddit: workflow automation around Codex</a></li><li><a href="https://github.com/jumbocontext/jumbo.cli" target="_blank" rel="noopener noreferrer">GitHub: jumbocontext/jumbo.cli</a></li><li><a href="https://www.reddit.com/r/ClaudeCode/comments/1u2neo6/my_codexinclaudecode_turns_kept_hanging_forever/" target="_blank" rel="noopener noreferrer">reddit: peer in ClaudeCode</a></li><li><a href="https://www.reddit.com/r/OpenaiCodex/comments/1u2w1ce/my_codexinclaudecode_turns_kept_hanging_forever/" target="_blank" rel="noopener noreferrer">reddit: peer in OpenaiCodex</a></li><li><a href="https://github.com/Robbyfuu/codex-plugin-cc" target="_blank" rel="noopener noreferrer">GitHub: Robbyfuu/codex-plugin-cc</a></li><li><a href="https://github.com/openai/codex-plugin-cc" target="_blank" rel="noopener noreferrer">GitHub: openai/codex-plugin-cc</a></li><li><a href="https://news.ycombinator.com/item?id=48573655" target="_blank" rel="noopener noreferrer">HN: Relaymux</a></li><li><a href="https://github.com/mupt-ai/relaymux" target="_blank" rel="noopener noreferrer">GitHub: mupt-ai/relaymux</a></li><li><a href="https://news.ycombinator.com/item?id=48579584" target="_blank" rel="noopener noreferrer">HN: Draft</a></li><li><a href="https://github.com/idodekerobo/draft" target="_blank" rel="noopener noreferrer">GitHub: idodekerobo/draft</a></li><li><a href="https://github.com/SeemSeam/claude_codex_bridge" target="_blank" rel="noopener noreferrer">GitHub: SeemSeam/claude_codex_bridge</a></li><li><a href="https://github.com/klittle32/handoff-skill" target="_blank" rel="noopener noreferrer">GitHub: klittle32/handoff-skill</a></li><li><a href="https://x.com/WellerOlaf" target="_blank" rel="noopener noreferrer">X profile: Olaf Weller</a></li><li><a href="https://www.reddit.com/r/linuxmint/comments/1u3rrif/i_built_an_open_source_voice_dictation_tool/" target="_blank" rel="noopener noreferrer">reddit: Mint Dictate</a></li><li><a href="https://github.com/olafweller/mint-dictate" target="_blank" rel="noopener noreferrer">GitHub: olafweller/mint-dictate</a></li></ol>
+    </section>
+
+    <section class="block">
+      <h2>图片自检清单</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>文件</th><th>尺寸</th><th>获取方式</th><th>证明内容</th><th>结果</th></tr></thead>
+        <tbody><tr><td>legalrabbit-demo-attachment.png</td><td>800x450</td><td>下载</td><td>LegalRabbit DOCX 插件 demo 场景</td><td><span class="status-main">通过</span></td></tr><tr><td>ctx-homepage-demo.gif</td><td>900x570</td><td>下载</td><td>ctx agent workbench 产品演示 GIF 首帧</td><td><span class="status-main">通过</span></td></tr><tr><td>jumbo-github-readme.png</td><td>838x900</td><td>页面截图</td><td>Jumbo README 中 Codex/agent 上下文说明</td><td><span class="status-main">通过</span></td></tr><tr><td>peer-github-readme.png</td><td>838x900</td><td>页面截图</td><td>peer README 中 Codex job 观测命令</td><td><span class="status-main">通过</span></td></tr><tr><td>relaymux-github-readme.png</td><td>838x900</td><td>页面截图</td><td>Relaymux README 中 Telegram/tmux/Codex 说明</td><td><span class="status-main">通过</span></td></tr></tbody>
+      </table></div>
+      <p class="foot">检索时间：2026-06-18 13:45 至 15:25 +08。主要搜索平台：Hacker News/Algolia、reddit RSS/old.reddit/web 索引、X/Twitter 搜索索引、GitHub、作者官网和 README 附件。访问限制：reddit JSON 返回 403；X 直接页面无可读正文，使用搜索索引和项目二级来源交叉核验；HN 页面偶尔限速，关键条目用 Algolia item API 补齐。未确认边界：未安装或运行第三方插件/CLI，未复测 token 节省、Telegram/iMessage 流程或 app-server 端到端稳定性。图片自检结果：5 个主图均存在、非空、尺寸合理，Pillow 首帧亮度/方差正常，人工目检无黑屏、白屏、错误页或无关头像/Logo 拼贴。</p>
+    </section>
+  </main>
+</body>
+</html>

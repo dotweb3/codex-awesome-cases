@@ -1,0 +1,58 @@
+[
+  {
+    "file": "backplanes-site.png",
+    "bytes": 594082,
+    "width": 1440,
+    "height": 980,
+    "avg": 220.34,
+    "stdev": 55.08
+  },
+  {
+    "file": "gora-github.png",
+    "bytes": 434276,
+    "width": 1440,
+    "height": 980,
+    "avg": 235.2,
+    "stdev": 50.27
+  },
+  {
+    "file": "gora-header.png",
+    "bytes": 995168,
+    "width": 1600,
+    "height": 402,
+    "avg": 134.83,
+    "stdev": 50.06
+  },
+  {
+    "file": "reddit-switchboard.png",
+    "bytes": 76389,
+    "width": 1440,
+    "height": 980,
+    "avg": 252.8,
+    "stdev": 16
+  },
+  {
+    "file": "sqim-site.png",
+    "bytes": 71263,
+    "width": 1440,
+    "height": 980,
+    "avg": 215.7,
+    "stdev": 80.93
+  },
+  {
+    "file": "summer-dashboard.png",
+    "bytes": 114664,
+    "width": 1746,
+    "height": 705,
+    "avg": 13.36,
+    "stdev": 31.32
+  },
+  {
+    "file": "switchboard-site.png",
+    "bytes": 261525,
+    "width": 1440,
+    "height": 980,
+    "avg": 207.59,
+    "stdev": 77.05
+  }
+]

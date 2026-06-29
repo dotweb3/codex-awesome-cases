@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-06-20 Codex 精彩案例日报</title>
+  <style>
+    :root {
+      --bg:#f6f4ef; --paper:#fffdf8; --ink:#202124; --muted:#6d6a62; --line:#ded8cd;
+      --accent:#1f7665; --accent-2:#a5402d; --accent-3:#2d5f91; --soft:#edf5f1; --code:#f0efe9;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;line-height:1.65}
+    a{color:var(--accent-3);text-decoration:none} a:hover{text-decoration:underline}
+    .page{max-width:1100px;margin:0 auto;padding:28px 18px 56px}
+    header{border:1px solid var(--line);background:linear-gradient(180deg,#fffdf8,#f3eee3);padding:28px;border-radius:8px}
+    .eyebrow{font-size:13px;color:var(--accent-2);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+    h1{margin:8px 0 8px;font-size:34px;line-height:1.16;letter-spacing:0}
+    .subtitle{max-width:820px;color:var(--muted);margin:0}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px}
+    .stat{background:#fff;border:1px solid var(--line);padding:14px;border-radius:8px}
+    .stat b{display:block;font-size:25px;color:var(--accent)} .stat span{font-size:13px;color:var(--muted)}
+    section.block{margin-top:22px;border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:22px}
+    h2{font-size:22px;margin:0 0 14px} h3{font-size:23px;margin:8px 0 8px;line-height:1.28} h4{font-size:14px;margin:0 0 6px;color:var(--accent-2)}
+    .brief-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .brief{background:var(--soft);border:1px solid #cbded6;border-radius:8px;padding:14px}
+    .brief b{display:block;margin-bottom:4px} .brief p,.note{margin:0;color:var(--muted)}
+    .case-card{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1.2fr);gap:18px;border:1px solid var(--line);background:#fff;border-radius:8px;padding:16px;margin:16px 0}
+    .visual{margin:0} .visual img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;border-radius:6px;border:1px solid #d7d2c8;background:#ece7dd}
+    .visual figcaption{font-size:12px;color:var(--muted);margin-top:8px}
+    .case-kicker{font-size:13px;color:var(--muted);font-weight:700}
+    .tag{display:inline-block;border:1px solid #cfc8bb;background:#f8f4ea;border-radius:999px;padding:2px 8px;margin:0 5px 5px 0;font-size:12px;color:#4e493f}
+    .meta-row{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:9px 0;margin:10px 0;color:var(--muted);font-size:13px}
+    .meta-row strong{color:var(--accent-2);font-size:16px}
+    .evidence{background:#f8f7f1;border:1px solid var(--line);border-radius:8px;padding:10px;margin:10px 0}
+    .evidence ul{margin:6px 0 0 18px;padding:0}
+    .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .info-grid section{border:1px solid var(--line);border-radius:8px;padding:11px;background:#fffdf9}
+    .info-grid p{margin:0;font-size:14px} .wide{grid-column:1/-1}
+    .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+    table{width:100%;border-collapse:collapse;background:#fff;font-size:13px;min-width:930px}
+    th,td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top} th{background:#eee7dc;text-align:left;white-space:nowrap}
+    .scorebar{display:inline-block;width:80px;height:7px;background:#e6e0d6;border-radius:999px;vertical-align:middle;margin-right:6px;overflow:hidden}
+    .scorebar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#84a98c)}
+    .status{display:inline-block;border-radius:999px;padding:2px 8px;font-size:12px;border:1px solid var(--line);white-space:nowrap}
+    .status.main{background:#e7f4ed;color:#1f6b55;border-color:#b7d6c7} .status.watch{background:#fff3d8;color:#7b5411;border-color:#e5c76f} .status.low{background:#f1eeee;color:#7a6b6b}
+    .list-clean{display:grid;grid-template-columns:1fr 1fr;gap:12px;list-style:none;padding:0;margin:0}
+    .list-clean li{border:1px solid var(--line);border-radius:8px;background:#fff;padding:12px}
+    .list-clean b{display:block;margin-bottom:3px} .list-clean span{color:var(--muted);font-size:14px}
+    .ideas{columns:2;column-gap:28px;margin:0;padding-left:20px} .ideas li{break-inside:avoid;margin-bottom:8px}
+    .sources{columns:2;column-gap:28px;margin:0;padding-left:22px} .sources li{break-inside:avoid;margin-bottom:6px}
+    .foot{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;margin-top:18px}
+    code{background:var(--code);border:1px solid var(--line);border-radius:4px;padding:1px 4px}
+    @media (max-width:780px){.page{padding:16px 12px 40px}h1{font-size:28px}.stats,.brief-grid,.case-card,.info-grid,.list-clean{grid-template-columns:1fr}.wide{grid-column:auto}.ideas,.sources{columns:1}section.block,header{padding:16px}}
+    @media print{body{background:#fff}.page{max-width:none}a{color:#000;text-decoration:underline}.case-card,section.block,header{break-inside:avoid}}
+  </style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="eyebrow">每日 Codex 社区图文 HTML 汇报</div>
+    <h1>Codex 精彩案例日报</h1>
+    <p class="subtitle">报告日期：2026-06-20（Asia/Kuching，按 automation 运行上下文取日）。本期继续执行“宁缺毋滥”：先扫 HN、reddit、X，再用 GitHub、项目页、作者博客和官方资料补证据；没有本地图证或 Codex 关联不清的内容不进主榜。</p>
+    <div class="stats">
+      <div class="stat"><b>5</b><span>主案例</span></div>
+      <div class="stat"><b>18</b><span>候选池</span></div>
+      <div class="stat"><b>5/5</b><span>主图本地化</span></div>
+      <div class="stat"><b>5</b><span>主案例来自 HN/reddit</span></div>
+    </div>
+  </header>
+
+  <section class="block">
+    <h2>今日趋势摘要</h2>
+    <div class="brief-grid">
+      <div class="brief"><b>Codex 生态开始补“运行控制面”</b><p>glueRun-go、Summer、Gora 都不是再造聊天 UI，而是在任务调度、用量归因、历史检索上补工程化层。</p></div>
+      <div class="brief"><b>安全从 prompt 层下沉到文件与 hooks</b><p>SkillsGuard 和 policy drift 讨论说明：skills、MCP、hooks 现在被当成供应链和权限面审计。</p></div>
+      <div class="brief"><b>额度与长会话成为显性运营成本</b><p>TaskbarQuota、banked reset、rate-limit issue 等线索集中出现，说明多 agent 重度使用者已经在做预算和配额仪表盘。</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>来源与筛选说明</h2>
+    <p class="note">检索顺序：Hacker News Algolia / HN item API、old.reddit RSS/HTML、X/Twitter web 搜索索引，然后补 GitHub raw/HTML、项目页、作者博客、官方页面和安全媒体。reddit JSON 在当前网络下被拦截，改用 old.reddit RSS/HTML；X 直接页面多受登录和动态加载限制，本期只把 X 索引线索放入候选/趋势，不作为主榜唯一证据。GitHub API 匿名额度用尽后，改用 raw README、GitHub HTML meta 与页面截图交叉核验。</p>
+  </section>
+
+  <section class="block">
+    <h2>主案例卡片</h2>
+    
+      <article class="case-card">
+        <div class="visual"><img src="assets/2026-06-20/skillsguard-demo.gif" alt="SkillsGuard terminal demo scanning an AI agent skill package" loading="lazy"><figcaption>图片来源：SkillsGuard README demo.gif；获取方式：下载 GitHub raw 动图到本地；原始链接：https://raw.githubusercontent.com/Teycir/SkillsGuard/main/public/demo.gif</figcaption></div>
+        <div class="case-body">
+          <div class="case-kicker">案例 1 · <span class="tag">reddit</span><span class="tag">Codex Security</span><span class="tag">GitHub</span><span class="tag">skills</span></div>
+          <h3>SkillsGuard：在 Codex/Agent skills 进入仓库前做静态安全扫描</h3>
+          <div class="meta-row"><span>2026-06-20 04:57 +08（reddit r/codex）</span><strong>93 分</strong></div>
+          <div class="evidence"><b>证据链接</b><ul><li><a href="https://old.reddit.com/r/codex/comments/1uadj55/precommit_hook_that_blocks_malicious_ai_agent/" target="_blank" rel="noopener noreferrer">reddit r/codex 讨论</a></li><li><a href="https://github.com/Teycir/SkillsGuard" target="_blank" rel="noopener noreferrer">SkillsGuard GitHub</a></li><li><a href="https://skillsguard.apiskillsguard.workers.dev/scan" target="_blank" rel="noopener noreferrer">SkillsGuard hosted scan endpoint</a></li></ul></div>
+          <div class="info-grid">
+            <section><h4>为什么值得看</h4><p>它抓住了最近 Codex/Claude skills 生态里最实际的风险：SKILL.md 和随包脚本会成为新供应链入口，普通 grep 很容易漏掉编码后的危险命令。</p></section>
+            <section><h4>Codex 具体做了什么</h4><p>Codex 在这里是被保护的执行环境：团队把 skills、MCP、脚本交给 agent 前，先用 scanner / pre-commit / MCP 方式拦截可疑 payload，避免 Codex 执行污染上下文或危险脚本。</p></section>
+            <section><h4>最有脑洞/最实用的点</h4><p>作者不是只列黑名单，而是递归解码 base64、hex、URL 与 Unicode tag，再套规则和 SARIF 输出，适合放进 CI。</p></section>
+            <section><h4>可借鉴做法</h4><p>把 skills 当作代码依赖审计：新增 skill 必须过静态扫描、风险分级、SARIF 留档，再允许 Codex/Claude 调用。</p></section>
+            <section class="wide"><h4>不确定点</h4><p>规则库仍可能被绕过；reddit 讨论热度不算高，效果需要更多真实恶意样本验证。</p></section>
+          </div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="visual"><img src="assets/2026-06-20/taskbarquota-repo-image.png" alt="TaskbarQuota repository image showing the Windows taskbar quota widget" loading="lazy"><figcaption>图片来源：TaskbarQuota GitHub repository image；获取方式：下载 GitHub repository image 到本地；原始链接：https://repository-images.githubusercontent.com/1256353697/27427663-1a7a-448f-a6e0-6c85b1a63892</figcaption></div>
+        <div class="case-body">
+          <div class="case-kicker">案例 2 · <span class="tag">reddit</span><span class="tag">Windows</span><span class="tag">Codex app/CLI</span><span class="tag">quota</span></div>
+          <h3>TaskbarQuota：Windows 任务栏里实时跟踪 Codex 额度与 reset credits</h3>
+          <div class="meta-row"><span>2026-06-20 04:53 +08（reddit r/codex）</span><strong>90 分</strong></div>
+          <div class="evidence"><b>证据链接</b><ul><li><a href="https://old.reddit.com/r/codex/comments/1uadg0t/this_windows_uitlity_shows_you_more_reset/" target="_blank" rel="noopener noreferrer">reddit r/codex 讨论</a></li><li><a href="https://github.com/zioder/taskbarquota" target="_blank" rel="noopener noreferrer">TaskbarQuota GitHub</a></li><li><a href="https://apps.microsoft.com/detail/9n3kl49vfpvn?hl=en-US&amp;gl=US&amp;mode=direct" target="_blank" rel="noopener noreferrer">Microsoft Store 页面</a></li></ul></div>
+          <div class="info-grid">
+            <section><h4>为什么值得看</h4><p>Codex 额度、reset credit 和多 agent 切换正在变成真实工作流里的运营问题。这个工具把“我现在到底在烧哪个 agent 的额度”放进 Windows taskbar。</p></section>
+            <section><h4>Codex 具体做了什么</h4><p>TaskbarQuota 读取 CODEX_HOME 或用户目录里的 Codex auth 信息，识别前台 Codex app 或终端里的 codex 进程，并请求 Codex usage/reset-credit 数据显示在任务栏和 dashboard。</p></section>
+            <section><h4>最有脑洞/最实用的点</h4><p>它不是单一 Codex 小组件，而是按当前焦点自动切换 Codex、Claude、Cursor、OpenCode、Grok、Devin 等 provider，减少多工具并行时的误判。</p></section>
+            <section><h4>可借鉴做法</h4><p>如果团队在 Windows 上跑多个 coding agent，可以把“活动 provider 检测 + 额度可视化 + 过期提醒”做成系统级状态，而不是靠人工记账。</p></section>
+            <section class="wide"><h4>不确定点</h4><p>Codex usage API 和 auth 文件布局属于非正式接口，后续可能变化；任务栏注入在不同 Windows build 上仍需兼容性验证。</p></section>
+          </div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="visual"><img src="assets/2026-06-20/gluerun-github-readme.png" alt="GitHub README screenshot showing glueRun reconcile cycle, leases, packets, gates, and audits" loading="lazy"><figcaption>图片来源：glueRun-go GitHub README；获取方式：页面截图；原始链接：https://github.com/alex-reysa/glueRun-go</figcaption></div>
+        <div class="case-body">
+          <div class="case-kicker">案例 3 · <span class="tag">HN</span><span class="tag">Show HN</span><span class="tag">Codex CLI</span><span class="tag">orchestration</span></div>
+          <h3>glueRun-go：用 git worktree、leases 和 evidence gates 调度 Codex workers</h3>
+          <div class="meta-row"><span>2026-06-20 02:07 +08（HN Show HN）</span><strong>88 分</strong></div>
+          <div class="evidence"><b>证据链接</b><ul><li><a href="https://news.ycombinator.com/item?id=48601338" target="_blank" rel="noopener noreferrer">HN: Show HN glueRun-go</a></li><li><a href="https://github.com/alex-reysa/glueRun-go" target="_blank" rel="noopener noreferrer">glueRun-go GitHub</a></li></ul></div>
+          <div class="info-grid">
+            <section><h4>为什么值得看</h4><p>它把“让 Codex 长时间并行改 repo”拆成可恢复的系统工程：任务 DAG、leases、state packets、gate result、audit verdict、worktree isolation。</p></section>
+            <section><h4>Codex 具体做了什么</h4><p>Codex CLI 是支持的 runner 之一，可作为 L2 worker 在隔离 git worktree 中执行单个任务，完成后交出文件、命令、测试和证据包，再由 gate/auditor/decider 处理。</p></section>
+            <section><h4>最有脑洞/最实用的点</h4><p>最有价值的是失败路径设计：worker 崩溃、lease 过期、测试失败、scope 需要调整，都有状态文件和 deterministic route，而不是让 agent 一路写到失控。</p></section>
+            <section><h4>可借鉴做法</h4><p>给长程 Codex 任务规定 state packet schema：改了哪些文件、运行了哪些测试、证据在哪里、失败归类是什么。</p></section>
+            <section class="wide"><h4>不确定点</h4><p>HN 评论数很少，公开实战案例还不多；多层 agent 调度会增加本地操作复杂度。</p></section>
+          </div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="visual"><img src="assets/2026-06-20/summer-dashboard.png" alt="Summer dashboard screenshot showing AI coding usage and spend charts" loading="lazy"><figcaption>图片来源：Summer README docs/dashboard.png；获取方式：下载 GitHub raw 图片到本地；原始链接：https://raw.githubusercontent.com/useautumn/summer/main/docs/dashboard.png</figcaption></div>
+        <div class="case-body">
+          <div class="case-kicker">案例 4 · <span class="tag">HN</span><span class="tag">Show HN</span><span class="tag">Codex logs</span><span class="tag">team dashboard</span></div>
+          <h3>Summer：给 Claude Code、Codex、OpenCode 做团队级用量和成本看板</h3>
+          <div class="meta-row"><span>2026-06-20 01:51 +08（HN Show HN）</span><strong>85 分</strong></div>
+          <div class="evidence"><b>证据链接</b><ul><li><a href="https://news.ycombinator.com/item?id=48601140" target="_blank" rel="noopener noreferrer">HN: Show HN Summer</a></li><li><a href="https://github.com/useautumn/summer" target="_blank" rel="noopener noreferrer">Summer GitHub</a></li><li><a href="https://useautumn.com/" target="_blank" rel="noopener noreferrer">Autumn 产品页</a></li></ul></div>
+          <div class="info-grid">
+            <section><h4>为什么值得看</h4><p>个人 token tracker 已经不少，但团队开始需要回答“哪个工程师、哪个 harness、哪个模型、哪种计费模式在花钱”。Summer 直接把 Codex 纳进同一套 usage event。</p></section>
+            <section><h4>Codex 具体做了什么</h4><p>本地 daemon 导入 Codex 历史并持续采集 Codex usage，和 Claude Code / OpenCode 一起送到 Autumn 后端定价、聚合、分组、过滤。</p></section>
+            <section><h4>最有脑洞/最实用的点</h4><p>README 明确支持 backfill、live daemon、team invite 和 per-developer raw events，比单机用量脚本更接近管理面板。</p></section>
+            <section><h4>可借鉴做法</h4><p>把“AI coding 成本”拆成 harness/model/user/billing mode 几个维度，不要只看总 token。</p></section>
+            <section class="wide"><h4>不确定点</h4><p>它依赖 Autumn 后端，不是完全本地；Codex 的真实 plan limit 与官方口径仍需用户自己理解。</p></section>
+          </div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="visual"><img src="assets/2026-06-20/gora-github-supported-history.png" alt="GitHub README screenshot showing Gora supported history paths including Codex sessions" loading="lazy"><figcaption>图片来源：Gora GitHub README；获取方式：页面截图；原始链接：https://github.com/mertdeveci5/gora</figcaption></div>
+        <div class="case-body">
+          <div class="case-kicker">案例 5 · <span class="tag">HN</span><span class="tag">Show HN</span><span class="tag">local-first</span><span class="tag">session search</span></div>
+          <h3>Gora：把本地 Codex、Claude Code、Pi 会话索引进同一个 SQLite 搜索器</h3>
+          <div class="meta-row"><span>2026-06-20 00:08 +08（HN Show HN）</span><strong>80 分</strong></div>
+          <div class="evidence"><b>证据链接</b><ul><li><a href="https://news.ycombinator.com/item?id=48600144" target="_blank" rel="noopener noreferrer">HN: Show HN Gora</a></li><li><a href="https://github.com/mertdeveci5/gora" target="_blank" rel="noopener noreferrer">Gora GitHub</a></li><li><a href="https://pypi.org/project/gora-cli/" target="_blank" rel="noopener noreferrer">PyPI: gora-cli</a></li></ul></div>
+          <div class="info-grid">
+            <section><h4>为什么值得看</h4><p>长时间用 Codex 的一个新痛点是“我上周到底在哪个 repo 让它跑过什么命令”。Gora 把分散在本机的 agent history 变成可搜索档案。</p></section>
+            <section><h4>Codex 具体做了什么</h4><p>Gora 读取 ~/.codex/sessions/**/*.jsonl，把 Codex transcript、工具调用、命令输出、repo、模型等信息和 Claude/Pi 会话一起索引到 SQLite。</p></section>
+            <section><h4>最有脑洞/最实用的点</h4><p>它把搜索对象从“代码库”扩展到“agent 工作历史”：找旧 bug 排查、找某条命令、追踪某个 repo 的 agent 操作。</p></section>
+            <section><h4>可借鉴做法</h4><p>保留本地 agent 日志并建立跨 harness 索引；遇到重复问题时先搜过往会话，再决定是否重新消耗上下文。</p></section>
+            <section class="wide"><h4>不确定点</h4><p>图证是 README 页面截图，尚未看到公开视频；HN 热度很低，真实大库日志规模表现待测。</p></section>
+          </div>
+        </div>
+      </article>
+  </section>
+
+  <section class="block">
+    <h2>候选评分表</h2>
+    <p class="note">评分构成：时效性 25、脑洞/惊喜度 20、Codex 参与度 20、可视化证据 15、社区讨论热度 10、可借鉴性 10。低于 70 分不进主榜；即使超过 70，若证据边界弱、X 无法直连、或更像教程/官方发布，也只进候选或趋势。</p>
+    <div class="table-wrap"><table><thead><tr><th>候选</th><th>来源</th><th>时间</th><th>时效</th><th>脑洞</th><th>Codex</th><th>图证</th><th>热度</th><th>借鉴</th><th>总分</th><th>状态</th><th>备注</th></tr></thead><tbody><tr><td>SkillsGuard</td><td>reddit r/codex + GitHub</td><td>2026-06-20 04:57 +08</td><td>24</td><td>19</td><td>18</td><td>15</td><td>7</td><td>10</td><td><span class="scorebar"><i style="width:93%"></i></span><b>93</b></td><td><span class="status main">入选</span></td><td>AI agent skills 安全扫描，动图和 repo 完整。</td></tr><tr><td>TaskbarQuota</td><td>reddit r/codex + GitHub + Store</td><td>2026-06-20 04:53 +08</td><td>24</td><td>18</td><td>19</td><td>14</td><td>6</td><td>9</td><td><span class="scorebar"><i style="width:90%"></i></span><b>90</b></td><td><span class="status main">入选</span></td><td>Codex reset credits / active provider 检测很具体。</td></tr><tr><td>glueRun-go</td><td>HN Show HN + GitHub</td><td>2026-06-20 02:07 +08</td><td>24</td><td>18</td><td>19</td><td>12</td><td>5</td><td>10</td><td><span class="scorebar"><i style="width:88%"></i></span><b>88</b></td><td><span class="status main">入选</span></td><td>git worktree + leases + evidence gates 调度 Codex workers。</td></tr><tr><td>Summer</td><td>HN Show HN + GitHub</td><td>2026-06-20 01:51 +08</td><td>24</td><td>15</td><td>18</td><td>15</td><td>4</td><td>9</td><td><span class="scorebar"><i style="width:85%"></i></span><b>85</b></td><td><span class="status main">入选</span></td><td>团队级 Codex/Claude/OpenCode 用量看板。</td></tr><tr><td>Gora</td><td>HN Show HN + GitHub</td><td>2026-06-20 00:08 +08</td><td>23</td><td>14</td><td>18</td><td>13</td><td>3</td><td>9</td><td><span class="scorebar"><i style="width:80%"></i></span><b>80</b></td><td><span class="status main">入选</span></td><td>跨本地 Codex/Claude/Pi 会话搜索。</td></tr><tr><td>kkt constrained optimization skills</td><td>reddit r/codex + GitHub</td><td>2026-06-20 08:32 +08</td><td>23</td><td>17</td><td>16</td><td>10</td><td>4</td><td>8</td><td><span class="scorebar"><i style="width:78%"></i></span><b>78</b></td><td><span class="status watch">候选</span></td><td>思路好，但主图和真实应用案例弱。</td></tr><tr><td>Shreyas agentic workflow</td><td>HN + 作者博客</td><td>2026-06-20 03:47 +08</td><td>23</td><td>15</td><td>15</td><td>12</td><td>5</td><td>9</td><td><span class="scorebar"><i style="width:79%"></i></span><b>79</b></td><td><span class="status watch">候选</span></td><td>大量截图和 Codex via Opencode 经验，偏方法文。</td></tr><tr><td>Namecom-CLI</td><td>HN Show HN + GitHub</td><td>2026-06-20 23:51 +08</td><td>24</td><td>15</td><td>16</td><td>10</td><td>3</td><td>8</td><td><span class="scorebar"><i style="width:76%"></i></span><b>76</b></td><td><span class="status watch">候选</span></td><td>让 Claude/Codex 做 DNS，需更多演示图。</td></tr><tr><td>Consensus-rnd</td><td>HN Show HN + GitHub</td><td>2026-06-20 22:27 +08</td><td>23</td><td>17</td><td>16</td><td>8</td><td>3</td><td>9</td><td><span class="scorebar"><i style="width:76%"></i></span><b>76</b></td><td><span class="status watch">候选</span></td><td>Codex refactor loop 技术性强，图证弱。</td></tr><tr><td>Unsiloed Claude+Codex pipeline</td><td>HN + 作者指南</td><td>2026-06-20 14:51 +08</td><td>23</td><td>14</td><td>17</td><td>8</td><td>3</td><td>8</td><td><span class="scorebar"><i style="width:73%"></i></span><b>73</b></td><td><span class="status watch">候选</span></td><td>有 pipeline 指南，但更像教程。</td></tr><tr><td>Codex Banked Reset Information</td><td>reddit r/codex</td><td>2026-06-20 06:03 +08</td><td>24</td><td>9</td><td>14</td><td>12</td><td>5</td><td>7</td><td><span class="scorebar"><i style="width:71%"></i></span><b>71</b></td><td><span class="status watch">观察</span></td><td>技巧有图，但只是单 API 片段。</td></tr><tr><td>OpenAnalysis captured agent logs</td><td>HN + OALABS + Help Net Security</td><td>2026-06-19/20</td><td>22</td><td>20</td><td>15</td><td>14</td><td>8</td><td>6</td><td><span class="scorebar"><i style="width:85%"></i></span><b>85</b></td><td><span class="status watch">观察风险</span></td><td>重要安全事件，但不是正向精彩案例。</td></tr><tr><td>Record &amp; Replay skill flow</td><td>X 索引 + OpenAI 官方资料</td><td>2026-06-16 附近</td><td>22</td><td>18</td><td>16</td><td>15</td><td>9</td><td>9</td><td><span class="scorebar"><i style="width:89%"></i></span><b>89</b></td><td><span class="status watch">趋势</span></td><td>官方能力强，非社区完成案例。</td></tr><tr><td>Echo mobile app/site built with Codex/Claude</td><td>X 索引 + 产品页</td><td>2026-06-11，非当天新增</td><td>18</td><td>18</td><td>18</td><td>13</td><td>6</td><td>8</td><td><span class="scorebar"><i style="width:81%"></i></span><b>81</b></td><td><span class="status watch">候选</span></td><td>产品感强，但 X 直连受限且非当天。</td></tr><tr><td>Whatever Recall</td><td>HN + 产品页</td><td>2026-06-20 19:05 +08</td><td>23</td><td>15</td><td>12</td><td>12</td><td>3</td><td>8</td><td><span class="scorebar"><i style="width:73%"></i></span><b>73</b></td><td><span class="status watch">候选</span></td><td>代码记忆方向好，Codex 绑定不够中心。</td></tr><tr><td>Maccha cross-agent brain</td><td>HN + GitHub</td><td>2026-06-21 06:31 +08</td><td>25</td><td>16</td><td>8</td><td>10</td><td>3</td><td>8</td><td><span class="scorebar"><i style="width:70%"></i></span><b>70</b></td><td><span class="status watch">观察</span></td><td>新鲜但当前未核到明确 Codex 参与。</td></tr><tr><td>SimLink SMS for agents</td><td>HN + 产品页</td><td>2026-06-20 05:06 +08</td><td>23</td><td>16</td><td>8</td><td>12</td><td>3</td><td>7</td><td><span class="scorebar"><i style="width:69%"></i></span><b>69</b></td><td><span class="status low">未入选</span></td><td>MCP/SMS 有趣，但不是 Codex 案例。</td></tr><tr><td>Codex rate-limit cost issue</td><td>HN + GitHub issue</td><td>2026-06-21 05:43 +08</td><td>25</td><td>8</td><td>12</td><td>5</td><td>8</td><td>5</td><td><span class="scorebar"><i style="width:63%"></i></span><b>63</b></td><td><span class="status low">未入选</span></td><td>重要反馈，但属于问题讨论。</td></tr></tbody></table></div>
+  </section>
+
+  <section class="block">
+    <h2>无图/待核实观察区</h2>
+    <ul class="list-clean">
+      <li><b>OpenAnalysis 攻击日志</b><span>安全价值很高，且有完整 agent session 研究；但属于攻击者滥用 Claude/Codex 的风险事件，不作为“精彩完成案例”主榜。</span></li>
+      <li><b>Record & Replay / 官方 skill flow</b><span>X 索引和官方资料显示 Codex workflow-to-skill 方向升温；但这是官方功能示范，不替代社区案例。</span></li>
+      <li><b>Echo mobile app/site</b><span>X 索引显示作者称 app/site 用 Codex/Claude 完成，产品页可访问；因 X 直连受限且非当天新增，暂列候选。</span></li>
+      <li><b>GTA/交易/业务自动化类帖子</b><span>ClaudeAI 搜索里有多条提到 Codex 的成品或实验，但证据多依赖自述、视频难取帧或金融风险边界重，本期不强行收录。</span></li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>今日灵感清单</h2>
+    <ul class="ideas">
+      <li>给 Codex 长任务建立 state packet：文件、命令、测试、证据、失败分类都结构化保存。</li>
+      <li>把 skills 当供应链依赖审计，尤其是带脚本、MCP、动态命令的 skill 包。</li>
+      <li>团队用 Codex 时，成本看板要按 harness/model/user/billing mode 分组，而不是只看总 token。</li>
+      <li>保留本地 Codex session，并给历史会话建索引；很多“新问题”其实可以先搜旧调试过程。</li>
+      <li>额度、reset credit、active provider 这类状态应该进入桌面/CI/告警面板，避免重度使用时靠人工判断。</li>
+      <li>跨 agent 工具越多，权限策略越要写成可 diff、可编译到各客户端 native settings 的配置。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>来源列表</h2>
+    <ol class="sources"><li><a href="https://old.reddit.com/r/codex/comments/1uadj55/precommit_hook_that_blocks_malicious_ai_agent/" target="_blank" rel="noopener noreferrer">reddit r/codex: SkillsGuard</a></li><li><a href="https://github.com/Teycir/SkillsGuard" target="_blank" rel="noopener noreferrer">GitHub: SkillsGuard</a></li><li><a href="https://old.reddit.com/r/codex/comments/1uadg0t/this_windows_uitlity_shows_you_more_reset/" target="_blank" rel="noopener noreferrer">reddit r/codex: TaskbarQuota</a></li><li><a href="https://github.com/zioder/taskbarquota" target="_blank" rel="noopener noreferrer">GitHub: TaskbarQuota</a></li><li><a href="https://apps.microsoft.com/detail/9n3kl49vfpvn?hl=en-US&amp;gl=US&amp;mode=direct" target="_blank" rel="noopener noreferrer">Microsoft Store: TaskbarQuota</a></li><li><a href="https://news.ycombinator.com/item?id=48601338" target="_blank" rel="noopener noreferrer">HN: glueRun-go</a></li><li><a href="https://github.com/alex-reysa/glueRun-go" target="_blank" rel="noopener noreferrer">GitHub: glueRun-go</a></li><li><a href="https://news.ycombinator.com/item?id=48601140" target="_blank" rel="noopener noreferrer">HN: Summer</a></li><li><a href="https://github.com/useautumn/summer" target="_blank" rel="noopener noreferrer">GitHub: Summer</a></li><li><a href="https://news.ycombinator.com/item?id=48600144" target="_blank" rel="noopener noreferrer">HN: Gora</a></li><li><a href="https://github.com/mertdeveci5/gora" target="_blank" rel="noopener noreferrer">GitHub: Gora</a></li><li><a href="https://old.reddit.com/r/codex/comments/1uaif4z/applying_constrained_optimization_to_coding_agents/" target="_blank" rel="noopener noreferrer">reddit r/codex: kkt</a></li><li><a href="https://github.com/dannylee1020/kkt" target="_blank" rel="noopener noreferrer">GitHub: kkt</a></li><li><a href="https://news.ycombinator.com/item?id=48595599" target="_blank" rel="noopener noreferrer">HN: Unsiloed pipeline</a></li><li><a href="https://www.unsiloed.ai/blog/guides/claude-code-codex-one-pipeline" target="_blank" rel="noopener noreferrer">Unsiloed: Claude Code + Codex as One Pipeline</a></li><li><a href="https://news.ycombinator.com/item?id=48599447" target="_blank" rel="noopener noreferrer">HN: OpenAnalysis captured logs</a></li><li><a href="https://research.openanalysis.net/claude/codex/hacking/ai%20hacking/llm/redteam/policy%20violation/2026/06/16/compromised-claude-hacking.html" target="_blank" rel="noopener noreferrer">OALABS Research</a></li><li><a href="https://www.helpnetsecurity.com/2026/06/17/ai-agents-offensive-cyber-operations-claude-codex/" target="_blank" rel="noopener noreferrer">Help Net Security follow-up</a></li><li><a href="https://news.ycombinator.com/item?id=48602462" target="_blank" rel="noopener noreferrer">HN: Shreyas workflow</a></li><li><a href="https://shreyasprakash.com/my-agentic-engineering-workflow/" target="_blank" rel="noopener noreferrer">Shreyas workflow blog</a></li><li><a href="https://news.ycombinator.com/item?id=48610151" target="_blank" rel="noopener noreferrer">HN: Namecom-CLI</a></li><li><a href="https://github.com/hypersocialinc/namecom-cli" target="_blank" rel="noopener noreferrer">GitHub: Namecom-CLI</a></li></ol>
+  </section>
+
+  <section class="block">
+    <h2>图片自检清单</h2>
+    <div class="table-wrap"><table><thead><tr><th>文件</th><th>尺寸</th><th>获取方式</th><th>检查结果</th><th>状态</th></tr></thead><tbody><tr><td>skillsguard-demo.gif</td><td>1493x806</td><td>下载 GitHub raw GIF</td><td>终端扫描 demo，非黑屏/白屏，动图首帧正常</td><td><span class="status main">通过</span></td></tr><tr><td>taskbarquota-repo-image.png</td><td>1280x640</td><td>下载 GitHub repository image</td><td>Windows 任务栏 quota widget 图，非纯 logo</td><td><span class="status main">通过</span></td></tr><tr><td>gluerun-github-readme.png</td><td>1365x900</td><td>页面截图</td><td>README 中 reconcile、leases、gates/audits 区域</td><td><span class="status main">通过</span></td></tr><tr><td>summer-dashboard.png</td><td>1746x705</td><td>下载 GitHub raw PNG</td><td>usage/spend dashboard 截图</td><td><span class="status main">通过</span></td></tr><tr><td>gora-github-supported-history.png</td><td>1365x900</td><td>页面截图</td><td>README 中 Codex session path 与 install 命令</td><td><span class="status main">通过</span></td></tr></tbody></table></div>
+    <p class="foot">检索时间：2026-06-21 10:45 +08，报告日期按 automation payload 与本轮最初 Asia/Kuching 运行上下文记录为 2026-06-20。主要搜索平台：HN Algolia/HN、old.reddit RSS/HTML、X/Twitter web 搜索索引、GitHub raw/HTML、项目页、作者博客、安全媒体。访问限制：reddit JSON/API 被网络安全策略拦截；X 直连页面多受登录/动态加载限制；GitHub REST API 匿名额度用尽。未确认边界：未运行各工具的私有 Codex session、未验证非公开 usage API 稳定性、未复测 Windows taskbar 注入兼容性。图片自检结果：5 个主案例 &lt;img&gt; 均存在、非空、尺寸合理，Pillow 维度/亮度检查和人工 contact sheet 目检未见黑屏、白屏或错误页。</p>
+  </section>
+</div>
+</body>
+</html>

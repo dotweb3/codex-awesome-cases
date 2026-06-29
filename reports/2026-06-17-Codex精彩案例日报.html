@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-06-17 Codex 精彩案例日报</title>
+  <style>
+    :root { --bg:#f6f7f5; --paper:#ffffff; --ink:#17201a; --muted:#5d6a63; --line:#d9e0da; --soft:#edf2ee; --green:#1b7c54; --blue:#2f5d95; --amber:#a56711; --red:#b0443b; --shadow:0 14px 35px rgba(28,39,33,.08); }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif; line-height:1.58; }
+    a { color:#1d5f8d; text-decoration:none; } a:hover { text-decoration:underline; }
+    .page { max-width:1100px; margin:0 auto; padding:28px 18px 52px; }
+    header.hero { padding:28px; border:1px solid var(--line); background:linear-gradient(180deg,#fff,#f8fbf9); box-shadow:var(--shadow); border-radius:8px; }
+    .eyebrow { font-size:13px; color:var(--green); font-weight:700; letter-spacing:.02em; }
+    h1 { margin:8px 0 10px; font-size:clamp(30px,5vw,48px); line-height:1.08; letter-spacing:0; }
+    .subtitle { max-width:820px; margin:0; color:var(--muted); font-size:16px; }
+    .stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-top:22px; }
+    .stat { border:1px solid var(--line); background:#fff; border-radius:8px; padding:14px; }
+    .stat b { display:block; font-size:28px; line-height:1; } .stat span { color:var(--muted); font-size:13px; }
+    section.block { margin-top:24px; padding:22px; background:var(--paper); border:1px solid var(--line); border-radius:8px; box-shadow:var(--shadow); }
+    h2 { margin:0 0 14px; font-size:22px; letter-spacing:0; } h3 { margin:0; font-size:24px; line-height:1.24; letter-spacing:0; } h4 { margin:0 0 6px; font-size:14px; color:#25352d; }
+    .brief-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+    .brief { border:1px solid var(--line); background:var(--soft); border-radius:8px; padding:14px; } .brief b { display:block; margin-bottom:6px; } .brief p,.note,p { margin:0; color:var(--muted); }
+    .note { border-left:4px solid var(--green); padding-left:12px; }
+    .case-card { margin-top:18px; padding:18px; border:1px solid var(--line); border-radius:8px; background:#fff; }
+    .case-head { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:10px; }
+    .case-kicker { color:var(--green); font-size:13px; font-weight:700; margin-bottom:5px; }
+    .score-pill { flex:0 0 auto; min-width:68px; text-align:center; border-radius:8px; background:#153b2a; color:white; padding:8px 10px; } .score-pill span { display:block; font-size:24px; font-weight:800; line-height:1; } .score-pill small { font-size:12px; opacity:.9; }
+    .meta-row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:14px; color:var(--muted); font-size:13px; }
+    .tag { display:inline-flex; align-items:center; min-height:24px; padding:2px 8px; border-radius:999px; background:#e7efe9; color:#214637; border:1px solid #c9dbcf; font-weight:700; font-size:12px; } .tag-reddit { background:#fff0ea; color:#9a3d13; border-color:#f0c8b8; } .tag-hn { background:#fff5d8; color:#7a4b00; border-color:#efd894; } .tag-github { background:#edf0f4; color:#293241; border-color:#ccd3dc; } .tag-lobsters { background:#ffecec; color:#9a251d; border-color:#efc1bf; }
+    .case-grid { display:grid; grid-template-columns:minmax(280px,42%) 1fr; gap:18px; align-items:start; }
+    .visual { margin:0; } .visual img { width:100%; aspect-ratio:16/10; object-fit:cover; display:block; border-radius:8px; border:1px solid var(--line); background:#eef2ef; } .visual figcaption { margin-top:8px; color:#66736b; font-size:12px; }
+    .source-box { border:1px solid var(--line); background:#f9fbfa; border-radius:8px; padding:12px; margin-bottom:12px; } .source-box b { display:block; margin-bottom:6px; }
+    .link-list { margin:0; padding-left:18px; color:var(--muted); } .link-list li { margin:3px 0; }
+    .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; } .info-grid section { border:1px solid var(--line); border-radius:8px; padding:11px; background:#fff; } .info-grid p { font-size:14px; } .wide { grid-column:1 / -1; }
+    .table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:8px; } table { width:100%; border-collapse:collapse; min-width:900px; background:#fff; } th,td { padding:10px 11px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; font-size:13px; } th { background:#edf2ee; color:#314239; white-space:nowrap; } .num { text-align:right; font-variant-numeric:tabular-nums; } .total { font-weight:800; color:#10291d; }
+    .bar { display:inline-block; width:56px; height:7px; background:#dfe6e1; border-radius:20px; overflow:hidden; margin-right:6px; vertical-align:middle; } .bar i { display:block; height:100%; background:linear-gradient(90deg,#2f8a62,#d19a2a); }
+    .status-main,.status-watch,.status-low { display:inline-block; border-radius:999px; padding:2px 8px; font-weight:700; font-size:12px; white-space:nowrap; } .status-main { background:#e3f4eb; color:#16633f; } .status-watch { background:#fff4d8; color:#80520a; } .status-low { background:#f4e6e4; color:#96372f; }
+    .watch-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; } .watch { border:1px solid var(--line); border-radius:8px; padding:13px; background:#fbfcfb; } .watch b { display:block; margin-bottom:5px; }
+    .ideas { margin:0; padding-left:20px; } .ideas li { margin:8px 0; }
+    .sources { columns:2; column-gap:28px; padding-left:22px; } .sources li { break-inside:avoid; margin:0 0 7px; font-size:13px; }
+    .foot { margin-top:16px; padding:14px; background:#edf2ee; border:1px solid var(--line); border-radius:8px; font-size:13px; color:var(--muted); }
+    @media (max-width:820px) { .stats,.brief-grid,.case-grid,.info-grid,.watch-grid { grid-template-columns:1fr; } header.hero,section.block,.case-card { padding:16px; } .sources { columns:1; } h3 { font-size:20px; } }
+    @media print { body { background:#fff; } .page { max-width:none; padding:0; } header.hero, section.block, .case-card { box-shadow:none; break-inside:avoid; } a { color:#000; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="eyebrow">每日 Codex 社区图文 HTML 汇报</div>
+      <h1>Codex 精彩案例日报</h1>
+      <p class="subtitle">报告日期：2026-06-17（Asia/Kuching）。今日高质量“当天新增”不足 5 个，因此主榜扩展到最近 14 天，并在卡片中标注非当天新增；低证据、无图或重复案例只进入观察区。</p>
+      <div class="stats"><div class="stat"><b>5</b><span>主案例</span></div><div class="stat"><b>16</b><span>候选池</span></div><div class="stat"><b>3</b><span>主案例来自 reddit/HN</span></div><div class="stat"><b>5/5</b><span>主图自检通过</span></div></div>
+    </header>
+
+    <section class="block"><h2>今日趋势摘要</h2><div class="brief-grid">
+      <div class="brief"><b>Skill 正在替代一次性 prompt</b><p>Visual IP Illustrations 和 Buildable 都把 Codex 工作流拆成可复用技能、route、模板和 review gate。</p></div>
+      <div class="brief"><b>大工程需要公开审计线索</b><p>Nordstjernen 与 USTP-Secure 的看点不只是“AI 写了很多代码”，而是文档、发布记录、协议边界和社区质疑。</p></div>
+      <div class="brief"><b>安全研究更看重组合推理</b><p>HTTP/2 Bomb 展示了 Codex 把旧攻击技巧组合到真实实现中的能力，后续仍必须靠人类验证和负责任披露。</p></div>
+    </div></section>
+
+    <section class="block"><h2>来源与筛选说明</h2><p class="note">优先检索 Hacker News/Algolia、reddit r/OpenaiCodex/rising 与相关搜索、X/Twitter 搜索索引，再补 GitHub、官网、作者博客、Lobsters、IETF Datatracker 等。reddit JSON 在当前环境返回 403，改用 old.reddit HTML；HN item 后续 curl 曾遇到 429，但可通过公开 item URL 与 GitHub 交叉核验；X 直接页面多受登录和动态加载限制，本期不把只靠 X 摘要的 SecurityBaseline 放入主榜。已避开前几日报告覆盖的 NovaScale、Devloop、Backplanes、Promptfoo、Open Design、Nudge、SecureConf、Codex Usage Tracker、Codex Profile、ai-profiles 等。</p></section>
+
+    <section class="block"><h2>主案例卡片</h2>
+    <article class="case-card" id="case-1">
+      <div class="case-head">
+        <div><div class="case-kicker">主案例 1</div><h3>Visual IP Illustrations：把文章配图做成可复用 Codex Skill</h3></div>
+        <div class="score-pill"><span>91</span><small>分</small></div>
+      </div>
+      <div class="meta-row"><span class="tag tag-reddit">reddit</span><span class="tag tag-github">GitHub</span><span class="tag tag-skillssh">skills.sh</span><span>reddit：2026-06-16 12:07 UTC；非当天新增（1 天内）</span></div>
+      <div class="case-grid">
+        <figure class="visual"><img src="assets/2026-06-17/visual-ip-illustrations-hero.gif" alt="Visual IP Illustrations character lineup from GitHub README" loading="lazy"><figcaption>图片来源：visual-ip-illustrations GitHub README hero GIF；获取方式：下载；原始链接：https://raw.githubusercontent.com/yangchuansheng/visual-ip-illustrations/main/assets/readme-hero/20260617-181124.gif</figcaption></figure>
+        <div class="case-body">
+          <div class="source-box"><b>证据链接</b><ul class="link-list"><li><a href="https://old.reddit.com/r/OpenaiCodex/comments/1u7boex/i_made_a_codex_skill_for_consistent_article/" target="_blank" rel="noopener noreferrer">reddit r/OpenaiCodex 讨论</a></li><li><a href="https://www.reddit.com/gallery/1u7boex" target="_blank" rel="noopener noreferrer">Reddit gallery</a></li><li><a href="https://github.com/yangchuansheng/visual-ip-illustrations" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></li><li><a href="https://skills.sh/yangchuansheng/visual-ip-illustrations" target="_blank" rel="noopener noreferrer">skills.sh 页面</a></li></ul></div>
+          <div class="info-grid">
+            <section><h4>为什么值得看</h4><p>这是今天 reddit 候选里最像“可复用工作流”的图文案例：作者不是一次性让模型画几张图，而是把文章配图拆成路线、角色、shot list、QA gate、输出路径和授权边界。</p></section>
+            <section><h4>Codex 具体做了什么</h4><p>Codex Skill 读取文章或想法，先抽取认知锚点，再生成 4-8 张文章插图的镜头清单；生成时按 Xiaohei、Littlebox、Ferris、Seal、OpenClaw、Go Gopher 等 route 加载局部规则和参考素材。</p></section>
+            <section><h4>最有脑洞/最实用的点</h4><p>最有意思的是“视觉 IP route”这个抽象：同一篇文章可以沿不同角色体系生成一致的 16:9 解释型插图，避免单张 prompt 之间风格漂移。</p></section>
+            <section><h4>可借鉴做法</h4><p>把创意任务封装成 Skill 时，不要只写风格提示词；同时沉淀 route metadata、输入输出目录、授权说明、公共样例 gate 和 QA 检查。</p></section>
+            <section class="wide"><h4>不确定点</h4><p>仓库样例很完整，但仍需要更多第三方复用反馈；部分受保护角色路线有权利边界，公开产出前要做授权和商标检查。</p></section>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="case-card" id="case-2">
+      <div class="case-head">
+        <div><div class="case-kicker">主案例 2</div><h3>Nordstjernen：Claude + Codex 写出的 12 万行 C 浏览器引发社区审计讨论</h3></div>
+        <div class="score-pill"><span>88</span><small>分</small></div>
+      </div>
+      <div class="meta-row"><span class="tag tag-lobsters">Lobsters</span><span class="tag tag-官网">官网</span><span class="tag tag-github">GitHub</span><span>Lobsters：2026-06-15；官网 1.0.9：2026-06-17</span></div>
+      <div class="case-grid">
+        <figure class="visual"><img src="assets/2026-06-17/nordstjernen-browser-screenshot.png" alt="Nordstjernen browser screenshot" loading="lazy"><figcaption>图片来源：Nordstjernen 官网 screenshots/screenshot.png；获取方式：下载；原始链接：https://www.nordstjernen.org/screenshots/screenshot.png</figcaption></figure>
+        <div class="case-body">
+          <div class="source-box"><b>证据链接</b><ul class="link-list"><li><a href="https://lobste.rs/s/adztcr/nordstjernen_web_browser" target="_blank" rel="noopener noreferrer">Lobsters 讨论</a></li><li><a href="https://www.nordstjernen.org/" target="_blank" rel="noopener noreferrer">Nordstjernen 官网</a></li><li><a href="https://github.com/nordstjernen-web/nordstjernen" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></li><li><a href="https://github.com/nordstjernen-web/nordstjernen/releases/tag/1.0.9" target="_blank" rel="noopener noreferrer">1.0.9 release</a></li></ul></div>
+          <div class="info-grid">
+            <section><h4>为什么值得看</h4><p>一个“从零写浏览器”的案例足够稀有，更稀有的是官网明确把 Claude 和 Codex 放进工程产出说明里，并把安全、无遥测、无 JIT、process-per-tab 沙箱作为卖点。</p></section>
+            <section><h4>Codex 具体做了什么</h4><p>Codex 与 Claude 参与实现浏览器引擎、HTML/CSS 支持、QuickJS 集成、进程隔离、跨平台打包等大量代码。官网称非 vendored 部分约 123k LOC。</p></section>
+            <section><h4>最有脑洞/最实用的点</h4><p>社区讨论的价值不只在成品本身，也在质疑：如果核心浏览器大量由 LLM 生成，安全审计、提交历史、许可证、可追溯性都必须公开到足以让人复核。</p></section>
+            <section><h4>可借鉴做法</h4><p>高风险系统如果使用 Codex 长时程生成，最好同步维护 AGENTS/CLAUDE 规则、兼容性矩阵、沙箱设计文档、发布记录和可复现构建。</p></section>
+            <section class="wide"><h4>不确定点</h4><p>Lobsters 评论对“LLM 生成浏览器”的安全性和提交历史提出了尖锐质疑；本报告没有编译或安全审计该浏览器，只确认公开页面和源码存在。</p></section>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="case-card" id="case-3">
+      <div class="case-head">
+        <div><div class="case-kicker">主案例 3</div><h3>HTTP/2 Bomb：Codex 把两个旧攻击思路组合成真实 DoS 研究</h3></div>
+        <div class="score-pill"><span>85</span><small>分</small></div>
+      </div>
+      <div class="meta-row"><span class="tag tag-lobsters">Lobsters</span><span class="tag tag-作者博客">作者博客</span><span class="tag tag-github">GitHub</span><span>原文：2026-06-02；Lobsters：2026-06-02；非当天新增（14 天边界内）</span></div>
+      <div class="case-grid">
+        <figure class="visual"><img src="assets/2026-06-17/http2-bomb-demo.gif" alt="HTTP/2 Bomb demo GIF showing server memory exhaustion terminals" loading="lazy"><figcaption>图片来源：Calif Substack 原文 demo GIF；获取方式：下载；原始链接：https://substack-post-media.s3.amazonaws.com/public/images/5ca91bca-3d08-428c-aed2-64a4b18bdd63_1920x1080.gif</figcaption></figure>
+        <div class="case-body">
+          <div class="source-box"><b>证据链接</b><ul class="link-list"><li><a href="https://blog.calif.io/p/codex-discovered-a-hidden-http2-bomb" target="_blank" rel="noopener noreferrer">Calif 原文</a></li><li><a href="https://lobste.rs/s/cnbztx/codex_discovered_hidden_http_2_bomb" target="_blank" rel="noopener noreferrer">Lobsters 讨论</a></li><li><a href="https://github.com/califio/publications/tree/main/MADBugs/http2-bomb" target="_blank" rel="noopener noreferrer">PoC 仓库目录</a></li><li><a href="https://github.com/nginx/nginx/commit/365694160a85229a7cb006738de9260d49ff5fa2" target="_blank" rel="noopener noreferrer">nginx 修复提交</a></li><li><a href="https://github.com/apache/httpd/commit/47d3100b252dc6668a9e46ae885242be9eeca9cd" target="_blank" rel="noopener noreferrer">Apache 修复提交</a></li></ul></div>
+          <div class="info-grid">
+            <section><h4>为什么值得看</h4><p>这是本期最硬核的 Codex Security 案例：不是“扫描器报了一个漏洞”，而是 Codex 读多个服务器实现，把 HPACK indexed-reference bomb 和 HTTP/2 flow-control stall 组合成可验证攻击。</p></section>
+            <section><h4>Codex 具体做了什么</h4><p>Codex 负责跨代码库推理和构造组合攻击；团队随后验证 PoC，并公开了 nginx、Apache httpd、Envoy、IIS、Pingora 等目标的复现实验目录。</p></section>
+            <section><h4>最有脑洞/最实用的点</h4><p>新鲜点在组合能力：两个单独公开多年的风险，人类长期没有把它们拼在这些服务器上；Codex 的价值是沿实现细节找到“可组合”的攻击面。</p></section>
+            <section><h4>可借鉴做法</h4><p>安全审计可以把 Codex 放在“组合假设生成器”位置：让它读代码、提出跨模块攻击链，再由人类和可复现实验验证。</p></section>
+            <section class="wide"><h4>不确定点</h4><p>这是高风险安全研究，报告只做案例介绍；不要把 PoC 指向非自有基础设施。部分厂商修复状态以原文披露时为准。</p></section>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="case-card" id="case-4">
+      <div class="case-head">
+        <div><div class="case-kicker">主案例 4</div><h3>Buildable：给 Codex 的本地 app-builder brain，而不是又一个托管 no-code</h3></div>
+        <div class="score-pill"><span>84</span><small>分</small></div>
+      </div>
+      <div class="meta-row"><span class="tag tag-reddit">reddit</span><span class="tag tag-github">GitHub</span><span>reddit：2026-06-14；非当天新增（3 天内）</span></div>
+      <div class="case-grid">
+        <figure class="visual"><img src="assets/2026-06-17/buildable-web-dashboard.png" alt="Buildable generated SaaS dashboard screenshot" loading="lazy"><figcaption>图片来源：Buildable GitHub README 生成截图；获取方式：下载；原始链接：https://raw.githubusercontent.com/suntay44/buildable-plugin-skills/main/docs/screenshots/web-dashboard.png</figcaption></figure>
+        <div class="case-body">
+          <div class="source-box"><b>证据链接</b><ul class="link-list"><li><a href="https://old.reddit.com/r/OpenaiCodex/comments/1u59amb/opensource_localfirst_appbuilder_brain_like/" target="_blank" rel="noopener noreferrer">reddit r/OpenaiCodex 讨论</a></li><li><a href="https://github.com/suntay44/buildable-plugin-skills" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></li><li><a href="https://github.com/suntay44/buildable-plugin-skills#what-it-generates" target="_blank" rel="noopener noreferrer">README 生成截图区</a></li><li><a href="https://github.com/suntay44/buildable-plugin-skills/blob/main/docs/install.md" target="_blank" rel="noopener noreferrer">安装文档</a></li></ul></div>
+          <div class="info-grid">
+            <section><h4>为什么值得看</h4><p>它解决的是 Codex 做 app 时的常见低效：每次从空白 prompt 开始、重复猜产品结构、重复写 dashboard/table/form/state。Buildable 把这些变成本地 skills、模板、CLI 和 MCP。</p></section>
+            <section><h4>Codex 具体做了什么</h4><p>Codex 可加载 .codex-plugin/plugin.json 或通过 MCP 调用 buildable_plan/design/generate/review，让 agent 只读取与当前 app archetype 有关的约 10% 参考资料。</p></section>
+            <section><h4>最有脑洞/最实用的点</h4><p>15 个 starter 被 CI 构建和类型检查，README 还给了单 prompt 生成的 dashboard/CRM/marketplace 等截图，比纯 prompt 包更可验证。</p></section>
+            <section><h4>可借鉴做法</h4><p>给 Codex 减上下文不是删规则，而是先分类任务，再只喂所需 archetype、blocks、design system、review rubric 和生产化剩余清单。</p></section>
+            <section class="wide"><h4>不确定点</h4><p>reddit 讨论热度不高；截图证明 starter 能跑，但不等于真实生产 app。Codex 本地插件能力还取决于用户所用 Codex surface。</p></section>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="case-card" id="case-5">
+      <div class="case-head">
+        <div><div class="case-kicker">主案例 5</div><h3>USTP-Secure / USSH：用 Codex 做一个可靠无序 UDP 安全传输和远程 shell 原型</h3></div>
+        <div class="score-pill"><span>80</span><small>分</small></div>
+      </div>
+      <div class="meta-row"><span class="tag tag-hn">HN</span><span class="tag tag-github">GitHub</span><span class="tag tag-ietf draft">IETF draft</span><span>HN：约 2026-06-11；GitHub README 当前可见；非当天新增（约 6 天内）</span></div>
+      <div class="case-grid">
+        <figure class="visual"><img src="assets/2026-06-17/ustps-github-readme.png" alt="USTP-Secure GitHub README screenshot" loading="lazy"><figcaption>图片来源：USTP-Secure GitHub README；获取方式：Chrome headless 页面截图；原始链接：https://github.com/x1colegal/USTP-Secure</figcaption></figure>
+        <div class="case-body">
+          <div class="source-box"><b>证据链接</b><ul class="link-list"><li><a href="https://news.ycombinator.com/item?id=48453618" target="_blank" rel="noopener noreferrer">Hacker News 讨论</a></li><li><a href="https://github.com/x1colegal/USTP-Secure" target="_blank" rel="noopener noreferrer">USTP-Secure GitHub</a></li><li><a href="https://github.com/x1colegal/USSH" target="_blank" rel="noopener noreferrer">USSH GitHub</a></li><li><a href="https://datatracker.ietf.org/doc/draft-x1co-ustps/" target="_blank" rel="noopener noreferrer">USTPS Internet-Draft</a></li></ul></div>
+          <div class="info-grid">
+            <section><h4>为什么值得看</h4><p>这是“Codex 写普通脚本”之外的协议工程案例：作者用 Codex/GPT-5.4 Low 做可靠 UDP、AEAD、选择性重传、stream_pos 元数据，并在上面实现 USSH。</p></section>
+            <section><h4>Codex 具体做了什么</h4><p>README 明确写明 Built with Codex using GPT-5.4 Low；Codex 参与实现 USTPS 的加密封包、ACK/NACK、重传请求、无序传输语义和测试路径。</p></section>
+            <section><h4>最有脑洞/最实用的点</h4><p>最可借鉴的是把协议边界写得很清楚：控制包为何明文、DATA 为何强制 AEAD、为什么不做拥塞控制、什么时候仍需要应用层重排。</p></section>
+            <section><h4>可借鉴做法</h4><p>让 Codex 做协议原型时，必须把“不做什么”也写进 README：非拥塞控制、非 TCP 替代、应用层排序责任、beta 状态和测试条件。</p></section>
+            <section class="wide"><h4>不确定点</h4><p>HN 页面在后续 curl 中遇到 429，本报告引用已有 item URL 和 GitHub 证明；未独立压测网络性能或验证 IETF draft 审查状态。</p></section>
+          </div>
+        </div>
+      </div>
+    </article></section>
+
+    <section class="block"><h2>候选评分表</h2><p class="note">内部评分：时效性 25、脑洞/惊喜度 20、Codex 参与度 20、可视化证据 15、社区讨论热度 10、可借鉴性 10。低于 70 分不进主榜；达到 70 但证据弱、图弱或已收录，也只进入候选/观察。</p><div class="table-wrap" style="margin-top:14px"><table><thead><tr><th>候选</th><th>主要来源</th><th>时间</th><th>时效</th><th>脑洞</th><th>Codex</th><th>图证</th><th>热度</th><th>借鉴</th><th>总分</th><th>状态</th><th>备注</th></tr></thead><tbody><tr><td>Visual IP Illustrations Codex Skill</td><td>reddit/GitHub/skills.sh</td><td>2026-06-16</td><td class="num">24</td><td class="num">18</td><td class="num">18</td><td class="num">15</td><td class="num">8</td><td class="num">8</td><td class="num total"><span class="bar"><i style="width:91%"></i></span>91</td><td><span class="status-main">入选</span></td><td>图证强，Skill 抽象具体，可复用。</td></tr><tr><td>Nordstjernen Web Browser</td><td>Lobsters/官网/GitHub</td><td>2026-06-15 讨论，2026-06-17 release</td><td class="num">23</td><td class="num">20</td><td class="num">16</td><td class="num">14</td><td class="num">6</td><td class="num">9</td><td class="num total"><span class="bar"><i style="width:88%"></i></span>88</td><td><span class="status-main">入选</span></td><td>AI 生成浏览器足够新鲜，但安全争议大。</td></tr><tr><td>HTTP/2 Bomb</td><td>Lobsters/Calif/GitHub</td><td>2026-06-02，14 天边界</td><td class="num">14</td><td class="num">20</td><td class="num">20</td><td class="num">15</td><td class="num">6</td><td class="num">10</td><td class="num total"><span class="bar"><i style="width:85%"></i></span>85</td><td><span class="status-main">入选</span></td><td>安全组合发现很强，非当天新增。</td></tr><tr><td>Buildable app-builder brain</td><td>reddit/GitHub</td><td>2026-06-14</td><td class="num">21</td><td class="num">16</td><td class="num">17</td><td class="num">14</td><td class="num">6</td><td class="num">10</td><td class="num total"><span class="bar"><i style="width:84%"></i></span>84</td><td><span class="status-main">入选</span></td><td>Codex 插件/MCP + CI starter + 生成截图。</td></tr><tr><td>USTP-Secure / USSH</td><td>HN/GitHub/IETF</td><td>约 2026-06-11</td><td class="num">19</td><td class="num">17</td><td class="num">18</td><td class="num">7</td><td class="num">9</td><td class="num">10</td><td class="num total"><span class="bar"><i style="width:80%"></i></span>80</td><td><span class="status-main">入选</span></td><td>协议工程硬核，图片为页面证明。</td></tr><tr><td>SecurityBaseline.eu</td><td>X 索引/官网/Internet Cleanup/reddit Europe</td><td>X 昨日；项目 2026-05-13</td><td class="num">19</td><td class="num">17</td><td class="num">8</td><td class="num">14</td><td class="num">8</td><td class="num">8</td><td class="num total"><span class="bar"><i style="width:74%"></i></span>74</td><td><span class="status-watch">候选</span></td><td>作者 X 称 Built with Codex，但 X 受限且站点 JS 依赖。</td></tr><tr><td>MCP server lets Codex delegate work</td><td>reddit 图片帖</td><td>2026-06-12</td><td class="num">18</td><td class="num">15</td><td class="num">15</td><td class="num">10</td><td class="num">4</td><td class="num">8</td><td class="num total"><span class="bar"><i style="width:70%"></i></span>70</td><td><span class="status-watch">候选</span></td><td>方向好，但未找到稳定 repo/文档。</td></tr><tr><td>COMPASS Skills local-first memory</td><td>reddit</td><td>2026-06-15</td><td class="num">21</td><td class="num">14</td><td class="num">14</td><td class="num">4</td><td class="num">2</td><td class="num">9</td><td class="num total"><span class="bar"><i style="width:64%"></i></span>64</td><td><span class="status-watch">观察</span></td><td>长程任务记忆方向对，但证据不足。</td></tr><tr><td>Spec/memory CLI for repeated Codex prompts</td><td>reddit video</td><td>2026-06-16</td><td class="num">22</td><td class="num">13</td><td class="num">13</td><td class="num">8</td><td class="num">2</td><td class="num">8</td><td class="num total"><span class="bar"><i style="width:66%"></i></span>66</td><td><span class="status-watch">观察</span></td><td>有视频线索，缺 repo 和可复核截图。</td></tr><tr><td>Codex DOCX plugin for lawyers</td><td>reddit</td><td>2026-06-17</td><td class="num">25</td><td class="num">11</td><td class="num">8</td><td class="num">0</td><td class="num">2</td><td class="num">7</td><td class="num total"><span class="bar"><i style="width:53%"></i></span>53</td><td><span class="status-watch">观察</span></td><td>当天新想法，但尚未成品化。</td></tr><tr><td>Codex 2x faster/3x cheaper tool claim</td><td>reddit</td><td>2026-06-17</td><td class="num">25</td><td class="num">10</td><td class="num">8</td><td class="num">0</td><td class="num">1</td><td class="num">6</td><td class="num total"><span class="bar"><i style="width:50%"></i></span>50</td><td><span class="status-low">未入选</span></td><td>标题强，证据弱，像工具推广。</td></tr><tr><td>Agent-shell 0.55 updates</td><td>Lobsters/作者博客</td><td>2026-06-11</td><td class="num">18</td><td class="num">13</td><td class="num">8</td><td class="num">6</td><td class="num">5</td><td class="num">8</td><td class="num total"><span class="bar"><i style="width:58%"></i></span>58</td><td><span class="status-low">未入选</span></td><td>agent shell 相关，Codex 不是中心证据。</td></tr><tr><td>Linux Firmware repository preps for AI coding agents</td><td>Lobsters/Phoronix</td><td>2026-06-10</td><td class="num">17</td><td class="num">12</td><td class="num">5</td><td class="num">2</td><td class="num">6</td><td class="num">7</td><td class="num total"><span class="bar"><i style="width:49%"></i></span>49</td><td><span class="status-low">未入选</span></td><td>行业趋势，不是 Codex 完成案例。</td></tr><tr><td>Grit: rewriting Git in Rust with agents</td><td>Lobsters/GitButler</td><td>2026-06-09</td><td class="num">16</td><td class="num">18</td><td class="num">5</td><td class="num">6</td><td class="num">7</td><td class="num">8</td><td class="num total"><span class="bar"><i style="width:60%"></i></span>60</td><td><span class="status-watch">观察</span></td><td>agent 工程有启发，但非 Codex 明确案例。</td></tr><tr><td>Codex session export/import tool</td><td>reddit</td><td>2026-06-14</td><td class="num">19</td><td class="num">12</td><td class="num">13</td><td class="num">3</td><td class="num">3</td><td class="num">8</td><td class="num total"><span class="bar"><i style="width:58%"></i></span>58</td><td><span class="status-watch">观察</span></td><td>本地会话迁移有用，缺图和二证据。</td></tr><tr><td>Promptfoo Codex SDK Provider</td><td>Promptfoo/GitHub</td><td>2026-06-16</td><td class="num">22</td><td class="num">15</td><td class="num">18</td><td class="num">12</td><td class="num">2</td><td class="num">10</td><td class="num total"><span class="bar"><i style="width:79%"></i></span>79</td><td><span class="status-low">已收录</span></td><td>6 月 16 日已进主榜，本期仅作去重提醒。</td></tr></tbody></table></div></section>
+
+    <section class="block"><h2>无图/待核实观察区</h2><div class="watch-grid">
+      <div class="watch"><b>SecurityBaseline.eu</b><p>X 搜索索引显示作者称 built with Codex 且已开源，但 X 正文访问受限，项目站依赖 JS；先保留为候选，不凭单条摘要进主榜。</p></div>
+      <div class="watch"><b>当天 reddit 轻量帖</b><p>DOCX plugin、2x faster/cheaper、限额、模型选择、GPU 占用等帖子当天性强，但缺成品、代码或第二证据点。</p></div>
+      <div class="watch"><b>Agent shell / Grit / Linux firmware</b><p>都是 agent 工程趋势好材料，但 Codex 参与不够中心，本期不强行包装成 Codex 案例。</p></div>
+      <div class="watch"><b>已收录生态工具</b><p>Promptfoo、Backplanes、NovaScale 等仍在持续出现线索，但没有重大新演示或社区更新，本期只作去重。</p></div>
+    </div></section>
+
+    <section class="block"><h2>今日灵感清单</h2><ol class="ideas">
+      <li>把 Codex Skill 设计成“读取输入、产出计划、执行、QA、归档”的闭环，而不是一段长 prompt。</li>
+      <li>让 Codex 做大工程时，README 里要写清楚模型参与边界、测试条件、非目标和人工验证步骤。</li>
+      <li>安全审计适合让 Codex 生成组合假设，再用可复现实验、补丁链接和披露时间线验证。</li>
+      <li>本地 app-builder 的关键不是模板数量，而是让 agent 只读取与当前任务相关的设计和产品上下文。</li>
+      <li>社区质疑不是负面噪声；对于 Codex 产物，质疑往往提示读者该重点检查的工程边界。</li>
+    </ol></section>
+
+    <section class="block"><h2>来源列表</h2><ol class="sources"><li><a href="https://old.reddit.com/r/OpenaiCodex/comments/1u7boex/i_made_a_codex_skill_for_consistent_article/" target="_blank" rel="noopener noreferrer">reddit r/OpenaiCodex: Visual IP Illustrations</a></li><li><a href="https://www.reddit.com/gallery/1u7boex" target="_blank" rel="noopener noreferrer">Reddit gallery: Visual IP Illustrations</a></li><li><a href="https://github.com/yangchuansheng/visual-ip-illustrations" target="_blank" rel="noopener noreferrer">GitHub: visual-ip-illustrations</a></li><li><a href="https://skills.sh/yangchuansheng/visual-ip-illustrations" target="_blank" rel="noopener noreferrer">skills.sh: visual-ip-illustrations</a></li><li><a href="https://lobste.rs/s/adztcr/nordstjernen_web_browser" target="_blank" rel="noopener noreferrer">Lobsters: Nordstjernen Web Browser</a></li><li><a href="https://www.nordstjernen.org/" target="_blank" rel="noopener noreferrer">Nordstjernen 官网</a></li><li><a href="https://github.com/nordstjernen-web/nordstjernen" target="_blank" rel="noopener noreferrer">GitHub: nordstjernen-web/nordstjernen</a></li><li><a href="https://blog.calif.io/p/codex-discovered-a-hidden-http2-bomb" target="_blank" rel="noopener noreferrer">Calif: Codex Discovered a Hidden HTTP/2 Bomb</a></li><li><a href="https://lobste.rs/s/cnbztx/codex_discovered_hidden_http_2_bomb" target="_blank" rel="noopener noreferrer">Lobsters: Codex Discovered a Hidden HTTP/2 Bomb</a></li><li><a href="https://github.com/califio/publications/tree/main/MADBugs/http2-bomb" target="_blank" rel="noopener noreferrer">GitHub: HTTP/2 Bomb PoCs</a></li><li><a href="https://old.reddit.com/r/OpenaiCodex/comments/1u59amb/opensource_localfirst_appbuilder_brain_like/" target="_blank" rel="noopener noreferrer">reddit r/OpenaiCodex: Buildable</a></li><li><a href="https://github.com/suntay44/buildable-plugin-skills" target="_blank" rel="noopener noreferrer">GitHub: buildable-plugin-skills</a></li><li><a href="https://news.ycombinator.com/item?id=48453618" target="_blank" rel="noopener noreferrer">HN: USTP and USSH</a></li><li><a href="https://github.com/x1colegal/USTP-Secure" target="_blank" rel="noopener noreferrer">GitHub: USTP-Secure</a></li><li><a href="https://github.com/x1colegal/USSH" target="_blank" rel="noopener noreferrer">GitHub: USSH</a></li><li><a href="https://datatracker.ietf.org/doc/draft-x1co-ustps/" target="_blank" rel="noopener noreferrer">IETF Datatracker: draft-x1co-ustps</a></li><li><a href="https://x.com/WellerOlaf" target="_blank" rel="noopener noreferrer">X profile: Olaf Weller search-index source</a></li><li><a href="https://internetcleanup.foundation/2026/05/european-governments-3000-tracking-sites-1000-phpmyadmins-and-99pct-poorly-encrypted-email-introducing-securitybaseline-eu/" target="_blank" rel="noopener noreferrer">Internet Cleanup Foundation: SecurityBaseline.eu launch article</a></li><li><a href="https://old.reddit.com/r/OpenaiCodex/rising/" target="_blank" rel="noopener noreferrer">reddit r/OpenaiCodex rising</a></li><li><a href="https://lobste.rs/search?q=codex&amp;what=stories&amp;order=newest" target="_blank" rel="noopener noreferrer">Lobsters search: codex stories</a></li></ol></section>
+
+    <section class="block"><h2>图片自检清单</h2><div class="table-wrap"><table><thead><tr><th>文件</th><th>尺寸</th><th>获取方式</th><th>证明内容</th><th>结果</th></tr></thead><tbody><tr><td>visual-ip-illustrations-hero.gif</td><td>1280x720</td><td>下载</td><td>GitHub README hero GIF</td><td><span class="status-main">通过</span></td></tr><tr><td>nordstjernen-browser-screenshot.png</td><td>1010x757</td><td>下载</td><td>官网产品截图</td><td><span class="status-main">通过</span></td></tr><tr><td>http2-bomb-demo.gif</td><td>1920x1080</td><td>下载</td><td>Substack demo GIF</td><td><span class="status-main">通过</span></td></tr><tr><td>buildable-web-dashboard.png</td><td>2560x1720</td><td>下载</td><td>GitHub README 生成截图</td><td><span class="status-main">通过</span></td></tr><tr><td>ustps-github-readme.png</td><td>1365x950</td><td>页面截图</td><td>GitHub README</td><td><span class="status-main">通过</span></td></tr></tbody></table></div><p class="foot">检索时间：2026-06-17 23:35 至 2026-06-18 00:30 +08，报告日期按 automation current_date 2026-06-17 归档。主要搜索平台：Hacker News/Algolia、reddit/old.reddit、X/Twitter 搜索索引、GitHub、Lobsters、作者博客、官网、IETF Datatracker。访问限制：reddit JSON 403；X 直接页面多受登录/动态加载限制；HN curl 曾遇到 429；SecurityBaseline 站点需要 JavaScript。未确认边界：未运行第三方代码、未复测漏洞 PoC、未编译浏览器或协议项目、未核验 X 私有上下文。图片自检结果：5 个主图均存在、非空、尺寸合理，Pillow 首帧亮度/方差正常，人工目检无黑屏、白屏或错误页。</p></section>
+  </main>
+</body>
+</html>

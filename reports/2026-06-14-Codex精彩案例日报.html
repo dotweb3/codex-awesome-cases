@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-06-14 Codex 精彩案例日报</title>
+  <style>
+    :root {
+      --bg: #eef4f2;
+      --paper: #ffffff;
+      --ink: #18211f;
+      --muted: #66706c;
+      --line: #d5e1dd;
+      --green: #0f766e;
+      --teal: #0d9488;
+      --blue: #2563eb;
+      --violet: #7c3aed;
+      --orange: #c2410c;
+      --red: #be123c;
+      --soft-green: #dff1ec;
+      --soft-blue: #e5ecff;
+      --soft-orange: #f8e7d6;
+      --soft-gray: #edf2f1;
+      --shadow: 0 20px 45px rgba(21, 54, 48, .08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.62;
+    }
+    a { color: #0f5f96; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 20px 54px; }
+    .hero {
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(241,248,246,.92));
+      box-shadow: var(--shadow);
+      padding: 30px;
+      border-radius: 18px;
+    }
+    .eyebrow { color: var(--orange); font-weight: 700; letter-spacing: .04em; font-size: 13px; }
+    h1 { margin: 8px 0 10px; font-size: clamp(30px, 5vw, 54px); line-height: 1.05; letter-spacing: 0; }
+    h2 { margin: 34px 0 14px; font-size: clamp(22px, 3vw, 30px); letter-spacing: 0; }
+    h3 { margin: 0 0 8px; font-size: clamp(20px, 2.6vw, 28px); letter-spacing: 0; }
+    h4 { margin: 0 0 8px; font-size: 16px; letter-spacing: 0; }
+    p { margin: 0 0 12px; }
+    .lead { max-width: 850px; color: #3b4642; font-size: 17px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 22px;
+    }
+    .metric {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+    .metric b { display: block; font-size: 22px; line-height: 1.1; }
+    .metric span { color: var(--muted); font-size: 13px; }
+    .section {
+      margin-top: 24px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .88);
+      box-shadow: 0 12px 32px rgba(21, 54, 48, .05);
+      padding: 22px;
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .note {
+      border: 1px solid var(--line);
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 14px;
+    }
+    .note strong { display: block; margin-bottom: 6px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 14px; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid rgba(0,0,0,.08);
+      background: var(--soft-gray);
+      color: #2e3633;
+      white-space: nowrap;
+    }
+    .tag.hn { background: var(--soft-orange); color: #8a3510; }
+    .tag.reddit { background: #ffe3d3; color: #9a3412; }
+    .tag.x { background: #e8edf7; color: #24324b; }
+    .tag.github { background: #e8e3dc; color: #313131; }
+    .tag.official { background: var(--soft-blue); color: #1d4ed8; }
+    .tag.video { background: #f2e7ff; color: #6d28d9; }
+    .case {
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .case-head {
+      display: flex;
+      gap: 18px;
+      justify-content: space-between;
+      padding: 18px 18px 0;
+    }
+    .score {
+      min-width: 104px;
+      height: 104px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #fff, #eef6f3);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-weight: 800;
+      color: var(--green);
+    }
+    .score span { display: block; color: var(--muted); font-size: 12px; font-weight: 600; }
+    .case-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+      gap: 18px;
+      padding: 16px 18px 18px;
+      align-items: start;
+    }
+    .visual {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #eef3f4;
+      overflow: hidden;
+    }
+    .visual-frame {
+      aspect-ratio: 16 / 10;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: #e5ecee;
+    }
+    .visual-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .caption { padding: 10px 12px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--line); }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .info {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      background: #f8fbfa;
+    }
+    .info p { color: #39433f; margin: 0; font-size: 14px; }
+    .evidence { margin: 8px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+    .evidence li { padding-left: 14px; position: relative; font-size: 14px; color: #39433f; }
+    .evidence li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--teal); position: absolute; left: 0; top: .72em; }
+    .bar {
+      height: 9px;
+      background: #e7dfd4;
+      border-radius: 999px;
+      overflow: hidden;
+      width: 108px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    .bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--teal), var(--blue)); border-radius: 999px; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: #ffffff; }
+    table { width: 100%; border-collapse: collapse; min-width: 860px; }
+    th, td { padding: 11px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; font-size: 14px; }
+    th { background: #e6efec; color: #3d4542; font-size: 12px; text-transform: uppercase; letter-spacing: .03em; }
+    tr:last-child td { border-bottom: 0; }
+    .status-main { color: var(--green); font-weight: 800; }
+    .status-watch { color: var(--orange); font-weight: 800; }
+    .status-low { color: var(--muted); font-weight: 700; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .compact-list { margin: 0; padding-left: 18px; color: #39433f; }
+    .compact-list li { margin-bottom: 7px; }
+    .source-list { columns: 2; column-gap: 30px; padding-left: 18px; }
+    .source-list li { break-inside: avoid; margin: 0 0 8px; }
+    .foot {
+      margin-top: 22px;
+      padding: 16px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+    }
+    @media (max-width: 860px) {
+      .wrap { padding: 18px 12px 42px; }
+      .hero, .section { padding: 18px; border-radius: 14px; }
+      .meta-grid, .summary-grid, .two-col, .case-body, .info-grid { grid-template-columns: 1fr; }
+      .case-head { flex-direction: column; }
+      .score { width: 100%; height: auto; min-height: 74px; }
+      .source-list { columns: 1; }
+      table { min-width: 760px; }
+    }
+    @media print {
+      body { background: white; }
+      .wrap { max-width: none; padding: 0; }
+      .hero, .section, .case { box-shadow: none; break-inside: avoid; }
+      a { color: #111; text-decoration: underline; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <div class="eyebrow">每日 Codex 社区图文 HTML 汇报</div>
+      <h1>Codex 精彩案例日报</h1>
+      <p class="lead">报告日期：2026-06-14（Asia/Kuching）。本期优先从 Hacker News、Reddit、X 搜索索引中找新近讨论，再用 GitHub、作者产品页、OpenAI 官方案例和视频做交叉证明。主榜避开了 automation memory 中今天稍早已收录的 5 个案例。</p>
+      <div class="meta-grid">
+        <div class="metric"><b>5</b><span>主案例，均有本地图像</span></div>
+        <div class="metric"><b>20</b><span>候选内部评分</span></div>
+        <div class="metric"><b>4/5</b><span>主案例来自 HN/Reddit 发现</span></div>
+        <div class="metric"><b>15:37</b><span>检索时间（+08）</span></div>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2>今日趋势摘要</h2>
+      <div class="summary-grid">
+        <div class="note"><strong>手机与远程控制继续升温</strong>HN 连续出现把 Codex/Claude/Gemini 代理搬到手机浏览器、Telegram 或 iMessage 的工具，重点不是“写代码”，而是把 agent session 变成可调度、可追踪的队列。</div>
+        <div class="note"><strong>Codex 日志变成新数据源</strong>AgentGraphed 直接读取 <code>~/.codex/sessions/</code>，把“过去的代理对话”整理成历史、搜索、上下文复用和统计面板。</div>
+        <div class="note"><strong>成本与上下文治理进入产品化</strong>Slipstream 和 Cost.dev 这类工具把 token、infra 费用、上下文压缩做成代理工作流的控制层，说明 Codex 生态开始从“会写”走向“可运营”。</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>来源与筛选说明</h2>
+      <div class="two-col">
+        <div class="note">
+          <h4>检索路径</h4>
+          <p>HN 使用 Algolia/API 与站内帖子核验；Reddit 以 web 搜索索引和可打开帖子摘要为主；X 页面直接访问受限，因此仅把可检索的 X 片段作为辅助，不单独作为主证据。</p>
+        </div>
+        <div class="note">
+          <h4>入选门槛</h4>
+          <p>内部评分按时效性 25、脑洞/惊喜度 20、Codex 参与度 20、可视化证据 15、社区讨论热度 10、可借鉴性 10。低于 70 分不进主榜；证据不足或图像不稳定则进观察区。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>主案例卡片</h2>
+
+      <article class="case">
+        <div class="case-head">
+          <div>
+            <h3>Circus Chief：从手机调度 Claude Code、Codex 和 Gemini 的代理控制台</h3>
+            <div class="tags">
+              <span class="tag hn">HN</span><span class="tag github">GitHub</span><span class="tag">非当天新增：2026-06-02</span>
+            </div>
+            <p>HN 作者把 Circus Chief 描述为面向小屏幕的 coding agent session 控制面板；帖子披露它支持 OpenAI Codex agents，并且作者已经 dogfood 到 2,184 次 agent session，其中 363 次是 Codex session。</p>
+          </div>
+          <div class="score">92<span>入选评分</span></div>
+        </div>
+        <div class="case-body">
+          <figure class="visual">
+            <div class="visual-frame"><img src="assets/2026-06-14/circus-chief-session-list.png" alt="Circus Chief session dashboard screenshot"></div>
+            <figcaption class="caption">图片来源：Circus Chief GitHub README；获取方式：下载 README 公开 PNG；原始链接：<a href="https://raw.githubusercontent.com/ferrislucas/Circus-Chief/main/docs/screenshots/02-session-list-agent-control-desktop.png">GitHub raw</a>。</figcaption>
+          </figure>
+          <div class="info-grid">
+            <div class="info"><h4>为什么值得看</h4><p>它把多个代理会话、PR、计划、命令和工作树隔离放进同一个移动友好控制台，适合观察“一个人同时管理多条 agent 工作流”的形态。</p></div>
+            <div class="info"><h4>Codex 具体做了什么</h4><p>Codex 是一等 agent 类型；HN 帖子称项目构建过程中加入 Codex，并统计出 363 个 Codex sessions。</p></div>
+            <div class="info"><h4>最有脑洞/实用点</h4><p>代理不仅被管理，还能操作 Circus Chief 自己：生成后续 session、安排任务、操作看板和响应结果。</p></div>
+            <div class="info"><h4>可借鉴做法</h4><p>给每次 agent run 独立 worktree、可链式模板、可重试调度和共享 canvas，让长时程任务有“操作台”而不是散落聊天。</p></div>
+          </div>
+          <div>
+            <h4>证据点</h4>
+            <ul class="evidence">
+              <li><a href="https://news.ycombinator.com/item?id=48370360">Show HN 帖子</a>：列出 session 数、PR 数和 Codex session 统计。</li>
+              <li><a href="https://github.com/ferrislucas/Circus-Chief">GitHub README</a>：包含功能截图、安装命令和 Codex/Gemini/Claude 支持说明。</li>
+            </ul>
+            <h4>不确定点</h4>
+            <p>HN 评论数不高；项目是否适合团队生产使用仍要看鉴权、日志隐私和长期维护。</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-head">
+          <div>
+            <h3>AgentGraphed：把本地 Codex CLI 会话做成历史、搜索和成本仪表盘</h3>
+            <div class="tags">
+              <span class="tag hn">HN</span><span class="tag github">GitHub</span><span class="tag">非当天新增：2026-06-09</span>
+            </div>
+            <p>Show HN 作者痛点很具体：Claude/Codex 很强，但恢复旧 session、找历史上下文和向别人展示使用量都很麻烦。AgentGraphed 读取本地日志，生成可搜索的本地 SQLite 仪表盘。</p>
+          </div>
+          <div class="score">88<span>入选评分</span></div>
+        </div>
+        <div class="case-body">
+          <figure class="visual">
+            <div class="visual-frame"><img src="assets/2026-06-14/agentgraphed-dashboard.png" alt="AgentGraphed dashboard screenshot"></div>
+            <figcaption class="caption">图片来源：AgentGraphed GitHub README；获取方式：下载 README 公开 PNG；原始链接：<a href="https://raw.githubusercontent.com/sudomichael/agentgraphed/main/docs/screenshots/dashboard.png">GitHub raw</a>。</figcaption>
+          </figure>
+          <div class="info-grid">
+            <div class="info"><h4>为什么值得看</h4><p>它不是又一个聊天壳，而是把 agent 的“工作记忆”变成可检索、可恢复、可分享的数据层。</p></div>
+            <div class="info"><h4>Codex 具体做了什么</h4><p>README 明确支持 Codex CLI，并读取 <code>~/.codex/sessions/YYYY/MM/DD/*.jsonl</code> 作为数据源。</p></div>
+            <div class="info"><h4>最有脑洞/实用点</h4><p>从任意旧 session 一键生成新聊天 primer，把“我记得之前问过”变成可复用上下文。</p></div>
+            <div class="info"><h4>可借鉴做法</h4><p>把 agent 日志当产品数据库处理：索引、分类、成本估算、时间线、项目聚合，本地优先，AI 摘要可选。</p></div>
+          </div>
+          <div>
+            <h4>证据点</h4>
+            <ul class="evidence">
+              <li><a href="https://news.ycombinator.com/item?id=48462489">Show HN 帖子</a>：作者列出恢复 session、搜索历史、分享统计等问题与解决方式。</li>
+              <li><a href="https://github.com/sudomichael/agentgraphed">GitHub README</a> 与 <a href="https://agentgraphed.com/">产品页</a>：说明本地 SQLite、Codex 日志目录和截图。</li>
+            </ul>
+            <h4>不确定点</h4>
+            <p>自动分类和生成上下文需要自带 LLM key；隐私边界取决于用户是否开启这些可选功能。</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-head">
+          <div>
+            <h3>Slipstream：给 Codex/Claude Code/Cursor 做上下文压缩与 token 仪表盘</h3>
+            <div class="tags">
+              <span class="tag reddit">Reddit</span><span class="tag github">Product</span><span class="tag">新近：约 2 天前</span>
+            </div>
+            <p>Reddit r/SideProject 新帖把 Slipstream 定位成“一键安装、看得见节省效果”的上下文压缩桌面应用。产品页明确写支持 Claude Code、Codex、Cursor、Aider 和 Copilot，并声称 60–95% token 降幅。</p>
+          </div>
+          <div class="score">83<span>入选评分</span></div>
+        </div>
+        <div class="case-body">
+          <figure class="visual">
+            <div class="visual-frame"><img src="assets/2026-06-14/slipstream-dashboard.png" alt="Slipstream dashboard screenshot"></div>
+            <figcaption class="caption">图片来源：Slipstream 产品页；获取方式：页面截图（Playwright 调用本机 Chrome 截取 dashboard 区域）；原始链接：<a href="https://slipstream.li/">slipstream.li</a>。</figcaption>
+          </figure>
+          <div class="info-grid">
+            <div class="info"><h4>为什么值得看</h4><p>它击中代理工具的真实运营问题：长上下文、高 token、不可见的成本。截图里把 processed、saved、cost reduction 直接做成控制面板。</p></div>
+            <div class="info"><h4>Codex 具体做了什么</h4><p>Codex 是目标 agent 之一；Slipstream 在模型调用前压缩 agent context，属于 Codex 使用链路上的成本/上下文治理工具。</p></div>
+            <div class="info"><h4>最有脑洞/实用点</h4><p>用桌面代理层接入多种 agent，而不是要求每个项目单独手工配置 token 节省策略。</p></div>
+            <div class="info"><h4>可借鉴做法</h4><p>把“省 token”做成可审计的产品体验：按 agent、模型、日期展示节省量和成本估算，降低团队采用门槛。</p></div>
+          </div>
+          <div>
+            <h4>证据点</h4>
+            <ul class="evidence">
+              <li><a href="https://www.reddit.com/r/SideProject/comments/1u3b6h9/i_built_an_app_that_makes_claude_code_and_codex/">Reddit r/SideProject 帖</a>：搜索索引显示发布约 2 天前，标题直接提到 Claude Code 和 Codex。</li>
+              <li><a href="https://slipstream.li/">产品页</a>：meta description 与页面文案写明支持 Codex，并展示 token/cost 仪表盘。</li>
+              <li><a href="https://github.com/chopratejas/headroom">Headroom GitHub</a>：产品页标注 built on headroom，作为底层思路补充。</li>
+            </ul>
+            <h4>不确定点</h4>
+            <p>Reddit 原帖 JSON 直连被网络安全页阻断，热度只能通过搜索索引和可见摘要判断；token 降幅尚未独立复测。</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-head">
+          <div>
+            <h3>Lark Bridge：不用 ChatGPT mobile，直接从 Telegram/iMessage 控制 Codex CLI</h3>
+            <div class="tags">
+              <span class="tag hn">HN</span><span class="tag github">GitHub</span><span class="tag">当天发现：2026-06-13 UTC</span>
+            </div>
+            <p>OpenAI 已有移动控制路径，但 Lark 的切入点更朴素：让手机里已有的聊天应用变成 Codex CLI 入口。HN 作者称它连接 Codex CLI 到 Telegram 或 iMessage，用于暂停、停止、重试、查状态等控制。</p>
+          </div>
+          <div class="score">80<span>入选评分</span></div>
+        </div>
+        <div class="case-body">
+          <figure class="visual">
+            <div class="visual-frame"><img src="assets/2026-06-14/lark-github-readme.png" alt="Lark Bridge GitHub README screenshot"></div>
+            <figcaption class="caption">图片来源：Lark GitHub README；获取方式：页面截图（GitHub README 区域）；原始链接：<a href="https://github.com/AhmadTheTech/lark">github.com/AhmadTheTech/lark</a>。</figcaption>
+          </figure>
+          <div class="info-grid">
+            <div class="info"><h4>为什么值得看</h4><p>它把 Codex CLI 降到“发消息给 bot”这种日常入口，适合碎片时间远程推进本地 agent 任务。</p></div>
+            <div class="info"><h4>Codex 具体做了什么</h4><p>README 写明当前 build 以 OpenAI Codex CLI 作为 active AI backend，消息被转发给配置好的 Codex CLI，再把结果发回同一聊天。</p></div>
+            <div class="info"><h4>最有脑洞/实用点</h4><p>iMessage 支持让 macOS 用户可以不安装新 mobile app，只用 Messages.app 的 AppleScript 轮询。</p></div>
+            <div class="info"><h4>可借鉴做法</h4><p>把控制命令设计成聊天命令：<code>/pause</code>、<code>/resume</code>、<code>/stop</code>、<code>/retry</code>、<code>/clear</code>，降低远程控制心智负担。</p></div>
+          </div>
+          <div>
+            <h4>证据点</h4>
+            <ul class="evidence">
+              <li><a href="https://news.ycombinator.com/item?id=48516399">Show HN 帖子</a>：2026-06-13 发布，说明不依赖 ChatGPT mobile app 的动机。</li>
+              <li><a href="https://github.com/AhmadTheTech/lark">GitHub README</a>：列出 Codex CLI、Telegram、iMessage 支持和命令。</li>
+            </ul>
+            <h4>不确定点</h4>
+            <p>HN 评论数为 0，项目仍早期；iMessage 自动化可靠性取决于 macOS 权限和 Messages.app 状态。</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-head">
+          <div>
+            <h3>黑洞模拟：Codex 参与生成、测试、改进天体物理数值算法</h3>
+            <div class="tags">
+              <span class="tag official">OpenAI</span><span class="tag video">YouTube</span><span class="tag">新近：2026-06-11</span>
+            </div>
+            <p>本期最“越界”的案例来自 OpenAI 与 University of Arizona 的交叉来源：Chi-kwan “CK” Chan 用 Codex 辅助生成和测试模拟黑洞周围电子、离子运动的数值方法，把原本缓慢的算法探索压缩到更短周期。</p>
+          </div>
+          <div class="score">90<span>入选评分</span></div>
+        </div>
+        <div class="case-body">
+          <figure class="visual">
+            <div class="visual-frame"><img src="assets/2026-06-14/blackhole-codex-youtube.jpg" alt="Creating black hole simulations with Codex video cover"></div>
+            <figcaption class="caption">图片来源：OpenAI 官方 YouTube 视频封面；获取方式：下载视频封面；原始链接：<a href="https://www.youtube.com/watch?v=4XSI4SClBMA">Creating black hole simulations with Codex</a>。</figcaption>
+          </figure>
+          <div class="info-grid">
+            <div class="info"><h4>为什么值得看</h4><p>它不是常见 CRUD 或脚手架，而是把 Codex 放进科研算法探索：产生候选方案、测试、筛选，再由研究者判断。</p></div>
+            <div class="info"><h4>Codex 具体做了什么</h4><p>OpenAI 索引摘要写明 Codex 帮助 Chan refine and test algorithms；UArizona 也写到用 AI-assisted workflows 生成、测试、改进数值方法。</p></div>
+            <div class="info"><h4>最有脑洞/实用点</h4><p>“写代码”变成“探索算法空间”：Codex 不只是实现已知方案，而是给研究者提供可检验候选。</p></div>
+            <div class="info"><h4>可借鉴做法</h4><p>把 agent 输出限定为可运行、可比较、可复现实验；让领域专家审算法含义，Codex 负责高通量实现与测试。</p></div>
+          </div>
+          <div>
+            <h4>证据点</h4>
+            <ul class="evidence">
+              <li><a href="https://openai.com/index/using-codex-to-simulate-black-holes/">OpenAI 案例页</a> 与 <a href="https://www.youtube.com/watch?v=4XSI4SClBMA">官方视频</a>：描述 Codex 用于黑洞模拟算法探索。</li>
+              <li><a href="https://astro.arizona.edu/news/university-arizona-astrophysicist-chi-kwan-chan-uses-ai-advance-black-hole-simulation-research">University of Arizona 新闻</a>：独立复述 AI/Codex 辅助生成、测试、改进数值方法。</li>
+            </ul>
+            <h4>不确定点</h4>
+            <p>OpenAI 原文页面在本地无头访问触发 Cloudflare，正文信息来自搜索索引与可访问的二级来源交叉验证。</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section">
+      <h2>候选评分表</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>候选</th><th>来源</th><th>时间</th><th>评分</th><th>状态</th><th>取舍理由</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Circus Chief</td><td>HN + GitHub</td><td>2026-06-02</td><td><span class="bar"><i style="width:92%"></i></span>92</td><td class="status-main">主榜</td><td>真实 dogfood 数据、Codex session 统计、截图充分。</td></tr>
+            <tr><td>黑洞模拟 with Codex</td><td>OpenAI + YouTube + UArizona</td><td>2026-06-11</td><td><span class="bar"><i style="width:90%"></i></span>90</td><td class="status-main">主榜</td><td>科研算法探索场景罕见，官方视频与大学来源互证。</td></tr>
+            <tr><td>AgentGraphed</td><td>HN + GitHub + 产品页</td><td>2026-06-09</td><td><span class="bar"><i style="width:88%"></i></span>88</td><td class="status-main">主榜</td><td>直接读取 Codex CLI 日志，截图与本地优先说明完整。</td></tr>
+            <tr><td>Notion AI Voice Input</td><td>OpenAI + YouTube + LinkedIn</td><td>2026-06-09</td><td><span class="bar"><i style="width:87%"></i></span>87</td><td class="status-watch">强候选</td><td>2 周到 3 小时的案例很强，但主图只有官方视频通用封面，本期不挤占社区主榜。</td></tr>
+            <tr><td>Nextdoor Opportunity Alerts 地图</td><td>OpenAI + 搜索索引</td><td>2026-06-09</td><td><span class="bar"><i style="width:86%"></i></span>86</td><td class="status-watch">强候选</td><td>一名工程师跨 mobile/frontend/backend 的叙事好，但缺少可用产品截图。</td></tr>
+            <tr><td>SideProject mini-hack Chrome extension</td><td>Reddit + X 搜索片段</td><td>约 2026-06-10</td><td><span class="bar"><i style="width:84%"></i></span>84</td><td class="status-watch">观察</td><td>“30 分钟赢 2.5k Codex credits”很新鲜，但视频/代码图像不可稳定获取。</td></tr>
+            <tr><td>Slipstream</td><td>Reddit + 产品页</td><td>约 2026-06-12</td><td><span class="bar"><i style="width:83%"></i></span>83</td><td class="status-main">主榜</td><td>社区新帖 + 产品页明确支持 Codex + dashboard 可截图。</td></tr>
+            <tr><td>Lark Bridge</td><td>HN + GitHub</td><td>2026-06-13</td><td><span class="bar"><i style="width:80%"></i></span>80</td><td class="status-main">主榜</td><td>当天 HN 新发，Codex CLI 手机控制入口具体，但社区热度偏低。</td></tr>
+            <tr><td>Braintrust preview branches</td><td>OpenAI</td><td>2026-05-29</td><td><span class="bar"><i style="width:79%"></i></span>79</td><td class="status-watch">非 14 天主线</td><td>客户分支预览分钟级很实用，但时间较早且非社区发现。</td></tr>
+            <tr><td>Cost.dev agent cost-aware CLI</td><td>HN + 产品页</td><td>2026-06-04</td><td><span class="bar"><i style="width:78%"></i></span>78</td><td class="status-watch">候选</td><td>HN 评论较多，Codex 作为目标 agent；更偏 infra 成本工具。</td></tr>
+            <tr><td>idea-to-ship skills</td><td>GitHub</td><td>2026-06-09</td><td><span class="bar"><i style="width:75%"></i></span>75</td><td class="status-watch">候选</td><td>Codex/Claude skills 和 13.5 小时案例有料，但 Codex 实际参与度边界不够清晰。</td></tr>
+            <tr><td>CodeSeek</td><td>GitHub</td><td>2026-06-03</td><td><span class="bar"><i style="width:74%"></i></span>74</td><td class="status-watch">候选</td><td>给 Codex CLI 注册 MCP code intelligence，实用但不是完成案例。</td></tr>
+            <tr><td>CodexMonitor</td><td>GitHub</td><td>近期更新</td><td><span class="bar"><i style="width:74%"></i></span>74</td><td class="status-watch">候选</td><td>Codex app-server Tauri 控制台截图好，但与今天 memory 已收录远控主题重叠。</td></tr>
+            <tr><td>ATIF artifact converter</td><td>HN + GitHub</td><td>2026-06-06</td><td><span class="bar"><i style="width:72%"></i></span>72</td><td class="status-watch">候选</td><td>可把 Codex CLI logs 转 ATIF，证据足但展示性弱。</td></tr>
+            <tr><td>GEEMu Skill</td><td>GitHub</td><td>2026-06-05</td><td><span class="bar"><i style="width:72%"></i></span>72</td><td class="status-watch">候选</td><td>面向 GEE/geemap 的 Codex skill 很专业，但缺少社区讨论与成品证明。</td></tr>
+            <tr><td>Codex-share</td><td>Reddit + GitHub</td><td>约 2 个月前</td><td><span class="bar"><i style="width:66%"></i></span>66</td><td class="status-low">未入选</td><td>有截图但太旧，且 memory 之后需要新鲜度。</td></tr>
+            <tr><td>multiplex.sh 手机面板</td><td>Reddit + 产品页</td><td>约 3 周前</td><td><span class="bar"><i style="width:68%"></i></span>68</td><td class="status-low">未入选</td><td>方向相近但超出 14 天窗口，不作为主榜。</td></tr>
+            <tr><td>Warp Codex CLI setup</td><td>作者教程</td><td>约 2026-06-11</td><td><span class="bar"><i style="width:58%"></i></span>58</td><td class="status-low">未入选</td><td>偏安装教程，不是“完成的精彩案例”。</td></tr>
+            <tr><td>Ask HN: What coding agents are you using?</td><td>HN</td><td>2026-06-11</td><td><span class="bar"><i style="width:55%"></i></span>55</td><td class="status-low">未入选</td><td>讨论有参考价值，但不是具体 Codex 案例。</td></tr>
+            <tr><td>Reddit/X 零散 “built with Codex” 片段</td><td>X/Reddit 搜索</td><td>近 7 天</td><td><span class="bar"><i style="width:52%"></i></span>52</td><td class="status-low">未入选</td><td>X 访问受限，无法形成两个稳定证据点。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>无图/待核实观察区</h2>
+      <div class="two-col">
+        <div class="note">
+          <h4>Reddit mini-hack Chrome extension</h4>
+          <p>搜索索引显示作者称用 Codex 不到 1 小时做出面向儿童网页互动/专注工具，并赢得 Codex credits；X 片段也有“won the Codex event's mini hack”交叉信号。问题是 Reddit 视频加载失败、X 原帖直接访问受限、开源链接未稳定定位，暂不进主榜。</p>
+        </div>
+        <div class="note">
+          <h4>Notion 与 Nextdoor 官方案例</h4>
+          <p>两个都是强案例：Notion 的 AI Voice Input 从两周降到三小时，Nextdoor 的地图功能跨多端交付。但本期主榜已经有两个非 GitHub 工程落地案例，且两者缺少可直接下载的具体产品图，先放评分表。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>今日灵感清单</h2>
+      <ul class="compact-list">
+        <li>给 Codex session 建一个“控制面板”，而不是只依赖终端滚屏：状态、PR、工作树、后续任务都应结构化。</li>
+        <li>把 <code>~/.codex/sessions/</code> 当作产品数据源：搜索、复盘、恢复上下文、成本估算都能从这里长出来。</li>
+        <li>移动端 Codex 不一定要新 app，Telegram/iMessage 这种已存在入口也能成为轻量控制层。</li>
+        <li>对长上下文代理，成本优化必须可见：只说“压缩”不够，应该能展示每个 agent/model 的节省证据。</li>
+        <li>在科研或复杂算法场景里，让 Codex 产出“可检验候选”，比让它直接给最终答案更稳。</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>来源列表</h2>
+      <ol class="source-list">
+        <li><a href="https://news.ycombinator.com/item?id=48370360">HN: Show HN Circus Chief</a></li>
+        <li><a href="https://github.com/ferrislucas/Circus-Chief">GitHub: Circus Chief</a></li>
+        <li><a href="https://news.ycombinator.com/item?id=48462489">HN: Show HN AgentGraphed</a></li>
+        <li><a href="https://github.com/sudomichael/agentgraphed">GitHub: AgentGraphed</a></li>
+        <li><a href="https://agentgraphed.com/">AgentGraphed product site</a></li>
+        <li><a href="https://www.reddit.com/r/SideProject/comments/1u3b6h9/i_built_an_app_that_makes_claude_code_and_codex/">Reddit: Slipstream post</a></li>
+        <li><a href="https://slipstream.li/">Slipstream product site</a></li>
+        <li><a href="https://github.com/chopratejas/headroom">GitHub: Headroom</a></li>
+        <li><a href="https://news.ycombinator.com/item?id=48516399">HN: Show HN Lark</a></li>
+        <li><a href="https://github.com/AhmadTheTech/lark">GitHub: Lark Bridge</a></li>
+        <li><a href="https://openai.com/index/using-codex-to-simulate-black-holes/">OpenAI: black-hole simulations with Codex</a></li>
+        <li><a href="https://www.youtube.com/watch?v=4XSI4SClBMA">YouTube: Creating black hole simulations with Codex</a></li>
+        <li><a href="https://astro.arizona.edu/news/university-arizona-astrophysicist-chi-kwan-chan-uses-ai-advance-black-hole-simulation-research">University of Arizona: CK Chan uses AI to advance simulations</a></li>
+        <li><a href="https://openai.com/index/notion/">OpenAI: What Codex unlocks for Notion</a></li>
+        <li><a href="https://openai.com/index/nextdoor/">OpenAI: Nextdoor uses Codex</a></li>
+        <li><a href="https://news.ycombinator.com/item?id=48397148">HN: Cost.dev</a></li>
+        <li><a href="https://news.ycombinator.com/item?id=48422341">HN: ATIF artifacts</a></li>
+        <li><a href="https://github.com/CodeBendKit/codeseek">GitHub: CodeSeek</a></li>
+        <li><a href="https://github.com/sadassimov/geemu-skill">GitHub: GEEMu Skill</a></li>
+        <li><a href="https://github.com/Dimillian/CodexMonitor">GitHub: CodexMonitor</a></li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <h2>图片自检清单</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>图片</th><th>尺寸</th><th>大小</th><th>检查结论</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>circus-chief-session-list.png</td><td>1440 × 1100</td><td>132,634 bytes</td><td>存在、非空、可读，不是黑屏/白屏/错误页。</td></tr>
+            <tr><td>agentgraphed-dashboard.png</td><td>3196 × 1676</td><td>516,296 bytes</td><td>存在、非空、dashboard 内容清晰。</td></tr>
+            <tr><td>slipstream-dashboard.png</td><td>1056 × 788</td><td>77,568 bytes</td><td>存在、非空，显示 token/cost dashboard。</td></tr>
+            <tr><td>lark-github-readme.png</td><td>838 × 508</td><td>57,881 bytes</td><td>存在、非空，截到 Codex CLI 与 Telegram/iMessage 说明。</td></tr>
+            <tr><td>blackhole-codex-youtube.jpg</td><td>1280 × 720</td><td>194,194 bytes</td><td>存在、非空，官方视频封面清晰。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="foot">
+        检索时间：2026-06-14 15:37:21 +08。主要搜索平台：Hacker News/Algolia、Reddit 搜索索引、X/Twitter 搜索索引、GitHub raw/README、OpenAI 官方页面与 YouTube。访问限制：Reddit 直连 JSON 在本环境返回 network security block；X 页面直接访问受限/空白，因此 X 只作为辅助线索；OpenAI 原文页面 curl/无头截图会触发 Cloudflare，正文采用搜索索引与可访问二级来源交叉验证。未确认边界：社区热度以可见分数、评论数和搜索片段为准；未复测工具真实 token 节省或生产可靠性。图片自检结果：本 HTML 中 5 个 <code>&lt;img&gt;</code> 均通过存在性、尺寸和人工可视检查。
+      </div>
+    </section>
+  </main>
+</body>
+</html>
