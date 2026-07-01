@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2026-07-01 Codex 精彩案例日报</title>
+  <meta name="description" content="过去一周 OpenAI Codex、Codex CLI 与 Codex 生态工具的中文图文日报。" />
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f4f7f2;
+      --ink: #10201d;
+      --muted: #5f6f6b;
+      --line: #cbd8d2;
+      --panel: #ffffff;
+      --panel-soft: #edf4ef;
+      --teal: #0b7d77;
+      --teal-soft: #d8eeeb;
+      --amber: #d69a19;
+      --coral: #d95d39;
+      --violet: #6a5acd;
+      --shadow: 0 18px 48px rgba(16, 32, 29, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        linear-gradient(180deg, rgba(11,125,119,0.10), transparent 260px),
+        var(--paper);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.68;
+    }
+    a { color: var(--teal); text-underline-offset: 3px; }
+    .wrap { width: min(1100px, calc(100% - 32px)); margin: 0 auto; }
+    header { padding: 44px 0 26px; border-bottom: 1px solid var(--line); }
+    .kicker { margin: 0 0 12px; color: var(--teal); font-weight: 800; font-size: 13px; }
+    h1 { margin: 0; max-width: 980px; font-size: clamp(34px, 6vw, 70px); line-height: 1.02; }
+    .lead { max-width: 840px; margin: 18px 0 0; color: var(--muted); font-size: 18px; }
+    .meta-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 24px; }
+    .metric { border: 1px solid var(--line); background: rgba(255,255,255,0.72); padding: 14px; min-height: 92px; }
+    .metric b { display: block; font-size: 30px; line-height: 1.1; }
+    .metric span { display: block; margin-top: 6px; color: var(--muted); font-size: 13px; }
+    main { padding: 26px 0 58px; }
+    section { margin: 22px 0; }
+    .band { border: 1px solid var(--line); background: rgba(255,255,255,0.82); padding: 22px; box-shadow: var(--shadow); }
+    h2 { margin: 0 0 14px; font-size: 25px; line-height: 1.2; }
+    h3 { margin: 0; font-size: 26px; line-height: 1.22; }
+    h4 { margin: 0 0 6px; font-size: 15px; color: #173d39; }
+    p { margin: 0 0 10px; }
+    ul { margin: 8px 0 0; padding-left: 20px; }
+    .trend-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 18px; }
+    .trend-grid p, .note p { color: var(--muted); }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .tag, .pill { display: inline-flex; align-items: center; min-height: 24px; padding: 3px 9px; border-radius: 999px; font-size: 12px; font-weight: 800; background: var(--teal-soft); color: #075c57; }
+    .tag.hn { background: #ffe7bf; color: #875600; }
+    .tag.reddit { background: #ffe0d5; color: #9b351f; }
+    .tag.github { background: #e7e9ff; color: #3f3b91; }
+    .tag.limit { background: #e8ecea; color: #58635f; }
+    .case { border: 1px solid var(--line); background: var(--panel); margin: 18px 0; box-shadow: var(--shadow); }
+    .case-head { display: grid; grid-template-columns: minmax(0, 1fr) 140px; gap: 16px; align-items: start; padding: 20px 20px 14px; border-bottom: 1px solid var(--line); }
+    .score { text-align: right; }
+    .score b { font-size: 34px; }
+    .score small { color: var(--muted); }
+    .bar { height: 9px; margin-top: 8px; background: #e2e9e5; overflow: hidden; }
+    .bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--teal), var(--amber)); }
+    .evidence { margin-top: 10px; color: var(--muted); font-size: 14px; }
+    .case-body { display: grid; grid-template-columns: minmax(300px, 0.94fr) minmax(0, 1.06fr); gap: 18px; padding: 20px; }
+    .case-body > *, .case-copy, figure { min-width: 0; }
+    figure { margin: 0; }
+    .image-box { width: 100%; aspect-ratio: 16 / 10; background: #dfe8e4; border: 1px solid var(--line); overflow: hidden; }
+    .image-box img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    figcaption { margin-top: 8px; color: var(--muted); font-size: 12px; }
+    figcaption, .evidence, .footer-note, code { overflow-wrap: anywhere; }
+    .case-copy { display: grid; gap: 12px; }
+    .case-copy section { margin: 0; padding-bottom: 10px; border-bottom: 1px solid #e3ebe7; }
+    .case-copy section:last-child { border-bottom: 0; }
+    .case-copy p, .case-copy li { color: #2f4540; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); background: var(--panel); }
+    table { width: 100%; min-width: 930px; border-collapse: collapse; font-size: 14px; }
+    th, td { padding: 12px 12px; border-bottom: 1px solid #e3ebe7; vertical-align: top; text-align: left; }
+    th { background: var(--panel-soft); color: #27423d; font-size: 13px; }
+    tr:last-child td { border-bottom: 0; }
+    .status-main { background: #d8eeeb; color: #075c57; }
+    .status-watch { background: #fff0cb; color: #875600; }
+    .status-out { background: #ecefed; color: #58635f; }
+    .watch-grid, .source-grid, .check-grid, .idea-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .watch, .source, .check, .idea { border: 1px solid var(--line); background: rgba(255,255,255,0.75); padding: 14px; }
+    .watch p, .source p, .check p, .idea p { color: var(--muted); margin: 4px 0 0; }
+    .sources-list { columns: 2; padding-left: 22px; }
+    .footer-note { border-top: 1px solid var(--line); padding-top: 18px; color: var(--muted); font-size: 13px; }
+    @media (max-width: 820px) {
+      .meta-row, .trend-grid, .case-head, .case-body, .watch-grid, .source-grid, .check-grid, .idea-grid { grid-template-columns: 1fr; }
+      .score { text-align: left; }
+      .sources-list { columns: 1; }
+      .band, .case-head, .case-body { padding: 16px; }
+    }
+    @media print {
+      body { background: #fff; }
+      .case, .band { box-shadow: none; break-inside: avoid; }
+      a { color: #000; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <p class="kicker">Codex Community Case Daily · Asia/Kuching</p>
+      <h1>Codex 精彩案例日报</h1>
+      <p class="lead">报告日期：2026-07-01。按本地 Asia/Kuching 运行日期归档；候选主要来自 2026-06-25 至 2026-06-30 的公开社区线索。今天没有硬凑普通仓库，主榜只保留证据足、图像可本地化、Codex 参与明确的案例。</p>
+      <div class="meta-row" aria-label="本期统计">
+        <div class="metric"><b>20</b><span>候选池</span></div>
+        <div class="metric"><b>5</b><span>主案例</span></div>
+        <div class="metric"><b>5/5</b><span>主图本地化并通过自检</span></div>
+        <div class="metric"><b>5</b><span>主榜含 HN / reddit 发现源</span></div>
+      </div>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="band">
+      <h2>今日趋势摘要</h2>
+      <div class="trend-grid">
+        <div>
+          <p><b>Codex 生态这几天的关键词不是“又一个 wrapper”，而是控制面、证据、协作和长任务可靠性。</b></p>
+          <ul>
+            <li>模型路由开始直接接入 Codex CLI，把成本与质量变成每次请求的决策。</li>
+            <li>Codex 插件从“快捷命令”向证据门禁、社交协作、可视化复盘发展。</li>
+            <li>多 agent 工作流开始追求可审计：候选、互评、verifier、最终 verdict 都要可回放。</li>
+            <li>社区同时高度关注安全边界、敏感文件、日志写盘和 usage limit，但这些多数属于观察项，不是主案例。</li>
+          </ul>
+        </div>
+        <div class="note">
+          <p><span class="tag hn">HN 优先</span> <span class="tag reddit">reddit 可读</span> <span class="tag limit">X 受限</span></p>
+          <p>HN Algolia 可稳定获取日期、points 和评论；old.reddit 页面可读，但 reddit JSON/API 多次返回 network policy block。X 搜索页直连返回 403，单帖多为 JS shell，本期没有把只能靠 X 的线索放进主榜。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <h2>来源与筛选说明</h2>
+      <div class="source-grid">
+        <div class="source"><b>检索顺序</b><p>先查 Hacker News/Algolia、old.reddit 与 reddit 搜索页面，再补 GitHub、项目官网、YouTube、PyPI、作者 README 和官方文档。</p></div>
+        <div class="source"><b>时间窗口</b><p>以近 7 天优先。2026-07-01 当天可核验高质量案例不足，因此扩到 2026-06-25 起的新近讨论。</p></div>
+        <div class="source"><b>评分口径</b><p>时效性 25、脑洞/惊喜 20、Codex 参与度 20、可视化证据 15、社区讨论 10、可借鉴性 10；低于 70 不进主榜。</p></div>
+        <div class="source"><b>去重边界</b><p>已避开 6 月 14-22 报告覆盖的 Lark、Nudge、NovaScale、Sqim、Lupen、agent-rollback、Hermes runtime 等案例。</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>主案例卡片</h2>
+
+      <article class="case">
+        <div class="case-head">
+          <div>
+            <h3>WorkWeave Router：把 Codex CLI 请求交给智能模型路由</h3>
+            <div class="pill-row"><span class="tag hn">HN</span><span class="tag github">GitHub</span><span class="tag">YouTube demo</span></div>
+            <p class="evidence">发布时间：2026-06-26（非当天新增，近 7 天） · 发现源：<a href="https://news.ycombinator.com/item?id=48688700">HN Show HN</a> · 证明：<a href="https://github.com/workweave/router">GitHub</a>、<a href="https://www.youtube.com/watch?v=isKhAyivtfM">demo 视频</a></p>
+          </div>
+          <div class="score"><b>92</b><small>/100</small><div class="bar"><i style="width:92%"></i></div></div>
+        </div>
+        <div class="case-body">
+          <figure>
+            <div class="image-box"><img src="assets/2026-07-01/workweave-router-youtube.jpg" alt="WorkWeave Router demo video frame" loading="lazy"></div>
+            <figcaption>图片来源：WorkWeave Router YouTube demo；获取方式：下载 YouTube 缩略图；原始链接：https://www.youtube.com/watch?v=isKhAyivtfM</figcaption>
+          </figure>
+          <div class="case-copy">
+            <section><h4>为什么值得看</h4><p>HN 上 212 points、43 条评论，是本期社区热度最高的正向生态案例。它把 Claude Code、Codex、Cursor 等 coding agent 的推理请求路由到不同模型，目标是保留关键任务的高智能，同时压低常规请求成本。</p></section>
+            <section><h4>Codex 具体做了什么</h4><p>Router 支持 `npx @workweave/router --codex`，把 Codex CLI 指向一个兼容 OpenAI/Anthropic/Gemini 的端点；每个请求由本地 embedding/scorer 决定发往哪类模型，并保留流式、工具、vision 与 observability。</p></section>
+            <section><h4>最有脑洞 / 最实用的点</h4><p>它把“用便宜模型还是贵模型”的人工选择下沉到每个 turn，而不是让开发者在一整个任务开始前猜。</p></section>
+            <section><h4>可借鉴做法</h4><ul><li>先做 drop-in endpoint，减少 agent 端改造。</li><li>默认 BYOK，本地保存 provider keys，降低团队采用阻力。</li><li>把路由决策写进 traces，后续才能复盘“为什么这个请求用了贵模型”。</li></ul></section>
+            <section><h4>不确定点</h4><p>README 给出 40-70% 成本降低主张，但不同团队 workload 差异很大；需要后续真实账单和失败样本佐证。</p></section>
+          </div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-head">
+          <div>
+            <h3>DevGlobe：让 Codex 用户在实时地球上“结对存在”</h3>
+            <div class="pill-row"><span class="tag reddit">reddit</span><span class="tag github">GitHub</span><span class="tag">Codex plugin</span></div>
+            <p class="evidence">发布时间：2026-06-25（非当天新增，近 7 天） · 发现源：<a href="https://old.reddit.com/r/OpenaiCodex/comments/1uf9bi7/i_was_tired_of_coding_alone_in_codex_so_i_made/">r/OpenaiCodex</a> · 证明：<a href="https://github.com/Nako0/devglobe-extension">GitHub</a>、<a href="https://devglobe.app/">devglobe.app</a></p>
+          </div>
+          <div class="score"><b>88</b><small>/100</small><div class="bar"><i style="width:88%"></i></div></div>
+        </div>
+        <div class="case-body">
+          <figure>
+            <div class="image-box"><img src="assets/2026-07-01/devglobe-codex-plugin.png" alt="DevGlobe developers coding on a globe" loading="lazy"></div>
+            <figcaption>图片来源：Nako0/devglobe-extension README 公开图；获取方式：下载 GitHub raw 图片；原始链接：https://github.com/Nako0/devglobe-extension/blob/main/assets/europe.png</figcaption>
+          </figure>
+          <div class="case-copy">
+            <section><h4>为什么值得看</h4><p>这条 reddit 线索有 100+ points 和评论，且不是常见“我做了个仪表盘”。作者把 Codex coding activity 做成公开、可匿名的 live globe，让独自使用 agent 的过程变成可发现、可协作的开发者存在感。</p></section>
+            <section><h4>Codex 具体做了什么</h4><p>仓库有独立 `codex-plugin`，和 VS Code、JetBrains、Zed、NeoVim、Claude Code、OpenCode 插件并列；Codex 用户工作时发送 heartbeat，开发者档案、项目和统计会显示在 DevGlobe。</p></section>
+            <section><h4>最有脑洞 / 最实用的点</h4><p>把 agent 使用状态从本地终端提到“社交表面”：你可以发现谁正在写类似项目，也能展示自己的 GitHub、项目和 coding stats。</p></section>
+            <section><h4>可借鉴做法</h4><ul><li>隐私开关前置：anonymous、masked、隐藏文件名/分支名/项目名。</li><li>插件跨 IDE 与 agent，避免只服务单一编辑器。</li><li>心跳只在活跃 coding 时发，降低噪声和误报。</li></ul></section>
+            <section><h4>不确定点</h4><p>它需要把活动状态发到 devglobe.app；虽然 README 声称隐私优先，团队采用前仍应审计 telemetry 边界。</p></section>
+          </div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-head">
+          <div>
+            <h3>Superloopy：让 Codex 先交证据，再说 done</h3>
+            <div class="pill-row"><span class="tag reddit">reddit</span><span class="tag github">GitHub</span><span class="tag">Codex skills</span></div>
+            <p class="evidence">发布时间：2026-06-30（非当天新增，约 1 天内） · 发现源：<a href="https://old.reddit.com/r/OpenaiCodex/comments/1ujd6be/i_made_a_codex_plugin_that_makes_agents_prove/">r/OpenaiCodex</a> · 证明：<a href="https://github.com/beefiker/superloopy">GitHub</a>、README clone demo</p>
+          </div>
+          <div class="score"><b>86</b><small>/100</small><div class="bar"><i style="width:86%"></i></div></div>
+        </div>
+        <div class="case-body">
+          <figure>
+            <div class="image-box"><img src="assets/2026-07-01/superloopy-clone-reference.png" alt="Superloopy clone demo reference screenshot" loading="lazy"></div>
+            <figcaption>图片来源：beefiker/superloopy README clone demo；获取方式：下载 GitHub raw 图片；原始链接：https://github.com/beefiker/superloopy/blob/main/.github/assets/transferloom-clone-reference.png</figcaption>
+          </figure>
+          <div class="case-copy">
+            <section><h4>为什么值得看</h4><p>它直接解决 agent workflow 的信任问题：不是让 Codex 生成一段自信总结，而是要求 acceptance criteria、命令、截图、DOM/样式、构建输出和 visual QA 都落到 `.superloopy/evidence/`。</p></section>
+            <section><h4>Codex 具体做了什么</h4><p>Superloopy 是 Codex plugin/CLI：用户在 Codex 里输入 <code>loopy &lt;task&gt;</code>，技能会驱动 Codex 计划、执行、记录证据，并在证据和最终声明对齐前阻止“完成”叙述。</p></section>
+            <section><h4>最有脑洞 / 最实用的点</h4><p>`superloopy-clone` 把授权网站复刻拆成截图、拓扑、design tokens、资产清单、行为说明、构建和浏览器 QA，避免“看起来差不多”的空泛交付。</p></section>
+            <section><h4>可借鉴做法</h4><ul><li>把最终报告和机器 gate JSON 分开，方便人审。</li><li>证据路径放在 repo 内，便于 PR/CI/回放。</li><li>大任务再启用 crew lanes，普通任务保持 solo loop，避免过度编排。</li></ul></section>
+            <section><h4>不确定点</h4><p>项目刚在 2026-06-29 创建，star 和外部用户还少；核心价值需要看后续真实任务 evidence trail 是否稳定。</p></section>
+          </div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-head">
+          <div>
+            <h3>h5i-studio：把 Claude + Codex 互评过程变成可回放舰桥</h3>
+            <div class="pill-row"><span class="tag reddit">reddit</span><span class="tag hn">HN 索引</span><span class="tag github">GitHub</span></div>
+            <p class="evidence">发布时间：2026-06-29（非当天新增，近 7 天） · 发现源：<a href="https://old.reddit.com/r/codex/comments/1uit86f/i_built_an_animestyle_ui_for_watching_ai_coding/">r/codex</a> / <a href="https://news.ycombinator.com/item?id=48719426">HN 转链</a> · 证明：<a href="https://github.com/h5i-dev/h5i-studio">h5i-studio</a>、<a href="https://github.com/h5i-dev/h5i">h5i</a></p>
+          </div>
+          <div class="score"><b>85</b><small>/100</small><div class="bar"><i style="width:85%"></i></div></div>
+        </div>
+        <div class="case-body">
+          <figure>
+            <div class="image-box"><img src="assets/2026-07-01/h5i-studio-demo.png" alt="h5i-studio starship bridge demo" loading="lazy"></div>
+            <figcaption>图片来源：h5i-studio README demo GIF；获取方式：下载 GIF 后用 sips 抽取 PNG 帧；原始链接：https://github.com/h5i-dev/h5i-studio/blob/main/docs/h5i-studio-demo.gif</figcaption>
+          </figure>
+          <div class="case-copy">
+            <section><h4>为什么值得看</h4><p>多 agent 编码正在从“多个终端刷日志”进入可视化复盘。h5i-studio 把真实 h5i run data 渲染成舰桥：每个 agent 提交候选、互相 review、verifier 给出 GO / NO-GO，用户能 replay。</p></section>
+            <section><h4>Codex 具体做了什么</h4><p>h5i README 明确用 Claude 与 Codex 建两个 sandboxed env，同一任务分别运行，再 peer-review、verify、finalize，最后只合并通过验证的候选。</p></section>
+            <section><h4>最有脑洞 / 最实用的点</h4><p>“不要读 agent team，要看它”：把候选、评审、verdict 变成时间线和可导出 GIF，适合给团队解释 AI diff 为什么可信。</p></section>
+            <section><h4>可借鉴做法</h4><ul><li>每个 agent 用独立 worktree 和 sandbox，避免互相污染。</li><li>把 event log append-only，viewer 只读，不推进状态。</li><li>最终合并由 neutral verifier 重放测试，不靠 agent 自证。</li></ul></section>
+            <section><h4>不确定点</h4><p>h5i-studio 本身很新，GitHub star 很少；更成熟的底层 h5i 才是主要证据，studio 是可视化层。</p></section>
+          </div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-head">
+          <div>
+            <h3>Caliper：给 Codex skills 做 pass@k 回归测试</h3>
+            <div class="pill-row"><span class="tag hn">HN</span><span class="tag github">GitHub</span><span class="tag">PyPI</span></div>
+            <p class="evidence">发布时间：2026-06-28（非当天新增，近 7 天） · 发现源：<a href="https://news.ycombinator.com/item?id=48709606">HN Show HN</a> · 证明：<a href="https://github.com/edonadei/caliper">GitHub</a>、<a href="https://pypi.org/project/caliper-eval/">PyPI</a></p>
+          </div>
+          <div class="score"><b>82</b><small>/100</small><div class="bar"><i style="width:82%"></i></div></div>
+        </div>
+        <div class="case-body">
+          <figure>
+            <div class="image-box"><img src="assets/2026-07-01/caliper-github-readme.png" alt="Caliper GitHub README screenshot" loading="lazy"></div>
+            <figcaption>图片来源：edonadei/caliper GitHub README；获取方式：Playwright 页面截图；原始链接：https://github.com/edonadei/caliper</figcaption>
+          </figure>
+          <div class="case-copy">
+            <section><h4>为什么值得看</h4><p>skills 很容易“试一次能跑”就发布，但模型升级、上下文变化后会悄悄退化。Caliper 把 Codex/Claude Code/Pi skills 放进隔离环境跑 k 次，用 LLM judge 或 Python assert 给出 pass@k。</p></section>
+            <section><h4>Codex 具体做了什么</h4><p>仓库支持 `caliper install-skill codex`，也可以在 Codex 中要求 evaluate-skill 运行 `.eval.yaml` 并总结结果；每次 attempt 使用隔离临时 home，保存 transcript 和 JSON 结果。</p></section>
+            <section><h4>最有脑洞 / 最实用的点</h4><p>它把 agent skill 当成需要回归测试的产品，而不是 prompt 文档。pass@k + baseline 能回答“这个 skill 是否真的提高成功率”。</p></section>
+            <section><h4>可借鉴做法</h4><ul><li>每个 skill 至少准备 happy path、edge case、adversarial 三类任务。</li><li>能用 deterministic assert 的地方不要只靠 LLM judge。</li><li>升级模型前后跑同一份 eval，比较 delta。</li></ul></section>
+            <section><h4>不确定点</h4><p>HN 讨论量很低，生态采用还早；但问题定义清晰，适合团队内部先用。</p></section>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="band">
+      <h2>候选评分表</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>候选</th><th>发现/证明来源</th><th>发布时间</th><th>评分</th><th>处理</th><th>备注</th></tr></thead>
+          <tbody>
+            <tr><td><b>WorkWeave Router</b></td><td>HN + GitHub + YouTube</td><td>2026-06-26</td><td>92</td><td><span class="pill status-main">主榜</span></td><td>社区热度高，Codex 接入明确，成本路由可借鉴。</td></tr>
+            <tr><td><b>DevGlobe Codex plugin</b></td><td>reddit + GitHub + 产品页</td><td>2026-06-25</td><td>88</td><td><span class="pill status-main">主榜</span></td><td>Codex 社交化角度新鲜，reddit 互动强。</td></tr>
+            <tr><td><b>Superloopy</b></td><td>reddit + GitHub + README demo</td><td>2026-06-30</td><td>86</td><td><span class="pill status-main">主榜</span></td><td>证据门禁具体，但项目很新。</td></tr>
+            <tr><td><b>h5i-studio</b></td><td>reddit + HN + GitHub</td><td>2026-06-29</td><td>85</td><td><span class="pill status-main">主榜</span></td><td>多 agent 互评可视化，图像证据强。</td></tr>
+            <tr><td><b>Caliper</b></td><td>HN + GitHub + PyPI</td><td>2026-06-28</td><td>82</td><td><span class="pill status-main">主榜</span></td><td>Codex skills 回归测试，讨论少但可借鉴。</td></tr>
+            <tr><td><b>Agentic Orchestrator</b></td><td>HN + DoorDash OSS GitHub</td><td>2026-06-30</td><td>81</td><td><span class="pill status-watch">观察</span></td><td>工程流很完整，Codex 主要用于 Final Review，主榜留给更 Codex-specific 项目。</td></tr>
+            <tr><td><b>Codex Status Bar</b></td><td>reddit + GitHub + GIF</td><td>2026-06-26</td><td>80</td><td><span class="pill status-watch">观察</span></td><td>读 Codex hooks 做菜单栏状态，具体但社区热度低。</td></tr>
+            <tr><td><b>Reference MCP</b></td><td>HN + GitHub</td><td>2026-06-29</td><td>78</td><td><span class="pill status-watch">观察</span></td><td>跨 Claude/Codex session 召回，项目刚发布、证据少。</td></tr>
+            <tr><td><b>Context Warp Drive</b></td><td>reddit + GitHub + 论文引用</td><td>2026-06-30</td><td>76</td><td><span class="pill status-watch">观察</span></td><td>长任务上下文折叠很有价值，但 Codex 参与是泛 agent 级。</td></tr>
+            <tr><td><b>Codex subagents Builder/Reviewer loop</b></td><td>reddit discussion</td><td>2026-06-27</td><td>75</td><td><span class="pill status-watch">观察</span></td><td>真实工作流分享，缺 repo/截图。</td></tr>
+            <tr><td><b>Agent Cat</b></td><td>reddit + 产品页 + 图片</td><td>2026-06-26</td><td>74</td><td><span class="pill status-watch">观察</span></td><td>多 agent 菜单栏状态工具，Codex 只是其中一个 provider。</td></tr>
+            <tr><td><b>Trajeckt agent firewall</b></td><td>HN + GitHub</td><td>2026-06-29</td><td>74</td><td><span class="pill status-watch">观察</span></td><td>MCP agent 防火墙思路强，Codex 证据弱。</td></tr>
+            <tr><td><b>Inside black-hole interface</b></td><td>reddit + video + download</td><td>2026-06-30</td><td>73</td><td><span class="pill status-watch">观察</span></td><td>Codex 协作生成 WebGL/VR 风格界面，缺可审计代码仓库。</td></tr>
+            <tr><td><b>Buildable plugin skills</b></td><td>reddit + GitHub</td><td>2026-06-28</td><td>72</td><td><span class="pill status-watch">观察</span></td><td>app-builder brain 可借鉴，但 6 月已有同类案例，暂不重复。</td></tr>
+            <tr><td><b>Statey MCP</b></td><td>HN + 产品页</td><td>2026-06-26</td><td>72</td><td><span class="pill status-watch">观察</span></td><td>MCP 数据库面向 Codex/ChatGPT 等，Codex 中心性不足。</td></tr>
+            <tr><td><b>Codex sensitive files exclusion issue</b></td><td>HN + openai/codex issue</td><td>2026-06-28</td><td>72</td><td><span class="pill status-watch">观察</span></td><td>224 points/142 comments，很重要但属于风险讨论，不是完成案例。</td></tr>
+            <tr><td><b>Publish.my</b></td><td>HN + 产品页</td><td>2026-06-23</td><td>71</td><td><span class="pill status-watch">观察</span></td><td>AI agent customer 静态发布，Codex 可用但不是核心。</td></tr>
+            <tr><td><b>Codex Security Plugin Quickstart</b></td><td>HN + OpenAI docs</td><td>2026-06-25</td><td>70</td><td><span class="pill status-watch">观察</span></td><td>官方教程，不是社区完成案例。</td></tr>
+            <tr><td><b>Instavm sandboxing article</b></td><td>HN + 作者博客</td><td>2026-06-29</td><td>69</td><td><span class="pill status-out">未入选</span></td><td>有价值但更偏分析文，不满足主榜案例线。</td></tr>
+            <tr><td><b>OpenAI keyboard/X 线索</b></td><td>reddit + X 链接</td><td>2026-06-30</td><td>65</td><td><span class="pill status-out">未入选</span></td><td>硬件传闻/营销线索，缺 Codex 完成案例。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="band">
+      <h2>无图 / 待核实观察区</h2>
+      <div class="watch-grid">
+        <div class="watch"><b>安全与权限问题热度高</b><p>Codex sensitive files exclusion、SSD 写盘、sandboxing 等讨论都很热，但多数是平台风险而非“用 Codex 完成的作品”。本期只进观察区。</p></div>
+        <div class="watch"><b>reddit 有真实工作流但证据不足</b><p>Codex subagents Builder/Reviewer loop 很可借鉴，但没有代码、截图或成品链接；适合作为灵感，不够主榜。</p></div>
+        <div class="watch"><b>X 访问受限</b><p>x.com search 直连返回 HTTP 403；单帖页面可返回 HTML shell，但正文依赖登录/JS。没有把 X-only 线索当主证据。</p></div>
+        <div class="watch"><b>新项目需继续观察</b><p>Superloopy、h5i-studio、Reference MCP、Context Warp Drive 都很新，后续要看 issue、release、实际用户复盘。</p></div>
+      </div>
+    </section>
+
+    <section class="band">
+      <h2>今日灵感清单</h2>
+      <div class="idea-grid">
+        <div class="idea"><b>把 agent 输出变成证据链</b><p>验收标准、命令输出、截图、diff 和未确认点应一起进入最终报告。</p></div>
+        <div class="idea"><b>模型路由是 Codex 成本控制面</b><p>不要只在任务开始前选择模型；高低成本模型可以按 turn 分配。</p></div>
+        <div class="idea"><b>多 agent 要可回放</b><p>候选、互评、verifier 与最终合并都应是可审计事件，而不是聊天记录。</p></div>
+        <div class="idea"><b>Codex hooks 是产品入口</b><p>Status Bar、Superloopy、DevGlobe 都说明 hooks/skills/plugin 比外部包壳更稳。</p></div>
+        <div class="idea"><b>隐私开关不是补丁</b><p>只要把 coding activity 发出本机，就要先设计匿名、隐藏项目名和审计路径。</p></div>
+        <div class="idea"><b>skills 也需要测试</b><p>prompt/skill 不是文档，应该用 pass@k 和 baseline 检测模型升级后的退化。</p></div>
+      </div>
+    </section>
+
+    <section class="band">
+      <h2>来源列表</h2>
+      <ol class="sources-list">
+        <li><a href="https://news.ycombinator.com/item?id=48688700">HN: WorkWeave Router</a></li>
+        <li><a href="https://github.com/workweave/router">GitHub: workweave/router</a></li>
+        <li><a href="https://www.youtube.com/watch?v=isKhAyivtfM">WorkWeave Router demo video</a></li>
+        <li><a href="https://old.reddit.com/r/OpenaiCodex/comments/1uf9bi7/i_was_tired_of_coding_alone_in_codex_so_i_made/">reddit: DevGlobe Codex plugin</a></li>
+        <li><a href="https://github.com/Nako0/devglobe-extension">GitHub: devglobe-extension</a></li>
+        <li><a href="https://devglobe.app/">DevGlobe product page</a></li>
+        <li><a href="https://old.reddit.com/r/OpenaiCodex/comments/1ujd6be/i_made_a_codex_plugin_that_makes_agents_prove/">reddit: Superloopy</a></li>
+        <li><a href="https://github.com/beefiker/superloopy">GitHub: superloopy</a></li>
+        <li><a href="https://old.reddit.com/r/codex/comments/1uit86f/i_built_an_animestyle_ui_for_watching_ai_coding/">reddit: h5i-studio</a></li>
+        <li><a href="https://news.ycombinator.com/item?id=48719426">HN: h5i-studio reddit link</a></li>
+        <li><a href="https://github.com/h5i-dev/h5i-studio">GitHub: h5i-studio</a></li>
+        <li><a href="https://github.com/h5i-dev/h5i">GitHub: h5i</a></li>
+        <li><a href="https://news.ycombinator.com/item?id=48709606">HN: Caliper</a></li>
+        <li><a href="https://github.com/edonadei/caliper">GitHub: caliper</a></li>
+        <li><a href="https://pypi.org/project/caliper-eval/">PyPI: caliper-eval</a></li>
+        <li><a href="https://news.ycombinator.com/item?id=48727448">HN: Agentic Orchestrator</a></li>
+        <li><a href="https://github.com/doordash-oss/agentic-orchestrator">GitHub: agentic-orchestrator</a></li>
+        <li><a href="https://old.reddit.com/r/OpenaiCodex/comments/1ug6rtn/i_made_a_small_macos_menu_bar_status_app_for_codex/">reddit: Codex Status Bar</a></li>
+        <li><a href="https://github.com/ilyastorunn/codex-status-bar">GitHub: codex-status-bar</a></li>
+        <li><a href="https://github.com/kuberwastaken/reference">GitHub: Reference MCP</a></li>
+      </ol>
+    </section>
+
+    <section class="band">
+      <h2>图片自检清单</h2>
+      <div class="check-grid">
+        <div class="check"><b>workweave-router-youtube.jpg</b><p>1280 x 720，107245 bytes，mean 35.65 / var 2356.87。通过：demo 画面非黑屏/白屏/错误页。</p></div>
+        <div class="check"><b>devglobe-codex-plugin.png</b><p>2238 x 1175，2282884 bytes，mean 69.75 / var 3763.42。通过：真实产品图，能体现 live globe。</p></div>
+        <div class="check"><b>superloopy-clone-reference.png</b><p>1440 x 1000，289327 bytes，mean 242.28 / var 1056.20。通过：README clone demo 结果图。</p></div>
+        <div class="check"><b>h5i-studio-demo.png</b><p>1920 x 1080，440260 bytes，mean 40.77 / var 1273.61。通过：从 GIF 抽帧，舰桥 UI 清晰。</p></div>
+        <div class="check"><b>caliper-github-readme.png</b><p>839 x 10824，1395527 bytes，mean 243.71 / var 50.72。通过：GitHub README 页面截图，长图可被容器裁切。</p></div>
+      </div>
+    </section>
+
+    <section class="footer-note">
+      <p><b>检索时间：</b>2026-07-01 11:05:56 +0800（Asia/Kuching，本机时间）。主要搜索平台：HN Algolia/API、old.reddit 页面、reddit 搜索页、GitHub API/raw、YouTube thumbnail、PyPI、项目官网。X/Reddit/HN 访问限制：reddit JSON/API 多次返回 network policy block，old.reddit 可读；x.com search 直连返回 HTTP 403，单帖多为 JS shell；HN Algolia 可读但部分低热条目无评论。未确认信息边界：未亲自运行第三方插件，未验证成本节省百分比，未审计 telemetry 或安全策略实现，未把登录墙后的 X 内容作为主证据。图片自检结果：5 张主榜图片均为本地文件，存在、非空、尺寸合理，Pillow 亮度/方差与人工目检未见黑屏、白屏或错误页。</p>
+      <p>本页为 standalone HTML，CSS 已内嵌，不依赖外部 CSS/JS；图片使用相对路径引用本地资产。</p>
+    </section>
+  </main>
+</body>
+</html>
